@@ -1,0 +1,64 @@
+<div id="plot-bpf-size"></div>
+<script>
+var locBPFSubsystem = [4205, 4825, 5014, 5719, 6181, 6461, 7160, 7376, 8402, 9203, 9768, 10604, 12264, 13171, 13695, 14731, 17192, 19544, 21494, 23696, 28318, 29639, 28913, 30873, 32174, 33806, 35419, 35946, 37922, 39767, 41386, 44013, 45642, 49346, 50087, 51377, 52439, 53014, 54348, 55300, 56119, 58077, 59955, 60976, 62651, 65245, 66891];
+var verifierRatio = [];
+for (var i = 0; i < locVerifier.length; i++) {
+    verifierRatio[i] = locVerifier[i] / locBPFSubsystem[i];
+}
+var verifierLoC = {
+    x: linuxVersions,
+    y: locVerifier,
+    text: locContributors,
+    type: 'scatter',
+    mode: 'markers',
+    name: 'BPF verifier',
+    hovertemplate: '%{y}<extra>%{text}</extra>',
+};
+var bpfLoC = {
+    x: linuxVersions,
+    y: locBPFSubsystem,
+    text: ['', '', '', '', '', '', 'BPF filesystem', '', 'Per-cpu & stack trace maps', 'Direct packet access & constant blinding', '', '', 'LRU maps', 'LPM map', '', '', 'sockmap & devmap', 'cpumap', 'Function calls', 'BPF ULP layer', 'BTF', 'Reuseport & cgroup storage maps', 'Queue & stack maps', 'bpf_func_info', 'bpf_spin_lock', '', 'Preparatory work for bounded loops', '', 'BPF trampoline & type checking', 'BPF kernel function pointers & batch map operations', 'Improved support for 32bit operations & bpf_link', 'BPF iterator, new BPF ring buffer, & bpf_link for netns-attached programs', 'Various BPF iterators & SK_LOOKUP programs', 'In-kernel printifying of BTF-based data & Write TCP options from sockops', 'BTF for kernel modules', 'Variable-offset stack accesses', 'kfuncs & bpf_for_each_map_elem() helper', 'Calling syscalls from BPF & XDP broadcast support', 'BPF timers', 'Kernel module kfuncs', 'Various helpers', 'bpf_prog_pack allocator & kprobe multi link', 'Storing typed pointers in BPF maps', 'Checking SYN cookies in XDP & BPF cgroup LSM', 'Various kfuncs', 'User-defined BPF objects', 'Various kfuncs'],
+    type: 'scatter',
+    mode: 'markers',
+    name: 'BPF subsystem',
+    hovertemplate: '%{y}<extra>%{text}</extra>',
+};
+var percentVerifierLoC = {
+    x: linuxVersions,
+    y: verifierRatio,
+    yaxis: 'y2',
+    type: 'scatter',
+    name: '% of verifier code in BPF subsystem',
+    hovertemplate: '%{y}<extra></extra>',
+}
+
+plotlyReady(function() {
+    var data = [verifierLoC, bpfLoC, percentVerifierLoC];
+    var layout = {
+        title: '<b>BPF Subsystem Size in Lines of Code</b><br><i>Including comments</i>',
+        legend: {x: 0, y: 1.1},
+        margin: {t: 80, l: 50, r: 50, b: 40},
+        xaxis: {
+            nticks: 15,
+            tickangle: -45,
+        },
+        yaxis: {
+            title: 'Lines of code',
+            tickformat: 's',
+            range: [0, 70000]
+        },
+        yaxis2: {
+            title: '% of verifier in BPF subsystem',
+            overlaying: 'y',
+            side: 'right',
+            tickformat: '%',
+            range: [0, 1]
+        },
+        height: 450,
+    };
+    if (jQuery.browser && jQuery.browser.mobile) {
+        layout.dragmode = false;
+    }
+    Plotly.newPlot('plot-bpf-size', data, layout);
+});
+</script>

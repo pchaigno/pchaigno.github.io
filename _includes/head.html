@@ -3,18 +3,60 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {%- seo -%}
-  <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="{{ page.title }}"/>
+  <meta name="twitter:site" content="@pchaigno"/>
+  <meta name="twitter:image" content="{{ page.image | prepend: site.baseurl | prepend: site.url }}"/>
+
   <style>
-  .footnotediv code {
-    'font-size': '90%',
-  }
+  {%- include main.css -%}
   </style>
+
   {%- feed_meta -%}
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
     {%- include google-analytics.html -%}
   {%- endif -%}
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js" type="text/javascript"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript" async></script>
+  <script type="text/javascript">
+    function isReady(pred, func) {
+      if (pred()) {
+          $(document).ready(func);
+      } else {
+          setTimeout(function() { isReady(pred, func) }, 50);
+      }
+    }
+    function jqueryReady(func) {
+      isReady(function() {
+        return window.jQuery;
+      }, func);
+    }
+  </script>
+
+  {%- if page.uses_plotly -%}
+  <script src="/assets/plotly-1.56.0.min.js" type="text/javascript" async></script>
+  <script type="text/javascript">
+    function plotlyReady(func) {
+      isReady(function() {
+        return window.jQuery && window.Plotly;
+      }, func);
+    }
+  </script>
+  {%- endif -%}
+
+  {%- if page.uses_flamegraphs -%}
+  <link href="/assets/egress-filtering-benchmark/flamegraph.css" rel="preload" as="style" type="text/css" onload="this.rel = 'stylesheet'">
+  <link href="/assets/egress-filtering-benchmark/carousel.css" rel="preload" as="style" type="text/css" onload="this.rel = 'stylesheet'">
+  <script>
+    jqueryReady(function() {
+      $('link[rel="preload"]').attr('rel', 'stylesheet');
+    })
+  </script>
+  <noscript><link rel="stylesheet" href="/assets/egress-filtering-benchmark/flamegraph.css"></noscript>
+  <noscript><link rel="stylesheet" href="/assets/egress-filtering-benchmark/carousel.css"></noscript>
+  {%- endif -%}
+
   {% for js in site.js_files %}
     <script type="text/javascript">
     {% include {{ js }} %}

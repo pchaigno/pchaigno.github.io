@@ -1,0 +1,43 @@
+<div id="plot-bpf-verifier-size"></div>
+<script>
+var linuxVersions = ["v3.18", "v3.19", "v4.0", "v4.1", "v4.2", "v4.3", "v4.4", "v4.5", "v4.6", "v4.7", "v4.8", "v4.9", "v4.10", "v4.11", "v4.12", "v4.13", "v4.14", "v4.15", "v4.16", "v4.17", "v4.18", "v4.19", "v4.20", "v5.0", "v5.1", "v5.2", "v5.3", "v5.4", "v5.5", "v5.6", "v5.7", "v5.8", "v5.9", "v5.10", "v5.11", "v5.12", "v5.13", "v5.14", "v5.15", "v5.16", "v5.17", "v5.18", "v5.19", "v6.0", "v6.1", "v6.2", "v6.3"];
+var locVerifier = [1699, 1768, 1768, 1885, 1914, 1931, 2013, 2021, 2066, 2451, 2475, 2891, 2952, 3074, 3315, 3499, 4045, 4294, 5176, 5266, 7381, 7410, 7917, 9081, 9792, 10411, 11381, 11394, 12514, 13097, 13750, 13993, 14112, 15530, 15908, 16584, 17355, 17364, 17723, 18080, 18724, 19271, 20154, 20409, 20608, 22283, 23193];
+var locContributors = ['', '', '', 'Access to skb fields', '', '', 'Non-root BPF programs', '', '', 'Direct packet access', '', 'Access to map value arrays', '', '', '', '', 'State pruning rewrite', '', 'Function calls', '', 'BTF', '', 'Reference tracking', 'Speculation mitigation & bpf_func_info', 'bpf_spin_lock, JMP32, & dead code deletion', '', 'Preparatory work for bounded loops', '', 'Type checking with BTF', 'Function-by-function verif. & dynamic prog. ext.', 'Improved support for 32bit operations', 'New BPF ring buffer', 'Access to map metadata', 'BTF support for ksym externs', 'BTF for kernel modules', 'Variable-offset stack accesses', 'kfuncs & bpf_for_each_map_elem() helper', '', 'BPF timers', 'Kernel module kfuncs', 'In-kernel CO-RE support', '', 'Storing typed pointers in BPF maps', 'Inlining of bpf_loop helper calls', '', 'Allocated objects & BPF linked lists', 'BPF red-black tree'];
+var verifierLoCWithComments = {
+    x: linuxVersions,
+    y: locVerifier,
+    text: locContributors,
+    type: 'scatter',
+    mode: 'markers',
+    name: 'Lines of code with comments',
+    hovertemplate: '%{y}<extra>%{text}</extra>',
+};
+var verifierLoCWithoutComments = {
+    x: linuxVersions,
+    y: [1315, 1344, 1344, 1439, 1460, 1481, 1563, 1571, 1615, 1869, 1893, 2208, 2260, 2366, 2566, 2709, 3124, 3315, 4037, 4110, 5899, 5925, 6336, 7371, 7966, 8537, 9255, 9264, 10228, 10687, 11192, 11418, 11535, 12613, 12969, 13461, 14177, 14260, 14553, 14867, 15406, 15850, 16653, 16864, 17031, 18356, 19082],
+    text: locContributors,
+    type: 'scatter',
+    mode: 'markers',
+    name: 'Lines of code without comments',
+    hovertemplate: '%{y}<extra>%{text}</extra>',
+};
+
+plotlyReady(function() {
+    var data = [verifierLoCWithComments, verifierLoCWithoutComments];
+    var layout = {
+        title: '<b>BPF Verifier Size in Lines of Code</b>',
+        legend: {x: 0, y: 1.1},
+        margin: {t: 80, l: 30, r: 0, b: 40},
+        xaxis: {
+            nticks: 15,
+            tickangle: -45
+        },
+        yaxis: {tickformat: 's'},
+        height: 450,
+    };
+    if (jQuery.browser && jQuery.browser.mobile) {
+        layout.dragmode = false;
+    }
+    Plotly.newPlot('plot-bpf-verifier-size', data, layout);
+});
+</script>

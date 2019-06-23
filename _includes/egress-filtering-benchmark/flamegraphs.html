@@ -1,0 +1,90 @@
+<script>
+function changeZIndex(e, z) {
+  e.css('z-index', z);
+  if (z == 5) {
+    e.removeClass('second-row-tile third-row-tile').addClass('first-row-tile');
+  } else if (z == 4) {
+    e.removeClass('first-row-tile third-row-tile').addClass('second-row-tile');
+  } else if (z == 3) {
+    e.removeClass('first-row-tile second-row-tile').addClass('third-row-tile');
+  } else {
+    e.removeClass('first-row-tile second-row-tile third-row-tile');
+  }
+}
+
+function prepFlamegraphLoad(name) {
+  $('#mini-flamegraph-' + name).on('click', function() {
+    var overlay = $('#overlay-' + name);
+    overlay.load('/assets/egress-filtering-benchmark/flamegraph-' + name + '.svg');
+    overlay.css('display', 'block');
+  })
+}
+
+jqueryReady(function() {
+  prepFlamegraphLoad('none');
+  prepFlamegraphLoad('tc');
+  prepFlamegraphLoad('cgroup');
+  prepFlamegraphLoad('ipset');
+  prepFlamegraphLoad('iptables');
+
+  $(document).mouseup(function(e) {
+    $('.overlay').each(function() {
+      overlay = $(this);
+      if (overlay.css('display') == 'block') {
+        var content = overlay.children('.content');
+        if (!content.is(e.target) && content.has(e.target).length === 0) {
+          overlay.css('display', 'none');
+        }
+      }
+    });
+  });
+
+  $('.carousel-tile').hover(function() {
+    var z = 5;
+    // $(this).css('z-index', z);
+    changeZIndex($(this), z);
+
+    var next = $(this).next('img');
+    while (next.length > 0) {
+      --z;
+      // next.css('z-index', z);
+      changeZIndex(next, z);
+      next = next.next('img');
+    }
+
+    z = 5;
+    var prev = $(this).prev('img');
+    while (prev.length > 0) {
+      --z;
+      changeZIndex(prev, z);
+      prev = prev.prev('img');
+    }
+  }, function() {
+    $('.carousel-tile:eq(2)').removeAttr('style').removeClass('second-row-tile third-row-tile').addClass('first-row-tile');
+    $('.carousel-tile:eq(1)').removeAttr('style').removeClass('first-row-tile third-row-tile').addClass('second-row-tile');
+    $('.carousel-tile:eq(3)').removeAttr('style').removeClass('first-row-tile third-row-tile').addClass('second-row-tile');
+    $('.carousel-tile:eq(0)').removeAttr('style').removeClass('first-row-tile second-row-tile').addClass('third-row-tile');
+    $('.carousel-tile:eq(4)').removeAttr('style').removeClass('first-row-tile second-row-tile').addClass('third-row-tile');
+  })
+});
+</script>
+
+<div class="carousel">
+    <div class="carousel-row">
+          <img src="/assets/egress-filtering-benchmark/flamegraph-none-min.jpg" id="mini-flamegraph-none" alt="Interactive flame graph without filter (none)" class="carousel-tile third-row-tile"/>
+          <img src="/assets/egress-filtering-benchmark/flamegraph-tc-min.jpg" id="mini-flamegraph-tc" alt="Interactive flame graph with a tc-bpf filter and 1M CIDRs" class="carousel-tile second-row-tile"/>
+          <img src="/assets/egress-filtering-benchmark/flamegraph-cgroup-min.jpg" id="mini-flamegraph-cgroup" alt="Interactive flame graph with a cgroup-bpf filter and 1M CIDRs" class="carousel-tile first-row-tile"/>
+          <img src="/assets/egress-filtering-benchmark/flamegraph-ipset-min.jpg" id="mini-flamegraph-ipset" alt="Interactive flame graph with an ipset filter and 1M CIDRs" class="carousel-tile second-row-tile"/>
+          <img src="/assets/egress-filtering-benchmark/flamegraph-iptables-min.jpg" id="mini-flamegraph-iptables" alt="Interactive flame graph with iptables and 1M CIDRs" class="carousel-tile third-row-tile"/>
+    </div>
+</div>
+
+<div id="overlay-none" class="overlay"></div>
+
+<div id="overlay-tc" class="overlay"></div>
+
+<div id="overlay-cgroup" class="overlay"></div>
+
+<div id="overlay-ipset" class="overlay"></div>
+
+<div id="overlay-iptables" class="overlay"></div>

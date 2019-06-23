@@ -1,0 +1,72 @@
+<div id="plot-bmc-throughput-per-core"></div>
+<script>
+var cores = [1, 2, 3, 4, 5, 6, 7, 8];
+
+var vanillaMemcachedPerCore = {
+  x: cores,
+  y: [153997, 255636, 333824, 393391, 304434, 245471, 215583, 212911],
+  name: 'vanilla Memcached alone',
+  type: 'bar',
+  offsetgroup: 1,
+  marker: {
+    color: 'rgb(152, 201, 62)',
+  },
+};
+
+var memcachedSRAlonePerCore = {
+  x: cores,
+  y: [161662, 316358, 458242, 596284, 758702, 891925, 1051943, 1246669],
+  name: 'MemcachedSR alone',
+  type: 'bar',
+  offsetgroup: 2,
+  marker: {
+    color: 'rgb(98, 138, 198)',
+  },
+};
+
+BMCThroughput = [708718, 1539825, 2441299, 3318543, 4145759, 4746291, 5707890, 6312529];
+memcachedSRThroughput = [183487, 362747, 489579, 584845, 665399, 792938, 843449, 888234];
+// var sum = array1.map(function (num, idx) { return num + array2[idx] });
+var BMCMemcachedSRPerCore = {
+  x: cores,
+  y: BMCThroughput.map((val, i) => val + memcachedSRThroughput[i]),
+  name: 'MemcachedSR + BMC',
+  type: 'bar',
+  offsetgroup: 3,
+  marker: {
+    color: 'rgb(248, 197, 23)',
+  },
+};
+
+var memcachedSRPerCore = {
+  x: cores,
+  y: memcachedSRThroughput,
+  name: 'MemcachedSR',
+  type: 'bar',
+  offsetgroup: 3,
+  marker: {
+    color: 'rgb(241, 115, 35)',
+  },
+};
+
+plotlyReady(function() {
+  var data = [vanillaMemcachedPerCore, memcachedSRAlonePerCore, BMCMemcachedSRPerCore, memcachedSRPerCore];
+  var layout = {
+    title: "<b>Throughput Comparison Between BMC, Memcached, and MemcachedSR</b>",
+    legend: {x: 0.05, y: 1.05},
+    margin: {t: 80, l: 50, r: 50, b: 80},
+    barmode: 'group',
+    yaxis: {
+      title: 'Throughput (Mreq/s)',
+      tickformat: 's',
+    },
+    xaxis: {
+      title: 'Number of cores',
+    },
+  };
+  if (jQuery.browser && jQuery.browser.mobile) {
+    layout.dragmode = false;
+  }
+  Plotly.newPlot('plot-bmc-throughput-per-core', data, layout);
+});
+</script>

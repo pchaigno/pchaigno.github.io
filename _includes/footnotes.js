@@ -1,5 +1,5 @@
 // this script requires jQuery
-$(document).ready(function() {
+jqueryReady(function() {
     if (!jQuery.browser || !jQuery.browser.mobile)
         Footnotes.setup();
 });

@@ -1,0 +1,156 @@
+<style>
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  margin: 15px 0;
+  border-radius: 5px;  
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%; 
+  background: #628ac6;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #628ac6;
+  cursor: pointer;
+}
+</style>
+<div id="plot-tail-call-costs-33"></div>
+<script>
+var releases = ['v4.19', 'v5.4', 'v5.5', 'v5.6', 'v5.7', 'v5.8', 'v5.9', 'v5.10', 'v5.11'];
+
+var tailCallCostRetpolinePerLength = [
+  [21,   23,  25,  24,  25,  25,  25,  21,  22],
+  [34,   35,  27,  27,  28,  27,  27,  25,  25],
+  [46,   47,  31,  30,  31,  30,  30,  34,  34],
+  [58,   59,  34,  33,  34,  33,  33,  44,  45],
+  [77,   71,  36,  35,  36,  35,  35,  53,  53],
+  [96,   91,  39,  38,  39,  38,  38,  62,  62],
+  [120, 122,  41,  40,  41,  40,  40,  73,  74],
+  [136, 138,  44,  43,  44,  43,  43,  82,  82],
+  [153, 155,  48,  46,  47,  47,  46,  92,  93],
+  [173, 179,  50,  48,  50,  49,  49, 101, 102],
+  [193, 199,  53,  52,  53,  52,  52, 110, 111],
+  [212, 219,  56,  54,  56,  54,  54, 119, 120],
+  [227, 236,  59,  57,  58,  57,  57, 129, 129],
+  [247, 256,  62,  60,  62,  60,  60, 138, 139],
+  [264, 272,  66,  64,  66,  64,  64, 147, 148],
+  [285, 291,  69,  67,  69,  67,  67, 156, 157],
+  [313, 313,  71,  69,  71,  69,  69, 165, 166],
+  [339, 334,  75,  72,  74,  72,  72, 175, 175],
+  [359, 354,  78,  75,  77,  75,  75, 184, 185],
+  [381, 372,  80,  78,  80,  78,  78, 194, 194],
+  [416, 389,  85,  82,  84,  82,  82, 202, 203],
+  [447, 407,  88,  85,  87,  85,  85, 214, 214],
+  [465, 428,  91,  87,  90,  88,  88, 223, 223],
+  [486, 442,  94,  90,  93,  91,  91, 233, 233],
+  [504, 460,  97,  93,  96,  93,  93, 242, 243],
+  [536, 479,  99,  96,  99,  96,  96, 251, 251],
+  [570, 497, 103,  99, 102,  99, 100, 260, 261],
+  [596, 515, 105, 101, 104, 101, 101, 269, 269],
+  [624, 532, 108, 104, 107, 104, 104, 279, 280],
+  [645, 550, 111, 107, 110, 107, 107, 288, 289],
+  [666, 568, 114, 109, 113, 109, 109, 297, 297],
+  [721, 587, 117, 112, 116, 112, 112, 306, 306],
+  [743, 606, 120, 115, 119, 115, 115, 315, 315],
+  [772, 630, 121, 117, 119, 116, 115, 325, 325]
+];
+var tailCallCostRetpoline = {
+  x: releases,
+  y: tailCallCostRetpolinePerLength[33],
+  text: Array(34).fill('retpoline'),
+  name: 'CONFIG_RETPOLINE=y',
+  hovertemplate: '%{y}<extra>%{text}</extra>',
+  type: 'bar',
+  marker: {
+      color: 'rgb(248, 197, 23)',
+  }
+};
+
+var tailCallCostNoRetpolinePerLength = [
+  [ 18,  24,  18,  25,  18,  18,  18,  13,  14],
+  [ 23,  29,  20,  28,  20,  20,  20,  20,  21],
+  [ 28,  35,  23,  33,  24,  24,  24,  29,  30],
+  [ 34,  39,  26,  35,  25,  25,  25,  38,  40],
+  [ 41,  44,  28,  40,  29,  29,  29,  47,  49],
+  [ 47,  49,  32,  44,  32,  32,  32,  56,  58],
+  [ 56,  58,  34,  48,  35,  35,  35,  66,  67],
+  [ 64,  70,  36,  52,  38,  38,  38,  76,  75],
+  [ 76,  80,  41,  54,  39,  40,  39,  83,  86],
+  [ 82,  86,  43,  59,  43,  43,  43,  92,  95],
+  [ 89,  92,  46,  62,  45,  45,  45, 102, 104],
+  [ 96,  98,  48,  66,  48,  48,  48, 111, 113],
+  [103, 107,  49,  70,  51,  51,  51, 121, 123],
+  [109, 112,  54,  72,  53,  53,  53, 129, 132],
+  [116, 118,  56,  77,  56,  56,  56, 138, 141],
+  [123, 126,  59,  80,  58,  58,  58, 148, 150],
+  [129, 134,  62,  85,  62,  62,  62, 157, 160],
+  [136, 139,  64,  89,  65,  65,  65, 166, 169],
+  [143, 145,  68,  92,  67,  67,  67, 174, 178],
+  [151, 154,  70,  96,  70,  70,  70, 183, 187],
+  [158, 162,  73, 100,  73,  73,  73, 194, 197],
+  [164, 170,  75, 103,  75,  75,  75, 202, 206],
+  [175, 182,  78, 106,  77,  77,  77, 212, 215],
+  [192, 199,  81, 111,  81,  81,  81, 219, 224],
+  [214, 212,  83, 116,  84,  84,  84, 229, 234],
+  [233, 229,  86, 121,  88,  88,  88, 239, 243],
+  [261, 249,  89, 122,  89,  89,  89, 248, 252],
+  [297, 258,  92, 127,  93,  93,  93, 258, 258],
+  [318, 277,  95, 129,  96,  94,  94, 264, 271],
+  [353, 291,  97, 136, 100,  99,  99, 274, 280],
+  [382, 303, 101, 137, 101, 100, 100, 282, 289],
+  [400, 315, 103, 145, 107, 105, 105, 295, 295],
+  [410, 324, 105, 147, 108, 107, 107, 307, 308],
+  [429, 331, 106, 145, 106, 106, 106, 312, 314]
+];
+var tailCallCostNoRetpoline = {
+  x: releases,
+  y: tailCallCostNoRetpolinePerLength[33],
+  text: Array(34).fill('no retpoline'),
+  name: 'CONFIG_RETPOLINE=n',
+  hovertemplate: '%{y}<extra>%{text}</extra>',
+  type: 'bar',
+  marker: {
+      color: 'rgb(241, 115, 35)',
+  }
+};
+
+plotlyReady(function() {
+ var data = [tailCallCostRetpoline, tailCallCostNoRetpoline];
+  var layout = {
+    title: '<b>Cost (ns) of 33 Direct Tail Calls</b><br><i>Lower is faster</i>',
+    legend: {x: 0.7, y: 0.95},
+    margin: {t: 80, l: 30, r: 0, b: 40},
+    barmode: 'group',
+  };
+  if (jQuery.browser && jQuery.browser.mobile) {
+    layout.dragmode = false;
+  }
+  Plotly.newPlot('plot-tail-call-costs-33', data, layout);
+  $('#tail-call-length').on('input', function() {
+    var i = $(this).val();
+    layout.title = '<b>Cost (ns) of ' + i + ' Direct Tail Calls</b><br><i>Lower is faster</i>';
+    data[0].y = tailCallCostRetpolinePerLength[i];
+    data[1].y = tailCallCostNoRetpolinePerLength[i];
+    Plotly.newPlot('plot-tail-call-costs-33', data, layout);
+  })
+});
+</script>
+<div class="slidecontainer">
+  <input type="range" min="6" max="33" value="33" class="slider" id="tail-call-length">
+</div>

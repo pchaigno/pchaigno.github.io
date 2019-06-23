@@ -17,14 +17,20 @@ title: "π · chaingo"
 email: paul.chaignon@gmail.com
 description: Paul Chaignon's blog
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://pchaigno.github.io"
 twitter_username: pchaigno
 github_username:  pchaigno
 google_analytics: UA-141652183-1
+future: true
 
 # Build settings
 markdown: kramdown
 theme: minima
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-redirect-from
 
 js_files:
   - footnotes.js
