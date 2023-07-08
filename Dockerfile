@@ -1,8 +1,7 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 RUN apt-get update
 RUN apt-get install -y curl ruby ruby-dev make gcc g++ libxml2-dev libxslt1-dev
-RUN gem update --system
 RUN gem install bundler
 RUN bundle config build.nokogiri --use-system-libraries
 
