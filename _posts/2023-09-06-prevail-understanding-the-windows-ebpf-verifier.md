@@ -2,6 +2,7 @@
 layout: post
 title: "PREVAIL: Understanding the Windows eBPF Verifier"
 date: 2023-09-06 10:26:10 +0200
+last_modified_at: 2023-10-30 16:50:00 +0200
 categories: ebpf
 image: /assets/illustration-prevail-beginning.png
 published: true
@@ -65,8 +66,8 @@ As a result, it sometimes struggles to keep track of and verify code optimized b
 The second point only affects large BPF projects such as Cilium, but can be hard to resolve, as small changes in the code and compiler options can lead the verifier to reject programs. 
 On newer kernels, support for function-by-function verification makes this a lot more manageable, by allowing developers to break programs into smaller pieces.
 
-Support for loops was merged in Linux v5.3, but it is still very limited.
-The verifier currently walks every iteration of the loops and bails out if the loops are too large.
+Support for bounded loops was merged in Linux v5.3.
+It was then extended to support various loop structures of arbitrary sizes via BPF helpers (``bpf_loop``) and kfuncs (e.g., ``bpf_iter_num_next`` and ``bpf_for`` macro).
 
 Finally, I'm not sure the lack of formal foundations should be an argument in itself, but I guess the point is that formal foundations would allow us to reason about the correctness of the verifier.
 
@@ -437,7 +438,7 @@ We want to check with abstract interpretation if the division by zero will ever 
   1: if r1 > 10 goto pc+4  // r1 ∈ [0; 10]
   2: if r2 > 10 goto pc+3  // r2 ∈ [0; 10]
   3: r1 *= r2              // r1 ∈ [0; 100]
-  4: if r1 != 5 goto pc+1
+  4: if r1 != 11 goto pc+1
   5: r1 /= r0              // Division by zero!
   6: exit
 {% endhighlight %}
@@ -447,7 +448,7 @@ After instruction 3, `r1` holds the multiplication of `r1` and `r2` and therefor
 When considering the condition at instruction 4, because `11 ∈ [0; 100]`, we will walk both paths and hit the division by zero.
 
 Except we know that `r1` can never take value 11.
-The number 11 is a prime number, so it is not a multiple of any integers between 0 and 10.
+There are no two numbers between 0 and 10, that once multiplied together, can give 11 (said otherwise, 11 is a prime number).
 When using integer intervals as abstract values, we will lose that information during the multiplication.
 That loss of precision can lead to false positives, such as rejecting a program because of a never-executed division by zero in our example.
 {::nomarkdown}<a href="#fnref:addendum-false-positive-example">↩</a>{:/}
