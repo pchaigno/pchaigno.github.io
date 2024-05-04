@@ -20,6 +20,10 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://pchaigno.github.io"
 twitter_username: pchaigno
 github_username:  pchaigno
+linkedin_username: pchaigno
+mastodon:
+  - username: pchaigno
+    instance: hachyderm.io
 google_analytics4: G-8EWN7VP068
 future: true
 
