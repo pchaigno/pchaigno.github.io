@@ -3,6 +3,7 @@ layout: post
 title: "Research Grant from the eBPF Foundation"
 date: 2024-04-02 10:26:10 +0200
 categories: ebpf
+description: This post discusses the publication of the first grant dedicated to eBPF research.
 published: true
 ---
 

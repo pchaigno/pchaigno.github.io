@@ -2,6 +2,7 @@
 layout: page
 title: About
 permalink: /about/
+description: Paul Chaignon's blog focuses essentially on the eBPF technology and its verifiers. Articles may include benchmarks of eBPF aspects, studies of the eBPF verifiers, summaries of academic papers related to eBPF, or comments on eBPF news.
 ---
 
 ## Credits

@@ -3,6 +3,7 @@ layout: post
 title: "BMC: Accelerating Memcached using Safe In-kernel Caching and Pre-stack Processing"
 date: 2021-04-12 10:02:10 +0200
 categories: ebpf
+description: This post summarizes the BMC paper from NSDI 2021. The BMC paper proposes to offload part of the memcached application to XDP and tc eBPF hooks in the Linux kernel, to optimize performance.
 image: /assets/bmc/bmc-architecture.png
 published: true
 uses_plotly: true

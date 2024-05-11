@@ -3,6 +3,7 @@ layout: post
 title: "hXDP: Efficient Software Packet Processing on FPGA NICs"
 date: 2020-11-04 18:11:10 +0200
 categories: ebpf
+description: This post summarizes the hXDP paper from OSDI 2020. The hXDP paper discusses the execution of XDP eBPF programs on FPGA-powered NICs.
 image: /assets/hxdp/hxdp-hardware-design.png
 published: true
 ---

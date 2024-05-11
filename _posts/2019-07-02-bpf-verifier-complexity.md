@@ -4,6 +4,7 @@ title: "Complexity of the BPF Verifier"
 date: 2019-07-02 08:22:10 +0200
 last_modified_at: 2023-05-01 12:31:00 +0200
 categories: ebpf
+description: This post discusses the increasing complexity of the Linux eBPF verifier by measuring various metrics from the number of lines of code to the cyclomatic complexity of individual functions. Plots are annotated with the main eBPF changes explaining each increase.
 image: /assets/illustration-complexity-post.png
 published: true
 uses_plotly: true

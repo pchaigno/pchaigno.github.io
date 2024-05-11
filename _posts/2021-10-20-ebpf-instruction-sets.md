@@ -4,6 +4,7 @@ title: "eBPF Instruction Sets"
 date: 2021-10-20 18:00:10 +0200
 last_modified_at: 2023-10-30 19:31:00 +0200
 categories: bpf
+description: This post details the different versions of the eBPF instruction set. Their impact on program size and eBPF complexity is then evaluated.
 image: /assets/illustration-ebpf-instruction-sets.png
 published: true
 uses_plotly: true

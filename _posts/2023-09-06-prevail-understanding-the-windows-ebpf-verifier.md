@@ -4,6 +4,7 @@ title: "PREVAIL: Understanding the Windows eBPF Verifier"
 date: 2023-09-06 10:26:10 +0200
 last_modified_at: 2023-10-30 16:50:00 +0200
 categories: ebpf
+description: This post summarizes the PREVAIL paper from PLDI 2019. PREVAIL is a new verifier for eBPF based on abstract interpretation and now used by Microsoft in eBPF-for-Windows.
 image: /assets/illustration-prevail-beginning.png
 published: true
 ---

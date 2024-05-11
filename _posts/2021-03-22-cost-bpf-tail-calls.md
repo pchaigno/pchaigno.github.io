@@ -3,6 +3,7 @@ layout: post
 title: "The Cost of BPF Tail Calls"
 date: 2021-03-22 16:00:00 +0200
 categories: ebpf
+description: This post evaluates the overhead of eBPF tail calls across various kernel versions. eBPF tail calls allow you to chain eBPF programs together.
 image: /assets/illustration-cost-bpf-tail-calls.png
 published: true
 uses_plotly: true

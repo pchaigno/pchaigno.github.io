@@ -2,6 +2,7 @@
 layout: page
 title: Recent Talks
 permalink: /talks/
+description: Paul Chaignon's blog focuses essentially on the eBPF technology and its verifiers. Articles may include benchmarks of eBPF aspects, studies of the eBPF verifiers, summaries of academic papers related to eBPF, or comments on eBPF news.
 ---
 
 **🇫🇷 [FRnOG 39.0](https://www.frnog.org/?page=meetings&lang=en) -- [Cilium : Le meilleur de Linux pour vos réseaux Kubernetes](/assets/FRnOG%2039.0%20Cilium.pdf)**

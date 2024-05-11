@@ -4,6 +4,7 @@ title: "Introducing strace --seccomp-bpf"
 date: 2019-10-02 15:00:00 +0200
 last_modified_at: 2020-09-19 16:49:00 +0200
 categories: strace
+description: This post covers a feature I introduced in strace, its `--seccomp-bpf` flag. This feature relies on BPF and seccomp to reduce the overhead of syscall tracing with strace.
 image: /assets/illustration-strace-seccomp-bpf.png
 published: true
 ---

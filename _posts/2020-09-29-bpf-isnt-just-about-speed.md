@@ -3,6 +3,7 @@ layout: post
 title: "BPF Isn't Just About Speed"
 date: 2020-09-29 19:10:10 +0200
 categories: ebpf
+description: This post benchmarks various approaches to filter egress traffic in the Linux kernel. It compares iptables, ipset, tc-bpf, and cgroup-bpf. It demonstrates how diverse aspects of the eBPF implementation can impact performance.
 image: /assets/egress-filtering-benchmark/udp-throughput-all.png
 published: true
 uses_flamegraphs: true
