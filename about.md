@@ -19,10 +19,10 @@ Nevertheless, this blog also relies on several CDNs to load JavaScript libraries
 
 ## Myself
 
-I'm a software engineer at [Isovalent](https://isovalent.com), where I work on [Cilium](https://cilium.io)'s datapath.
+I'm a software engineer at [Cisco](https://www.cisco.com) since it acquired [Isovalent](https://isovalent.com) and I work on [Cilium](https://cilium.io)'s datapath.
 Before that, I was a research engineer at [Orange Labs](https://en.wikipedia.org/wiki/Orange_S.A.#Orange_Labs), where I completed a PhD thesis on software networking in multi-tenant platforms (which led me to work with BPF a lot).
-On my spare time, I co-maintain [github-linguist](https://github.com/linguist), the library used to identify the languages of files on GitHub and GitLab.
+On my spare time, I used to co-maintain [github-linguist](https://github.com/linguist), the library used to identify the languages of files on GitHub and GitLab.
 
-Despite some articles describing work done while at Orange Labs and Isovalent, the articles on this site are my own and by no means represent the opinions of my past and present employers.
+Despite some articles describing work done while at Orange Labs, Isovalent, or Cisco, the articles on this site are my own and by no means represent the opinions of my past and present employers.
 
-You can contact me by email at `paul.chaignon@gmail.com` or as `pchaigno` on Freenode and OFTC.
+You can contact me by email at `paul.chaignon@gmail.com` (preferred) or on any of the social networks linked at the bottom of the page.
