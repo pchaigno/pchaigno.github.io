@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "eBPF Instruction Sets"
+title: "eBPF Instruction Set Extensions"
 date: 2021-10-20 18:00:10 +0200
 last_modified_at: 2023-10-30 19:31:00 +0200
 categories: bpf
