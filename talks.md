@@ -5,6 +5,10 @@ permalink: /talks/
 description: Paul Chaignon's blog focuses essentially on the eBPF technology and its verifiers. Articles may include benchmarks of eBPF aspects, studies of the eBPF verifiers, summaries of academic papers related to eBPF, or comments on eBPF news.
 ---
 
+**🇬🇧 [Linux Plumbers 2024](https://lpc.events/event/18/page/224-lpc-2024-overview) -- The State of eBPF Fuzzing**
+
+**🇬🇧 [Linux Plumbers 2024](https://lpc.events/event/18/page/224-lpc-2024-overview) -- Agni: Fast Formal Verification of the Verifier's Range Analysis**
+
 **🇬🇧 [Dagstuhl 24291](https://www.dagstuhl.de/24291) -- Networking with eBPF**
 
 **🇫🇷 [BreizhCamp 2024](https://breizhcamp.org/) -- [Linguist : Détecter les langages de 400+ millions de dépôts Git](/assets/BreizhCamp%202024%20Linguist.pdf)**
