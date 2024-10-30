@@ -198,3 +198,54 @@ table td { border: 1px solid #e8e8e8; }
 .footnotediv code {
 'font-size': '90%',
 }
+
+.field {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.field .field-desc {
+  visibility: hidden;
+  width: 400px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.field:hover .field-desc {
+  visibility: visible;
+  opacity: 1;
+  font-weight: normal;
+}
+
+.field:hover {
+  font-weight: bold;
+}
+
+.fake-pre {
+  padding: 8px 12px;
+}
+
+.zoomable:parent {
+    display: inline-block;
+    position: relative;
+}
+
+.zoomable {
+    transition: transform 0.3s ease;
+    background-color: white;
+}
+
+div:hover > .zoomable {
+    transform: scale(1.5);
+}

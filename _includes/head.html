@@ -38,6 +38,22 @@
     }
   </script>
 
+  {%- if page.uses_mermaid -%}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.1.0/mermaid.min.js" type="text/javascript" async></script>
+  <script>
+  var config = {
+    startOnLoad:true,
+    theme: 'forest',
+    flowchart:{
+      useMaxWidth:false,
+      htmlLabels:true
+    }
+  };
+  mermaid.initialize(config);
+  window.mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+  </script>
+  {%- endif -%}
+
   {%- if page.uses_plotly -%}
   <script src="/assets/plotly-1.56.0.min.js" type="text/javascript" async></script>
   <script type="text/javascript">
@@ -66,4 +82,17 @@
     {% include {{ js }} %}
     </script>
   {% endfor %}
+
+  <script type="text/javascript">
+    jqueryReady(function() {
+      $('.zoomable').on('load', function() {
+            $(this).parent().css({
+                width: this.width,
+                height: this.height
+            });
+        }).each(function() {
+            if(this.complete) $(this).load();
+        });
+    });
+  </script>
 </head>
