@@ -2,6 +2,7 @@
 layout: post
 title: "Linux XFRM Reference Guide for IPsec"
 date: 2024-10-30 10:26:10 +0200
+last_modified_at: 2024-11-10 12:31:00 +0200
 categories: xfrm
 description: This post aims to be a relatively complete reference guide for the XFRM subsystem in the Linux kernel, when used for IPsec.
 image: /assets/netfilter-with-xfrm.png
@@ -173,13 +174,15 @@ This is important because, in case two policies match a packet and have the same
 $ ip -s xfrm policy<br>
 <span class="field">src 0.0.0.0/0<span class="field-desc">The CIDR to match against the source IP address</span></span> <span class="field">dst 0.0.0.0/0<span class="field-desc">The CIDR to match against the destination IP address</span></span> uid 0<br>
 &emsp;&emsp;<span class="field">dir fwd<span class="field-desc">States the direction. It defines where in the Linux stack this policy will be used, between ingress, egress, and forwarding.</span></span> <span class="field">action allow<span class="field-desc">The action to take on matching packets. Packets can only be allowed through (by default) or dropped.</span></span> <span class="field">index 18<span class="field-desc">Used to differentiate between different policies which might have the same or overlapping selectors. If not given or if it already exists, it is automatically (re-)generated (cf., `xfrm_gen_index`). The three LSBs encode the direction (ex., 1 for `XFRM_POLICY_OUT`). The MSBs are simply incremented by one (that is, the index is incremented by 8) until a free index is found.</span></span> <span class="field">priority 2975<span class="field-desc">States the priority for this policy in case multiple could match the packet. 0 is the highest priority.</span></span> <span class="field">share any<span class="field-desc">Always set to `any` and unused today.</span></span> <span class="field">flag  (0x00000000)<span class="field-desc">Set of flags for XFRM policies. Only `XFRM_POLICY_ICMP` (0x2) is supported at the moment; `XFRM_POLICY_LOCALOK` (0x1) is not implemented (anymore?). When `XFRM_POLICY_ICMP` is given, the policy will also apply to ICMP packet with a payload packet that matches the policy's selector.</span></span><br>
-&emsp;&emsp;<span class="field">lifetime config:<br>
+&emsp;&emsp;lifetime config:<br>
+&emsp;&emsp;<span class="field">
 &emsp;&emsp;limit: soft (INF)(bytes), hard (INF)(bytes)<br>
-&emsp;&emsp;limit: soft (INF)(packets), hard (INF)(packets)<br>
+&emsp;&emsp;limit: soft (INF)(packets), hard (INF)(packets)<span class="field-desc">Not implement and not enforced.</span></span><br>
+&emsp;&emsp;<span class="field">
 &emsp;&emsp;expire add: soft 0(sec), hard 0(sec)<br>
-&emsp;&emsp;expire use: soft 0(sec), hard 0(sec)<span class="field-desc">Various limits and expiration times for the policy, based on the number of bytes received, the number of packets received, the time since the policy was added, or the time since the policy was last matched by a packet. When a soft limit or expiration time is reached, a notification is sent to userspace via netlink (`struct xfrm_user_expire`). When a hard limit or expiration time is reached, the policy is deleted.</span></span><br>
+&emsp;&emsp;expire use: soft 0(sec), hard 0(sec)<span class="field-desc">Various expiration times for the policy, based on the time since the policy was added or the time since the policy was last matched by a packet. When a soft expiration time is reached, a notification is sent to userspace via netlink (`struct xfrm_user_expire`). When a hard limit or expiration time is reached, the policy is deleted.</span></span><br>
 &emsp;&emsp;lifetime current:<br>
-&emsp;&emsp;&emsp;&emsp;<span class="field">0(bytes), 0(packets)<span class="field-desc">Counters for bytes and packets matched by this policy, to be used if limits have been set.</span></span><br>
+&emsp;&emsp;&emsp;&emsp;<span class="field">0(bytes), 0(packets)<span class="field-desc">Not implemented; will always be 0.</span></span><br>
 &emsp;&emsp;&emsp;&emsp;<span class="field">add 2024-06-17 11:24:49 use 2024-06-17 11:25:01<span class="field-desc">Timestamps for when the policy was added and when it was last matched by a packet, to be used if expiration times have been set.</span></span><br>
 &emsp;&emsp;tmpl <span class="field">src 0.0.0.0<span class="field-desc">See Policy Templates for how this field is used.</span></span> <span class="field">dst 10.92.0.164<span class="field-desc">See Policy Templates for how this field is used.</span></span><br>
 &emsp;&emsp;&emsp;&emsp;<span class="field">proto esp<span class="field-desc">See Policy Templates for how this field is used.</span></span> <span class="field">spi 0x00000000(0)<span class="field-desc">See Policy Templates for how this field is used.</span></span> <span class="field">reqid 1(0x00000001)<span class="field-desc">See Policy Templates for how this field is used.</span></span> <span class="field">mode tunnel<span class="field-desc">See Policy Templates for how this field is used.</span></span><br>
@@ -204,8 +207,8 @@ $ ip -s xfrm policy<br>
 &emsp;&emsp;expire add: soft 0(sec), hard 0(sec)<br>
 &emsp;&emsp;expire use: soft 0(sec), hard 0(sec)<span class="field-desc">Various limits and expiration times for the state, based on the number of bytes received, the number of packets received, the time since the state was added, or the time since the state was last used for a packet. When a soft limit or expiration time is reached, a notification is sent to userspace via netlink (`struct xfrm_user_expire`). When a hard limit or expiration time is reached, the state is deleted.</span></span><br>
 &emsp;&emsp;lifetime current:<br>
-&emsp;&emsp;&emsp;&emsp;<span class="field">20124(bytes), 83(packets)<span class="field-desc">Counters for bytes and packets matched by this policy, to be used if limits have been set.</span></span><br>
-&emsp;&emsp;&emsp;&emsp;<span class="field">add 2024-06-17 11:15:48 use 2024-06-17 11:16:02<span class="field-desc">Timestamps for when the policy was added and when it was last matched by a packet, to be used if expiration times have been set.</span></span><br>
+&emsp;&emsp;&emsp;&emsp;<span class="field">20124(bytes), 83(packets)<span class="field-desc">Counters for bytes and packets matched by this state, to be used if limits have been set.</span></span><br>
+&emsp;&emsp;&emsp;&emsp;<span class="field">add 2024-06-17 11:15:48 use 2024-06-17 11:16:02<span class="field-desc">Timestamps for when the state was added and when it was last matched by a packet, to be used if expiration times have been set.</span></span><br>
 &emsp;&emsp;stats:<br>
 &emsp;&emsp;&emsp;&emsp;<span class="field">replay-window 0<span class="field-desc">Incremented whenever a packet is received with a sequence number outside the window.</span></span> <span class="field">replay 0<span class="field-desc">Incremented whenever a packet is received with a sequence number in the replay window that was already observed.</span></span> <span class="field">failed 0<span class="field-desc">Incremented when the checksums for authentication or encryption headers are incorrect (full name `integrity_failed` on kernel's side). `XfrmInStateProtoError` is always incremented when this counter is incremented.</span></span>
 </div></div>
