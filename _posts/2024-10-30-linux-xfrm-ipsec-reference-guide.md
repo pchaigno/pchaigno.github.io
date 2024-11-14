@@ -367,7 +367,7 @@ That hash table is typically also the one being used when iterating through all 
 ### Conclusion
 
 There's still a lot that would need to be covered for this guide to be a complete reference on XFRM/IPsec in Linux.
-To cite a few, this guide didn't cover [XFRM interfaces](https://docs.strongswan.org/docs/5.9/features/routeBasedVpn.html#_xfrm_interfaces_on_linux), [VTIs](https://docs.strongswan.org/docs/5.9/features/routeBasedVpn.html#_vti_devices_on_linux), [ESP-in-TCP](https://datatracker.ietf.org/doc/html/rfc8229), [ESP-in-UDP](https://datatracker.ietf.org/doc/html/rfc3948), or [XFRM offloads](https://docs.kernel.org/networking/xfrm_device.html).
+To cite a few, this guide didn't cover [XFRM interfaces](https://docs.strongswan.org/docs/5.9/features/routeBasedVpn.html#_xfrm_interfaces_on_linux), [VTIs](https://docs.strongswan.org/docs/5.9/features/routeBasedVpn.html#_vti_devices_on_linux), [ESP-in-TCP](https://datatracker.ietf.org/doc/html/rfc8229), [ESP-in-UDP](https://datatracker.ietf.org/doc/html/rfc3948), [XFRM offloads](https://docs.kernel.org/networking/xfrm_device.html), or [per-resource child SAs](https://datatracker.ietf.org/doc/rfc9611/).
 Nonetheless, it should constitute a good basis to configure and troubleshoot XFRM configurations for IPsec tunneling.
 
 <br>
