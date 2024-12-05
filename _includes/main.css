@@ -249,3 +249,17 @@ table td { border: 1px solid #e8e8e8; }
 div:hover > .zoomable {
     transform: scale(1.5);
 }
+
+.note {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  border-color: #b8daff;
+  background-color: #cce5ff;
+  color: #004085;
+}
+
+.note > p {
+  margin-bottom: 0;
+}
