@@ -18,7 +18,6 @@ email: paul.chaignon@gmail.com
 description: Paul Chaignon's blog
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://pchaigno.github.io"
-twitter_username: pchaigno
 github_username:  pchaigno
 linkedin_username: pchaigno
 mastodon:
