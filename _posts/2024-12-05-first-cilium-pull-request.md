@@ -4,7 +4,7 @@ title: "First Cilium Pull Request"
 date: 2024-12-05 10:26:10 +0200
 last_modified_at: 2024-12-09 12:31:00 +0200
 categories: cilium
-description: Getting started guide on making your first pull request on Cilium.
+description: Getting started guide on contributing to the open source project Cilium, by making your first pull request. Includes many tips on how to prepare the pull request, go through reviews, or pass the CI.
 image: /assets/cilium-first-pr/open-pr-button.png
 published: true
 ---

@@ -4,7 +4,7 @@ title: "Linux XFRM Reference Guide for IPsec"
 date: 2024-10-30 10:26:10 +0200
 last_modified_at: 2024-11-10 12:31:00 +0200
 categories: xfrm
-description: This post aims to be a relatively complete reference guide for the XFRM subsystem in the Linux kernel, when used for IPsec.
+description: This post aims to be a relatively complete reference guide for the XFRM subsystem in the Linux kernel, when used for IPsec. It covers the basic configuration, the packet flows, the meaning of all state and policy fields, the impact of all XFRM errors, and some performance considerations.
 image: /assets/netfilter-with-xfrm.png
 published: true
 uses_mermaid: true

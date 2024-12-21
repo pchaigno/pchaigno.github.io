@@ -4,7 +4,7 @@ title: "BPF Syntax Highlighting in GitHub Pages"
 date: 2019-10-11 16:30:10 +0200
 last_modified_at: 2019-12-04 18:41:00 +0200
 categories: ebpf
-description: This post introduces the eBPF syntax highlighting I added in the Rouge library and GitHub Pages.
+description: This post introduces the eBPF syntax highlighting I added in the Rouge library and GitHub Pages. The result is shown with a short snippet of colored eBPF bytecode.
 image: /assets/illustration-bpf-syntax-highlight.png
 published: true
 redirect_from:

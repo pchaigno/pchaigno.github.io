@@ -223,7 +223,7 @@ The authors therefore need to forbid subtractions and comparisons between such p
 Because of that change, PREVAIL can reject BPF program the Linux verifier would accept, but I doubt many programs are in this case in practice.
 
 {:refdef: style="text-align: center;"}
-<img src="/assets/prevail/prevail-primitive-commands.png" alt="" title="" style="width: 45%;"/>
+<img src="/assets/prevail/prevail-primitive-commands.png" alt="Formalism for the eBPF operations supported by the PREVAIL verifier." title="Formalism for the eBPF operations supported by the PREVAIL verifier." style="width: 45%;"/>
 {: refdef}
 
 The grammar in the above figure formalizes the primitive eBPF operations that PREVAIL supports.
@@ -242,11 +242,11 @@ See the paper for other operations.
 {% include prevail/highlight-formula.html %}
 
 {:refdef: style="text-align: center; position: relative"}
-<img id="formula1-subset1" src="/assets/prevail/prevail-safe-store-command-subset1.png" alt="" title="" style="position: absolute; z-index: 1; width: 444px; display: none;"/>
-<img id="formula1-subset2" src="/assets/prevail/prevail-safe-store-command-subset2.png" alt="" title="" style="position: absolute; width: 444px; display: none;"/>
-<img id="formula1-subset3" src="/assets/prevail/prevail-safe-store-command-subset3.png" alt="" title="" style="position: absolute; width: 444px; display: none;"/>
-<img id="formula1-subset4" src="/assets/prevail/prevail-safe-store-command-subset4.png" alt="" title="" style="position: absolute; width: 444px; display: none;"/>
-<img src="/assets/prevail/prevail-safe-store-command.png" alt="" title="" style="width: 444px;"/>
+<img id="formula1-subset1" src="/assets/prevail/prevail-safe-store-command-subset1.png" alt="Formalism of the PREVAIL verifier for the safety of the store operation in eBPF bytecode. The bounds check part of the formula is framed." title="Formalism of the PREVAIL verifier for the safety of the store operation in eBPF bytecode." style="position: absolute; z-index: 1; width: 444px; display: none;"/>
+<img id="formula1-subset2" src="/assets/prevail/prevail-safe-store-command-subset2.png" alt="Formalism of the PREVAIL verifier for the safety of the store operation in eBPF bytecode. The pointer check part of the formula is framed." title="Formalism of the PREVAIL verifier for the safety of the store operation in eBPF bytecode." style="position: absolute; width: 444px; display: none;"/>
+<img id="formula1-subset3" src="/assets/prevail/prevail-safe-store-command-subset3.png" alt="Formalism of the PREVAIL verifier for the safety of the store operation in eBPF bytecode. The check on the pointer type is framed in the formula." title="Formalism of the PREVAIL verifier for the safety of the store operation in eBPF bytecode." style="position: absolute; width: 444px; display: none;"/>
+<img id="formula1-subset4" src="/assets/prevail/prevail-safe-store-command-subset4.png" alt="Formalism of the PREVAIL verifier for the safety of the store operation in eBPF bytecode. The specific case for packet pointers is framed in the formula." title="Formalism of the PREVAIL verifier for the safety of the store operation in eBPF bytecode." style="position: absolute; width: 444px; display: none;"/>
+<img src="/assets/prevail/prevail-safe-store-command.png" alt="Formalism of the PREVAIL verifier for the safety of the store operation in eBPF bytecode." title="Formalism of the PREVAIL verifier for the safety of the store operation in eBPF bytecode." style="width: 444px;"/>
 {: refdef}
 
 PREVAIL deems a store of `sz` bytes at memory pointed by `p` safe if:
@@ -262,7 +262,7 @@ The verification state is defined by the triple `σ = (e, μ, ζ)`, with `e` bei
 The example for an assignment of immediate value `K` to register `w` is trivial; it simply associates register `w` to state `(num, K)` in `e`:
 
 {:refdef: style="text-align: center;"}
-<img src="/assets/prevail/prevail-meaning-safe-assign-command.png" alt="" title="" style="width: 40%;"/>
+<img src="/assets/prevail/prevail-meaning-safe-assign-command.png" alt="Formula in the PREVAIL verifier for how an immediate value assignment to a register impacts the formal verifier state." title="Formula in the PREVAIL verifier for how an immediate value assignment to a register impacts the formal verifier state." style="width: 40%;"/>
 {: refdef}
 
 As shown below, the store operation is a bit more involved to track.
@@ -273,16 +273,16 @@ As shown below, the store operation is a bit more involved to track.
 <span id="ref-formula2-subset5">Finally, addresses overwritten by the store are added or removed from `ζ` depending on whether the stored register `x` holds a scalar or not.</span>
 
 {:refdef: style="text-align: center;"}
-<img id="formula2-subset1" src="/assets/prevail/prevail-meaning-safe-store-command-subset1.png" alt="" title="" style="position: absolute; width: 444px; display: none;"/>
-<img id="formula2-subset2" src="/assets/prevail/prevail-meaning-safe-store-command-subset2.png" alt="" title="" style="position: absolute; width: 444px; display: none;"/>
-<img src="/assets/prevail/prevail-meaning-safe-store-command.png" alt="" title="" style="width: 444px;"/>
+<img id="formula2-subset1" src="/assets/prevail/prevail-meaning-safe-store-command-subset1.png" alt="Formula in the PREVAIL verifier for how a store operation impacts the verifier state. The case for store operations to regions other than the stack is framed." title="Formula in the PREVAIL verifier for how a store operation impacts the verifier state." style="position: absolute; width: 444px; display: none;"/>
+<img id="formula2-subset2" src="/assets/prevail/prevail-meaning-safe-store-command-subset2.png" alt="Formula in the PREVAIL verifier for how a store operation impacts the verifier state. The case for store operations to the stack is framed." title="Formula in the PREVAIL verifier for how a store operation impacts the verifier state." style="position: absolute; width: 444px; display: none;"/>
+<img src="/assets/prevail/prevail-meaning-safe-store-command.png" alt="Formula in the PREVAIL verifier for how a store operation impacts the verifier state." title="Formula in the PREVAIL verifier for how a store operation impacts the verifier state." style="width: 444px;"/>
 {: refdef}
 
 {:refdef: style="text-align: center;"}
-<img id="formula2-subset3" src="/assets/prevail/prevail-store-helper-function-subset3.png" alt="" title="" style="position: absolute; width: 370px; display: none;"/>
-<img id="formula2-subset4" src="/assets/prevail/prevail-store-helper-function-subset4.png" alt="" title="" style="position: absolute; width: 370px; display: none;"/>
-<img id="formula2-subset5" src="/assets/prevail/prevail-store-helper-function-subset5.png" alt="" title="" style="position: absolute; width: 370px; display: none;"/>
-<img src="/assets/prevail/prevail-store-helper-function.png" alt="" title="" style="width: 370px;"/>
+<img id="formula2-subset3" src="/assets/prevail/prevail-store-helper-function-subset3.png" alt="Helper function in the PREVAIL verifier for the formalism of store operations in eBPF. The update of memory cells on the stack is framed in the formula." title="Helper function in the PREVAIL verifier for the formalism of store operations in eBPF." style="position: absolute; width: 370px; display: none;"/>
+<img id="formula2-subset4" src="/assets/prevail/prevail-store-helper-function-subset4.png" alt="Helper function in the PREVAIL verifier for the formalism of store operations in eBPF. The update of overlapping memory cells on the stack is framed in the formula." title="Helper function in the PREVAIL verifier for the formalism of store operations in eBPF." style="position: absolute; width: 370px; display: none;"/>
+<img id="formula2-subset5" src="/assets/prevail/prevail-store-helper-function-subset5.png" alt="Helper function in the PREVAIL verifier for the formalism of store operations in eBPF. The update of the set of stack addresses holding scalars is framed in the formula." title="Helper function in the PREVAIL verifier for the formalism of store operations in eBPF." style="position: absolute; width: 370px; display: none;"/>
+<img src="/assets/prevail/prevail-store-helper-function.png" alt="Helper function in the PREVAIL verifier for the formalism of store operations in eBPF." title="Helper function in the PREVAIL verifier for the formalism of store operations in eBPF." style="width: 370px;"/>
 {: refdef}
 
 
@@ -375,8 +375,8 @@ Of course, more expressive abstract domains come at a price.
 The following two figures represent the verification time in seconds (left) and the memory consumption in GB (right) for each abstract domain.
 
 {:refdef: style="text-align: center;"}
-<img src="/assets/prevail/prevail-analysis-times.png" alt="" title="" style="width: 47%;"/>
-<img src="/assets/prevail/prevail-memory-usages.png" alt="" title="" style="width: 47%;"/>
+<img src="/assets/prevail/prevail-analysis-times.png" alt="Scatter plot of the PREVAIL runtime for eBPF programs of various sizes (in number of instructions), shown for several abstract domains." title="Scatter plot of the PREVAIL runtime for eBPF programs of various sizes (in number of instructions), shown for several abstract domains." style="width: 47%;"/>
+<img src="/assets/prevail/prevail-memory-usages.png" alt="Scatter plot of the PREVAIL memory usage for eBPF programs of various sizes (in number of instructions), shown for several abstract domains." title="Scatter plot of the PREVAIL memory usage for eBPF programs of various sizes (in number of instructions), shown for several abstract domains." style="width: 47%;"/>
 {: refdef}
 
 The Interval domain has the lowest costs.
