@@ -2,7 +2,7 @@
 layout: post
 title: "First Cilium Pull Request"
 date: 2024-12-05 10:26:10 +0200
-last_modified_at: 2024-12-09 12:31:00 +0200
+last_modified_at: 2024-12-22 12:31:00 +0200
 categories: cilium
 description: Getting started guide on contributing to the open source project Cilium, by making your first pull request. Includes many tips on how to prepare the pull request, go through reviews, or pass the CI.
 image: /assets/cilium-first-pr/open-pr-button.png
@@ -196,6 +196,13 @@ Try to address reviews quickly.
 The faster you re-requested a review, the more likely reviewers are to still have all the context.
 For that same reason, I wouldn't recommend making a pull request ready for reviews just before leaving on holiday.
 
+<div class="note">
+Do not address reviews in separate commits.
+You should fix issues in the commit where they were introduced.
+Reviewers will typically re-review the whole set of commits anyway.
+Of course, if you introduce new changes, independent of previous commits, it can be a new commit.
+</div>
+
 Whenever pushing a new version, make sure to also rebase so you don't end up with failing tests or merge conflicts because your base is too old.
 You can use the following commands to rebase:
 ```bash
@@ -206,6 +213,9 @@ git rebase upstream/main # Resolve conflicts if any.
 git log # Check everything looks alright.
 git push origin [your_branch] --force-with-lease
 ```
+
+Don't forget to mark conversations in the pull request as resolved if you addressed them.
+The pull request cannot be merged until all conversations have been resolved.
 
 After addressing a review, always re-request a review from the reviewer.
 
