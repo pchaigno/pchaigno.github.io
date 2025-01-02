@@ -2,7 +2,7 @@
 layout: post
 title: "First Cilium Pull Request"
 date: 2024-12-05 10:26:10 +0200
-last_modified_at: 2024-12-22 12:31:00 +0200
+last_modified_at: 2025-01-07 12:31:00 +0200
 categories: cilium
 description: Getting started guide on contributing to the open source project Cilium, by making your first pull request. Includes many tips on how to prepare the pull request, go through reviews, or pass the CI.
 image: /assets/cilium-first-pr/open-pr-button.png
@@ -160,7 +160,7 @@ The CI consist of initial tests, triggered whenever you push, and end-to-end tes
 
 Wait for all initial tests to be finished.
 It takes about 20 minutes.
-Once they all completed, ask a committer to trigger the end-to-end tests.
+Once they all completed, ask an Organization Member to trigger the end-to-end tests.
 If you don't know one, ask in #development on [the Cilium Slack](https://slack.cilium.io).
 
 
@@ -174,7 +174,7 @@ See [Passing the CI](#passing-the-ci) below if any tests are failing.
 
 ### Open for reviews
 
-Optional: Just before making ready for reviews, it may be worth selecting reviewers you know are familiar with your changes, for example people who reviewed the CFP.
+Optional: If you have rights to assign reviewers, just before making ready for reviews, it may be worth selecting reviewers you know are familiar with your changes, for example people who reviewed the CFP.
 Consider that you will need reviews covering each review team listed in Reviewers, so asking for reviews from people not on those teams won't help you achieve that specific goal[^more-reviews].
 Don't assign specific people without asking them!
 
@@ -336,7 +336,8 @@ Cilium has a contributor ladder with multiple roles you can read about [here](ht
     - When: After making several pull requests.
       I'd say minimum ~4, but the exact number isn't defined and probably depends on the pull requests.
 - **Reviewer**:
-    - Main power: Retrigger only failing jobs within a CI workflow.
+    - Main powers: Retrigger only failing jobs within a CI workflow.
+      Assign reviewers on pull requests.
       Your reviews count for the review team(s) you asked to join.
     - When: After leaving reviews for a few months.
 - **Committer**:
@@ -358,6 +359,10 @@ So if you notice something I didn't cover, please reach out!
 
 And as usual in open source, don't hesitate to reach out to fellow contributors in public channels.
 The best place for that is probably [the Cilium Slack](https://slack.cilium.io), in the #development channel I mentioned several times above.
+
+<br>
+
+Thanks to Simone for his help in understanding GitHub's permission model.
 
 <br>
 
