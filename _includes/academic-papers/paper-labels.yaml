@@ -1,0 +1,36 @@
+- kind: type
+  name: foundation
+  description: Papers on the existing, upstream design of eBPF.
+- kind: type
+  name: using
+  description: Papers using eBPF as a key part of solving the research problem they focus on.
+- kind: type
+  name: analysis
+  description: Papers analyzing eBPF.
+- kind: type
+  name: improving
+  description: Papers proposing improvements to the current design of eBPF or to the related tooling (ex., fuzzing tools).
+- kind: area
+  name: verifier
+  description: Papers about the verification of the eBPF bytecode.
+- kind: area
+  name: offload
+  description: Papers offloading application logic to eBPF in the kernel.
+- kind: area
+  name: networking
+  description: Networking papers.
+- kind: area
+  name: storage
+  description: Storage papers (file systems, storage device drivers, IO stack in kernels, etc.).
+- kind: area
+  name: security
+  description: Papers studying or defending against various attacks. Does not include all papers about the verifier; select 'verifier' if you want to see those as well.
+- kind: area
+  name: tracing
+  description: Tracing papers.
+- kind: area
+  name: jit
+  description: Papers about the eBPF JIT compilers.
+- kind: area
+  name: misc
+  description: Papers in other fields (virtualization, operating systems, etc.).

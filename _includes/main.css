@@ -263,3 +263,71 @@ div:hover > .zoomable {
 .note > p {
   margin-bottom: 0;
 }
+
+
+#papers .authors {
+  font-style: italic;
+}
+
+#papers .venue {
+  font-weight: bold;
+}
+
+#papers h4 {
+  margin-top: 17px;
+  margin-bottom: 0px;
+}
+
+#papers .paper-tag {
+    padding: 2px;
+    border: 1px solid;
+    border-radius: 5px;
+    border-color: green;
+    background-color: green;
+    color: white;
+}
+
+/* Custom CSS for toggle switch style */
+.form-switch {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.form-switch input {
+    display: none;
+}
+
+.form-switch .slider {
+    width: 34px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 34px;
+    position: relative;
+    transition: background-color 0.2s;
+}
+
+.form-switch .slider:before {
+    content: "";
+    width: 18px;
+    height: 18px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    transition: transform 0.2s;
+}
+
+.form-switch input:checked + .slider {
+    background-color: #007bff;
+}
+
+.form-switch input:checked + .slider:before {
+    transform: translateX(14px);
+}
+
+.form-switch label {
+    margin-left: 10px;
+}

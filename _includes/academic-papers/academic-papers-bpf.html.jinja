@@ -1,0 +1,165 @@
+<script>
+// Updates the display and state of buttons from a URL.
+function applyURL() {
+	var urlParams = new URLSearchParams(window.location.search);
+	var sel = urlParams.get("sel");
+
+	if (sel == null)
+		return;
+
+	$('.filter-button').each(function() {
+		var id = this.id.replace('-switch', '');
+		var isChecked = this.checked;
+		var shouldBeChecked = sel.indexOf(id + '_') == -1;
+		if (isChecked == shouldBeChecked)
+			return;
+
+		$(this).prop('checked', shouldBeChecked);
+		toggleDisplay(this);
+	});
+
+	updateNbPapers();
+}
+
+// Updates the display based on a selector.
+function toggleDisplay(selector) {
+	var filterClass = $(selector).data('filter');
+	var checked = $(selector).prop('checked');
+	$('.' + filterClass).each(function() {
+		if (typeof $(this).data('refcnt') === 'undefined') {
+			// Type selector
+			$(this).toggle(checked);
+		} else {
+			// Areas selector
+			if (checked) {
+				$(this).data('refcnt', $(this).data('refcnt') + 1);
+				$(this).show();
+			} else {
+				$(this).data('refcnt', $(this).data('refcnt') - 1);
+				if ($(this).data('refcnt') == 0) {
+					$(this).hide();
+				}
+			}
+		}
+	});
+}
+
+function updateNbPapers() {
+	$('#nb-papers').text($('#papers h4:visible').length);
+}
+
+// Updates the URL based on the state of buttons.
+function updateURL() {
+	var sel = '';
+	$('.filter-button:not(:checked)').each(function() {
+		sel += this.id.replace('-switch', '') + '_';
+	});
+	updateQueryString("sel", sel);
+}
+
+function updateQueryString(key, value) {
+    var urlParams = new URLSearchParams(window.location.search);
+    urlParams.set(key, value);
+    var newUrl = `${window.location.pathname}?${urlParams.toString()}`;
+    history.pushState({}, '', newUrl);
+}
+
+jqueryReady(function() {
+	applyURL();
+
+	$('.filter-button').click(function() {
+		toggleDisplay(this);
+		updateNbPapers();
+		updateURL();
+	});
+
+	$('#all-types-switch').click(function() {
+		var checked = this.checked;
+		$('.type-button').each(function () {
+			// Already in the expected state.
+			if (this.checked == checked)
+				return;
+			$(this).prop('checked', checked);
+			toggleDisplay(this);
+		});
+		updateNbPapers();
+		updateURL();
+	});
+	$('#all-areas-switch').click(function() {
+		var checked = this.checked;
+		$('.area-button').each(function () {
+			// Already in the expected state.
+			if (this.checked == checked)
+				return;
+			$(this).prop('checked', checked);
+			toggleDisplay(this);
+		});
+		updateNbPapers();
+		updateURL();
+	});
+
+	$(".selectors-link").click(function() {
+		// Need to remove "?sel=".
+		var sel = $(this).attr('href').substr(5);
+		updateQueryString("sel", sel);
+		applyURL();
+		event.preventDefault();
+	})
+})
+</script>
+
+<b>Type selector</b>
+<div class="form-switch">
+	<input type="checkbox" checked id="all-types-switch" class="filter-button">
+	<label class="slider" for="all-types-switch"></label>
+	<label for="all-types-switch" title="All types">all</label>
+</div>
+{% for type in labels %}
+{% if type.kind == 'type' %}
+<div class="form-switch">
+	<input type="checkbox" checked id="{{ type.name }}-switch" class="filter-button type-button" data-filter="{{ type.name }}">
+	<label class="slider" for="{{ type.name }}-switch"></label>
+	<label for="{{ type.name }}-switch" title="{{ type.description }}">{{ type.name }}</label>
+</div>
+{% endif %}
+{% endfor %}
+
+<b>Areas selector</b>
+<div class="form-switch">
+	<input type="checkbox" checked id="all-areas-switch" class="filter-button">
+	<label class="slider" for="all-areas-switch"></label>
+	<label for="all-areas-switch" title="All areas">all</label>
+</div>
+{% for area in labels %}
+{% if area.kind == 'area' %}
+<div class="form-switch">
+	<input type="checkbox" checked id="{{ area.name }}-switch" class="filter-button area-button" data-filter="{{ area.name }}">
+	<label class="slider" for="{{ area.name }}-switch"></label>
+	<label for="{{ area.name }}-switch" title="{{ area.description }}">{{ area.name }}</label>
+</div>
+{% endif %}
+{% endfor %}
+<br>
+
+<b>Selected <span id="nb-papers">{{ papers | length }}</span> papers.</b>
+<br><br>
+
+<div id="papers">
+{% for paper in papers %}
+<div class="{{ paper.type }}">
+{% if paper.areas %}<div class="{{ paper.area_labels }}" data-refcnt="{{ paper.nb_areas }}">{% endif %}
+<div id="{{ paper.id }}">
+<h4>{{ paper.title }}</h4>
+<span class="venue">{{ paper.conference }}</span>&nbsp;
+<a href="{{ paper.url }}" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+{% if paper.post %}<a href="{{ paper.post }}" title="My summary of the paper"><i class="fa-solid fa-comment"></i>&nbsp;Summary</a>&nbsp;{% endif %}
+<span class="authors">{{ paper.authors }}</span><br>
+<code class="language-plaintext highlighter-rouge">{{ paper.type }}</code>
+{% for area in paper.areas %}<code class="language-plaintext highlighter-rouge">{{ area }}</code>&nbsp;{% endfor %}
+<br>
+{{ paper.description }}<br>
+</div>
+{% if paper.areas %}</div>{% endif %}
+</div>
+{% endfor %}
+</div>

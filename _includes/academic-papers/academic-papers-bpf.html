@@ -1,0 +1,1021 @@
+<script>
+// Updates the display and state of buttons from a URL.
+function applyURL() {
+	var urlParams = new URLSearchParams(window.location.search);
+	var sel = urlParams.get("sel");
+
+	if (sel == null)
+		return;
+
+	$('.filter-button').each(function() {
+		var id = this.id.replace('-switch', '');
+		var isChecked = this.checked;
+		var shouldBeChecked = sel.indexOf(id + '_') == -1;
+		if (isChecked == shouldBeChecked)
+			return;
+
+		$(this).prop('checked', shouldBeChecked);
+		toggleDisplay(this);
+	});
+
+	updateNbPapers();
+}
+
+// Updates the display based on a selector.
+function toggleDisplay(selector) {
+	var filterClass = $(selector).data('filter');
+	var checked = $(selector).prop('checked');
+	$('.' + filterClass).each(function() {
+		if (typeof $(this).data('refcnt') === 'undefined') {
+			// Type selector
+			$(this).toggle(checked);
+		} else {
+			// Areas selector
+			if (checked) {
+				$(this).data('refcnt', $(this).data('refcnt') + 1);
+				$(this).show();
+			} else {
+				$(this).data('refcnt', $(this).data('refcnt') - 1);
+				if ($(this).data('refcnt') == 0) {
+					$(this).hide();
+				}
+			}
+		}
+	});
+}
+
+function updateNbPapers() {
+	$('#nb-papers').text($('#papers h4:visible').length);
+}
+
+// Updates the URL based on the state of buttons.
+function updateURL() {
+	var sel = '';
+	$('.filter-button:not(:checked)').each(function() {
+		sel += this.id.replace('-switch', '') + '_';
+	});
+	updateQueryString("sel", sel);
+}
+
+function updateQueryString(key, value) {
+    var urlParams = new URLSearchParams(window.location.search);
+    urlParams.set(key, value);
+    var newUrl = `${window.location.pathname}?${urlParams.toString()}`;
+    history.pushState({}, '', newUrl);
+}
+
+jqueryReady(function() {
+	applyURL();
+
+	$('.filter-button').click(function() {
+		toggleDisplay(this);
+		updateNbPapers();
+		updateURL();
+	});
+
+	$('#all-types-switch').click(function() {
+		var checked = this.checked;
+		$('.type-button').each(function () {
+			// Already in the expected state.
+			if (this.checked == checked)
+				return;
+			$(this).prop('checked', checked);
+			toggleDisplay(this);
+		});
+		updateNbPapers();
+		updateURL();
+	});
+	$('#all-areas-switch').click(function() {
+		var checked = this.checked;
+		$('.area-button').each(function () {
+			// Already in the expected state.
+			if (this.checked == checked)
+				return;
+			$(this).prop('checked', checked);
+			toggleDisplay(this);
+		});
+		updateNbPapers();
+		updateURL();
+	});
+
+	$(".selectors-link").click(function() {
+		// Need to remove "?sel=".
+		var sel = $(this).attr('href').substr(5);
+		updateQueryString("sel", sel);
+		applyURL();
+		event.preventDefault();
+	})
+})
+</script>
+
+<b>Type selector</b>
+<div class="form-switch">
+	<input type="checkbox" checked id="all-types-switch" class="filter-button">
+	<label class="slider" for="all-types-switch"></label>
+	<label for="all-types-switch" title="All types">all</label>
+</div>
+
+
+<div class="form-switch">
+	<input type="checkbox" checked id="foundation-switch" class="filter-button type-button" data-filter="foundation">
+	<label class="slider" for="foundation-switch"></label>
+	<label for="foundation-switch" title="Papers on the existing, upstream design of eBPF.">foundation</label>
+</div>
+
+
+
+<div class="form-switch">
+	<input type="checkbox" checked id="using-switch" class="filter-button type-button" data-filter="using">
+	<label class="slider" for="using-switch"></label>
+	<label for="using-switch" title="Papers using eBPF as a key part of solving the research problem they focus on.">using</label>
+</div>
+
+
+
+<div class="form-switch">
+	<input type="checkbox" checked id="analysis-switch" class="filter-button type-button" data-filter="analysis">
+	<label class="slider" for="analysis-switch"></label>
+	<label for="analysis-switch" title="Papers analyzing eBPF.">analysis</label>
+</div>
+
+
+
+<div class="form-switch">
+	<input type="checkbox" checked id="improving-switch" class="filter-button type-button" data-filter="improving">
+	<label class="slider" for="improving-switch"></label>
+	<label for="improving-switch" title="Papers proposing improvements to the current design of eBPF or to the related tooling (ex., fuzzing tools).">improving</label>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<b>Areas selector</b>
+<div class="form-switch">
+	<input type="checkbox" checked id="all-areas-switch" class="filter-button">
+	<label class="slider" for="all-areas-switch"></label>
+	<label for="all-areas-switch" title="All areas">all</label>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="form-switch">
+	<input type="checkbox" checked id="verifier-switch" class="filter-button area-button" data-filter="verifier">
+	<label class="slider" for="verifier-switch"></label>
+	<label for="verifier-switch" title="Papers about the verification of the eBPF bytecode.">verifier</label>
+</div>
+
+
+
+<div class="form-switch">
+	<input type="checkbox" checked id="offload-switch" class="filter-button area-button" data-filter="offload">
+	<label class="slider" for="offload-switch"></label>
+	<label for="offload-switch" title="Papers offloading application logic to eBPF in the kernel.">offload</label>
+</div>
+
+
+
+<div class="form-switch">
+	<input type="checkbox" checked id="networking-switch" class="filter-button area-button" data-filter="networking">
+	<label class="slider" for="networking-switch"></label>
+	<label for="networking-switch" title="Networking papers.">networking</label>
+</div>
+
+
+
+<div class="form-switch">
+	<input type="checkbox" checked id="storage-switch" class="filter-button area-button" data-filter="storage">
+	<label class="slider" for="storage-switch"></label>
+	<label for="storage-switch" title="Storage papers (file systems, storage device drivers, IO stack in kernels, etc.).">storage</label>
+</div>
+
+
+
+<div class="form-switch">
+	<input type="checkbox" checked id="security-switch" class="filter-button area-button" data-filter="security">
+	<label class="slider" for="security-switch"></label>
+	<label for="security-switch" title="Papers studying or defending against various attacks. Does not include all papers about the verifier; select 'verifier' if you want to see those as well.">security</label>
+</div>
+
+
+
+<div class="form-switch">
+	<input type="checkbox" checked id="tracing-switch" class="filter-button area-button" data-filter="tracing">
+	<label class="slider" for="tracing-switch"></label>
+	<label for="tracing-switch" title="Tracing papers.">tracing</label>
+</div>
+
+
+
+<div class="form-switch">
+	<input type="checkbox" checked id="jit-switch" class="filter-button area-button" data-filter="jit">
+	<label class="slider" for="jit-switch"></label>
+	<label for="jit-switch" title="Papers about the eBPF JIT compilers.">jit</label>
+</div>
+
+
+
+<div class="form-switch">
+	<input type="checkbox" checked id="misc-switch" class="filter-button area-button" data-filter="misc">
+	<label class="slider" for="misc-switch"></label>
+	<label for="misc-switch" title="Papers in other fields (virtualization, operating systems, etc.).">misc</label>
+</div>
+
+
+<br>
+
+<b>Selected <span id="nb-papers">48</span> papers.</b>
+<br><br>
+
+<div id="papers">
+
+<div class="improving">
+<div class="verifier security" data-refcnt="2">
+<div id="paper0">
+<h4>BeeBox: Hardening BPF Against Transient Execution Attacks</h4>
+<span class="venue">Sec'24</span>&nbsp;
+<a href="https://cs.brown.edu/~vpk/papers/beebox.sec24.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">D. Jin, A. J. Gaidis, V. P. Kemerlis</span><br>
+<code class="language-plaintext highlighter-rouge">improving</code>
+<code class="language-plaintext highlighter-rouge">verifier</code>&nbsp;<code class="language-plaintext highlighter-rouge">security</code>&nbsp;
+<br>
+Combines the verifier's static analysis with SFI-like runtime checks and memory copies to mitigate transient execution attacks.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="networking" data-refcnt="1">
+<div id="paper2">
+<h4>NetEdit: An Orchestration Platform for eBPF Network Functions at Scale</h4>
+<span class="venue">SIGCOMM'24</span>&nbsp;
+<a href="https://cs.stanford.edu/~keithw/sigcomm2024/sigcomm24-final159-acmpaginated.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">T. A. Benson, P. Kannan, P. Gupta, B. Madhavan, K. S. Arora, J. Meng, M. Lau, A. Dhamija, R. Krishnamurthy, S. Sundaresan, N. Spring, Y. Zhang</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">networking</code>&nbsp;
+<br>
+Describes an orchestration system for eBPF programs designed to tune the network stack of Meta's services.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="misc" data-refcnt="1">
+<div id="paper3">
+<h4>Merlin: Multi-tier Optimization of eBPF Code for Performance and Compactness</h4>
+<span class="venue">ASPLOS'24</span>&nbsp;
+<a href="https://dl.acm.org/doi/pdf/10.1145/3620666.3651387" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">J. Mao, H. Ding, J. Zhai, S. Ma</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">misc</code>&nbsp;
+<br>
+Proposes new compiler optimization tailored to the eBPF bytecode.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="networking offload" data-refcnt="2">
+<div id="paper4">
+<h4>DINT: Fast In-Kernel Distributed Transactions with eBPF</h4>
+<span class="venue">NSDI'24</span>&nbsp;
+<a href="https://www.usenix.org/system/files/nsdi24-zhou-yang.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">Y. Zhou, X. Xiang, M. Kiley, S. Dharanipragada, M. Yu</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">networking</code>&nbsp;<code class="language-plaintext highlighter-rouge">offload</code>&nbsp;
+<br>
+Designs a new distributed transaction system that offloads common operations to tc and XDP.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="security misc" data-refcnt="2">
+<div id="paper5">
+<h4>BlueSWAT: A Lightweight State-Aware Security Framework for Bluetooth Low Energy</h4>
+<span class="venue">CCS'24</span>&nbsp;
+<a href="https://dl.acm.org/doi/pdf/10.1145/3658644.3670397" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">X. Che, Y. He, X. Feng, K. Sun, K. Xu, Q. Li</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">security</code>&nbsp;<code class="language-plaintext highlighter-rouge">misc</code>&nbsp;
+<br>
+Proposes to use a userspace eBPF VM to facilitate the distribution of security patches to Bluetooth Low Energy (BLE) devices, to mitigate session-based attacks.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="security misc" data-refcnt="2">
+<div id="paper6">
+<h4>SeaK: Rethinking the Design of a Secure Allocator for OS Kernel</h4>
+<span class="venue">Sec'24</span>&nbsp;
+<a href="https://www.usenix.org/system/files/sec24fall-prepub-1504-wang-zicheng.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">Z. Wang, Y. Guang, Y. Chen, Z. Lin, M. Le, D. K Le, D. Williams, X. Xing, Z. Gu, H. Jamjooml</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">security</code>&nbsp;<code class="language-plaintext highlighter-rouge">misc</code>&nbsp;
+<br>
+Builds a secure allocator for the kernel, to separate security-sensitive objects, using new BPF helpers.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="misc" data-refcnt="1">
+<div id="paper8">
+<h4>Rethinking Process Management for Interactive Mobile Systems</h4>
+<span class="venue">MobiCom'24</span>&nbsp;
+<a href="https://dl.acm.org/doi/pdf/10.1145/3636534.3649357" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">J. Zheng, Z. Li, F. Qian, W. Liu, H. Lin, Y. Liu, T. Xu, N. Zhang, J. Wang, C. Zhang</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">misc</code>&nbsp;
+<br>
+Leverages eBPF to measure the usage of hardware resources by Android applications and investigate slow UI responsiveness problems.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="networking" data-refcnt="1">
+<div id="paper9">
+<h4>MegaTE: Extending WAN Traffic Engineering to Millions of Endpoints in Virtualized Cloud</h4>
+<span class="venue">SIGCOMM'24</span>&nbsp;
+<a href="https://cs.stanford.edu/~keithw/sigcomm2024/sigcomm24-final406-acmpaginated.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">C. Miao, Z. Zhong, Y. Xiao, F. Yang, S. Zhang, Y. Jiang, Z. Bai, C. Lu, J. Geng, Z. He, Y. Wang, X. Zou, C. Yang</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">networking</code>&nbsp;
+<br>
+Relies on eBPF to identify traffic sources and enforce traffic engineering via segment routing across the WAN.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="misc" data-refcnt="1">
+<div id="paper10">
+<h4>FetchBPF: Customizable Prefetching Policies in Linux with eBPF</h4>
+<span class="venue">ATC'24</span>&nbsp;
+<a href="https://www.usenix.org/system/files/atc24-cao.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">X. Cao, S. Patel, S. Y. Lim, X. Han, T. Pasquier</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">misc</code>&nbsp;
+<br>
+Extends the kernel with new BPF hooks and helpers to be able to customize memory prefetching policies.<br>
+</div>
+</div>
+</div>
+
+<div class="improving">
+<div class="verifier" data-refcnt="1">
+<div id="paper11">
+<h4>Validating the eBPF Verifier via State Embedding</h4>
+<span class="venue">OSDI'24</span>&nbsp;
+<a href="https://www.usenix.org/system/files/osdi24-sun-hao.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">H. Sun, Z. Su</span><br>
+<code class="language-plaintext highlighter-rouge">improving</code>
+<code class="language-plaintext highlighter-rouge">verifier</code>&nbsp;
+<br>
+Devises a test oracle to fuzz the eBPF verifier.<br>
+</div>
+</div>
+</div>
+
+<div class="improving">
+<div class="verifier security" data-refcnt="2">
+<div id="paper12">
+<h4>Hive: A Hardware-assisted Isolated Execution Environment for eBPF on AArch64</h4>
+<span class="venue">Sec'24</span>&nbsp;
+<a href="https://www.usenix.org/system/files/usenixsecurity24-zhang-peihua.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">P. Zhang, C. Wu, X. Meng, Y. Zhang, M. Peng, S. Zhang, B. Hu, M. Xie, Y. Lai, Y. Kang, Z. Wang</span><br>
+<code class="language-plaintext highlighter-rouge">improving</code>
+<code class="language-plaintext highlighter-rouge">verifier</code>&nbsp;<code class="language-plaintext highlighter-rouge">security</code>&nbsp;
+<br>
+Proposes to replace the static analysis of the verifier with a hardware-based runtime isolation for ARM64.<br>
+</div>
+</div>
+</div>
+
+<div class="improving">
+<div class="jit" data-refcnt="1">
+<div id="paper13">
+<h4>End-to-End Mechanized Proof of a JIT-Accelerated eBPF Virtual Machine for IoT</h4>
+<span class="venue">CAV'24</span>&nbsp;
+<a href="https://www.irisa.fr/prive/talpin/papers/cav24.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">S. Yuan, F. Besson, and J.-P. Talpin</span><br>
+<code class="language-plaintext highlighter-rouge">improving</code>
+<code class="language-plaintext highlighter-rouge">jit</code>&nbsp;
+<br>
+Correctness proof for the eBPF JIT compiler used in the micro-controller RIOT kernel.<br>
+</div>
+</div>
+</div>
+
+<div class="improving">
+<div class="verifier" data-refcnt="1">
+<div id="paper14">
+<h4>Fast, Flexible, and Practical Kernel Extensions</h4>
+<span class="venue">SOSP'24</span>&nbsp;
+<a href="https://rs3lab.github.io/assets/papers/2024/dwivedi:kflex.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">K. K. Dwivedi, R. Iyer, S. Kashyap</span><br>
+<code class="language-plaintext highlighter-rouge">improving</code>
+<code class="language-plaintext highlighter-rouge">verifier</code>&nbsp;
+<br>
+Extends the Linux verifier with limited runtime checks and in a backward compatible way, significantly improving eBPF's expressibility.<br>
+</div>
+</div>
+</div>
+
+<div class="improving">
+<div class="verifier security" data-refcnt="2">
+<div id="paper16">
+<h4>MOAT: Towards Safe BPF Kernel Extension</h4>
+<span class="venue">Sec'24</span>&nbsp;
+<a href="https://www.usenix.org/system/files/usenixsecurity24-lu-hongyi.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">H. Lu, S. Wang, Y. Wu, W. He, F. Zhang</span><br>
+<code class="language-plaintext highlighter-rouge">improving</code>
+<code class="language-plaintext highlighter-rouge">verifier</code>&nbsp;<code class="language-plaintext highlighter-rouge">security</code>&nbsp;
+<br>
+Hardens eBPF in Linux by leveraging Intel MPK and adding runtime checks for helpers.<br>
+</div>
+</div>
+</div>
+
+<div class="analysis">
+<div class="security" data-refcnt="1">
+<div id="paper18">
+<h4>Cross Container Attacks: The Bewildered eBPF on Clouds</h4>
+<span class="venue">Sec'23</span>&nbsp;
+<a href="https://www.usenix.org/system/files/usenixsecurity23-he.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">Y. He, R. Guo, Y. Xing, X. Che, K. Sun, Z. Liu, K. Xu, Q. Li</span><br>
+<code class="language-plaintext highlighter-rouge">analysis</code>
+<code class="language-plaintext highlighter-rouge">security</code>&nbsp;
+<br>
+Highlights that eBPF tracing programs can be used to escape container boundaries and the impact on cloud and online coding platforms.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="storage" data-refcnt="1">
+<div id="paper19">
+<h4>λ-IO: A Unified IO Stack for Computational Storage</h4>
+<span class="venue">FAST'23</span>&nbsp;
+<a href="https://www.usenix.org/system/files/fast23-yang-zhe.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">Z. Yang, Y. Lu, X. Liao, Y. Chen, J. Li, S. He, J. Shu</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">storage</code>&nbsp;
+<br>
+Modifies eBPF to implement a unified IO stack spanning the kernel and storage devices, in the context of in-storage computing.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="networking" data-refcnt="1">
+<div id="paper20">
+<h4>eHDL: Turning eBPF/XDP Programs into Hardware Designs for the NIC</h4>
+<span class="venue">ASPLOS'23</span>&nbsp;
+<a href="https://pontarelli.di.uniroma1.it/publication/asplos23/asplos23.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">A. Rivitti, R. Bifulco, A. Tulumello, M. Bonola, S. Pontarelli</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">networking</code>&nbsp;
+<br>
+Introduces a synthesis tool that generates FPGA pipelines for NICs from unmodified XDP programs.<br>
+</div>
+</div>
+</div>
+
+<div class="improving">
+<div class="security misc" data-refcnt="2">
+<div id="paper21">
+<h4>Fuzz on the Beach: Fuzzing Solana Smart Contracts</h4>
+<span class="venue">CCS'23</span>&nbsp;
+<a href="https://arxiv.org/pdf/2309.03006" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">S. Smolka, J.-R. Giesen, P. Winkler, O. Draissi, L. Davi, G. Karame, K. Pohl</span><br>
+<code class="language-plaintext highlighter-rouge">improving</code>
+<code class="language-plaintext highlighter-rouge">security</code>&nbsp;<code class="language-plaintext highlighter-rouge">misc</code>&nbsp;
+<br>
+Fuzzes Solana smart contracts, including those compiled to eBPF bytecode, by extending Solana's userspace eBPF VM with six bug oracles and coverage feedback.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="networking" data-refcnt="1">
+<div id="paper22">
+<h4>Taking 5G RAN Analytics and Control to a New Level</h4>
+<span class="venue">MobiCom'23</span>&nbsp;
+<a href="https://www.microsoft.com/en-us/research/uploads/prod/2022/12/JanusTechnicalReport.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">X. Foukas, B. Radunovic, M. Balkwill, Z. Lai</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">networking</code>&nbsp;
+<br>
+Proposes to extend virtualized Radio Access Network (vRAN) functions using a userspace BPF implementation and the PREVAIL verifier, with a new runtime check to bound the execution time.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="tracing" data-refcnt="1">
+<div id="paper24">
+<h4>Network-Centric Distributed Tracing with DeepFlow: Troubleshooting Your Microservices in Zero Code</h4>
+<span class="venue">SIGCOMM'23</span>&nbsp;
+<a href="https://dl.acm.org/doi/pdf/10.1145/3603269.3604823" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">J. Shen H. Zhang, Y. Xiang, X. Shi, X. Li, Y. Shen, Z. Zhang, Y. Wu, X. Yin, J. Wang, M. Xu, Y. Li, J. Yin, J. Song, Z. Li, R. Nie</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">tracing</code>&nbsp;
+<br>
+Presents a distributed tracing framework for troubleshooting microservices that leverages eBPF for data collection.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="networking offload" data-refcnt="2">
+<div id="paper26">
+<h4>Tigger: A Database Proxy That Bounces with User-Bypass</h4>
+<span class="venue">VLDB'23</span>&nbsp;
+<a href="https://www.vldb.org/pvldb/vol16/p3335-butrovich.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">M. Butrovich, K. Ramanathan, J. Rollinson, W. S. Lim, W. Zhang, J. Sherry, A. Pavlo</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">networking</code>&nbsp;<code class="language-plaintext highlighter-rouge">offload</code>&nbsp;
+<br>
+Offloads PostgreSQL connection pooling and mirroring to the kernel using sockmap BPF programs.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="networking offload" data-refcnt="2">
+<div id="paper27">
+<h4>Electrode: Accelerating Distributed Protocols with eBPF</h4>
+<span class="venue">NSDI'23</span>&nbsp;
+<a href="https://www.usenix.org/system/files/nsdi23-zhou.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">Y. Zhou, Z. Wang, S. Dharanipragada, M. Yu</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">networking</code>&nbsp;<code class="language-plaintext highlighter-rouge">offload</code>&nbsp;
+<br>
+Offloads common Paxos networking operations to tc and XDP to improve performance.<br>
+</div>
+</div>
+</div>
+
+<div class="improving">
+<div class="verifier" data-refcnt="1">
+<div id="paper28">
+<h4>Verifying the Verifier: eBPF Range Analysis Verification</h4>
+<span class="venue">CAV'23</span>&nbsp;
+<a href="https://people.cs.rutgers.edu/~sn349/papers/agni-cav2023.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">H. Vishwanathan, M. Shachnai, S. Narayana, S. Nagarakatte</span><br>
+<code class="language-plaintext highlighter-rouge">improving</code>
+<code class="language-plaintext highlighter-rouge">verifier</code>&nbsp;
+<br>
+Automatically and formally proves the ranges analysis of the Linux verifier.<br>
+</div>
+</div>
+</div>
+
+<div class="analysis">
+<div class="security" data-refcnt="1">
+<div id="paper29">
+<h4>EPF: Evil Packet Filter</h4>
+<span class="venue">ATC'23</span>&nbsp;
+<a href="https://www.usenix.org/system/files/atc23-jin.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">D. Jin, V. Atlidakis, V. P. Kemerlis</span><br>
+<code class="language-plaintext highlighter-rouge">analysis</code>
+<code class="language-plaintext highlighter-rouge">security</code>&nbsp;
+<br>
+Presents an approach to bypass various kernel isolation techniques by abusing the cBPF infrastructure.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="networking" data-refcnt="1">
+<div id="paper30">
+<h4>Domain Specific Run Time Optimization for Software Data Planes</h4>
+<span class="venue">ASPLOS'22</span>&nbsp;
+<a href="http://lendulet.tmit.bme.hu/~retvari/publications/asplos_2022.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">S. Miano, A. Sanaee, F. Risso, G. Rétvári, G. Antichi</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">networking</code>&nbsp;
+<br>
+Optimizes datapath binaries, including eBPF bytecodes, based on traffic patterns.<br>
+</div>
+</div>
+</div>
+
+<div class="improving">
+<div class="verifier" data-refcnt="1">
+<div id="paper31">
+<h4>End-to-end Mechanized Proof of an eBPF Virtual Machine for Micro-controllers</h4>
+<span class="venue">CAV'22</span>&nbsp;
+<a href="https://www.irisa.fr/prive/talpin/papers/cav22.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">S. Yuan, F. Besson, J.-P. Talpin, S. Hym, K. Zandberg, E. Baccelli</span><br>
+<code class="language-plaintext highlighter-rouge">improving</code>
+<code class="language-plaintext highlighter-rouge">verifier</code>&nbsp;
+<br>
+Correctness proof for the eBPF interpreter and verifier used in the micro-controller RIOT kernel.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="misc" data-refcnt="1">
+<div id="paper32">
+<h4>Application-Informed Kernel Synchronization Primitives</h4>
+<span class="venue">OSDI'22</span>&nbsp;
+<a href="https://www.usenix.org/system/files/osdi22-park.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">S. Park, D. Zhou, Y. Qian, I. Calciu, T. Kim, S. Kashyap</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">misc</code>&nbsp;
+<br>
+Allows Linux users to customize kernel lock policies using eBPF and according to the applications' needs and hardware characteristics.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="misc" data-refcnt="1">
+<div id="paper33">
+<h4>RapidPatch: Firmware Hotpatching for Real-Time Embedded Devices</h4>
+<span class="venue">Sec'22</span>&nbsp;
+<a href="https://www.usenix.org/system/files/sec22-he-yi.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">Y. He, Z. Zou, K. Sun, Z. Liu, K. Xu, Q. Wang, C. Shen, Z. Wang, Q. Li</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">misc</code>&nbsp;
+<br>
+Implements a hotpatching mechanism for real-time OSes using eBPF, a modified verifier, and additional runtime checks.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="networking" data-refcnt="1">
+<div id="paper35">
+<h4>SPRIGHT: Extracting the Server from Serverless Computing! High-Performance eBPF-Based Event-Driven, Shared-Memory Processing</h4>
+<span class="venue">SIGCOMM'22</span>&nbsp;
+<a href="https://dl.acm.org/doi/pdf/10.1145/3544216.3544259" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">S. Qi, L. Monis, Z. Zeng, I.-C. Wang, K. K. Ramakrishnan</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">networking</code>&nbsp;
+<br>
+Leverages various eBPF hooks to improve the performance of Knative, a container-based serverless platform.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="networking" data-refcnt="1">
+<div id="paper36">
+<h4>Faster Software Packet Processing on FPGA NICs with eBPF Program Warping</h4>
+<span class="venue">ATC'22</span>&nbsp;
+<a href="https://www.usenix.org/system/files/atc22-bonola.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">M. Bonola, G. Belocchi, A. Tulumello, M. Spaziani Brunella, G. Siracusano, G. Bianchi, R. Bifulco</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">networking</code>&nbsp;
+<br>
+Improves the performance of hXDP, an eBPF processor for FPGA NICs, via peephole optimization, thereby replacing series of instructions with optimized hardware implementations.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="storage offload" data-refcnt="2">
+<div id="paper37">
+<h4>XRP: In-Kernel Storage Functions with eBPF</h4>
+<span class="venue">OSDI'22</span>&nbsp;
+<a href="https://www.usenix.org/system/files/osdi22-zhong_1.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">Y. Zhong, H. Li, Y. J. Wu, I. Zarkadas, J. Tao, E. Mesterhazy, M. Makris, J. Yang, A. Tai, R. Stutsman, A. Cidon</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">storage</code>&nbsp;<code class="language-plaintext highlighter-rouge">offload</code>&nbsp;
+<br>
+Offloads processing to the NVMe drivers using BPF, to reduce kernel overhead in storage applications<br>
+</div>
+</div>
+</div>
+
+<div class="improving">
+<div class="verifier" data-refcnt="1">
+<div id="paper38">
+<h4>Sound, Precise, and Fast Abstract Interpretation with Tristate Numbers</h4>
+<span class="venue">CGO'22</span>&nbsp;
+<a href="https://people.cs.rutgers.edu/~sn349/papers/cgo-2022.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">H. Vishwanathan, M. Shachnai, S. Narayana, S. Nagarakatte</span><br>
+<code class="language-plaintext highlighter-rouge">improving</code>
+<code class="language-plaintext highlighter-rouge">verifier</code>&nbsp;
+<br>
+Formally proves and improves the Linux verifier operations on tristate numbers for the range analysis.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="networking" data-refcnt="1">
+<div id="paper39">
+<h4>Synthesizing Safe and Efficient Kernel Extensions for Packet Processing</h4>
+<span class="venue">SIGCOMM'21</span>&nbsp;
+<a href="https://conferences.sigcomm.org/sigcomm/2021/files/papers/3452296.3472929.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">Qiongwen Xu, M. D. Wong, T. Wagle, S. Narayana, A. Sivaraman</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">networking</code>&nbsp;
+<br>
+Proposes a synthesis-based compiler that optimizes eBPF programs while ensuring they still pass the Linux verifier.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="networking offload" data-refcnt="2">
+<div id="paper40">
+<h4>BMC: Accelerating Memcached using Safe In-Kernel Caching and Pre-Stack Processing</h4>
+<span class="venue">NSDI'21</span>&nbsp;
+<a href="https://www.usenix.org/system/files/nsdi21-ghigoff.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+<a href="/ebpf/2021/04/12/bmc-accelerating-memcached-using-bpf-and-xdp.html" title="My summary of the paper"><i class="fa-solid fa-comment"></i>&nbsp;Summary</a>&nbsp;
+<span class="authors">Y. Ghigoff, J. Sopena, K. Lazri, A. Blin, G. Muller</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">networking</code>&nbsp;<code class="language-plaintext highlighter-rouge">offload</code>&nbsp;
+<br>
+Speeds up Memcached with an XDP-based, transparent, first-level cache.<br>
+</div>
+</div>
+</div>
+
+<div class="analysis">
+<div class="security" data-refcnt="1">
+<div id="paper41">
+<h4>An Analysis of Speculative Type Confusion Vulnerabilities in the Wild</h4>
+<span class="venue">Sec'21</span>&nbsp;
+<a href="https://www.usenix.org/system/files/sec21-kirzner.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">O. Kirzner, A. Morrison</span><br>
+<code class="language-plaintext highlighter-rouge">analysis</code>
+<code class="language-plaintext highlighter-rouge">security</code>&nbsp;
+<br>
+Describes how eBPF can be leveraged to create speculative type confusion gadgets in the kernel.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="networking" data-refcnt="1">
+<div id="paper42">
+<h4>Syrup: User-Defined Scheduling Across the Stack</h4>
+<span class="venue">SOSP'21</span>&nbsp;
+<a href="https://www.scs.stanford.edu/~dm/home/papers/kaffes:syrup.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">K. Kaffes, J. Humphries, D. Mazières, C. Kozyrakis</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">networking</code>&nbsp;
+<br>
+Proposes an eBPF-based framework to enable users to write application-specific scheduling policies for threads, network packets, and network connections.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="networking" data-refcnt="1">
+<div id="paper43">
+<h4>Revisiting the Open vSwitch Dataplane Ten Years Later</h4>
+<span class="venue">SIGCOMM'21</span>&nbsp;
+<a href="https://conferences.sigcomm.org/sigcomm/2021/files/papers/3452296.3472914.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">W. Tu, Y.-H. Wei, G. Antichi, B. Pfaff</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">networking</code>&nbsp;
+<br>
+Describes how production experience with Open vSwitch over a decade led to the development of its new AF_XDP-based datapath.<br>
+</div>
+</div>
+</div>
+
+<div class="improving">
+<div class="jit" data-refcnt="1">
+<div id="paper44">
+<h4>Synthesizing JIT Compilers for In-Kernel DSLs</h4>
+<span class="venue">CAV'20</span>&nbsp;
+<a href="https://unsat.cs.washington.edu/papers/geffen-jitsynth.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">J. Van Geffen, L. Nelson, I. Dillig, X. Wang, E. Torlak</span><br>
+<code class="language-plaintext highlighter-rouge">improving</code>
+<code class="language-plaintext highlighter-rouge">jit</code>&nbsp;
+<br>
+Synthesizes eBPF and cBPF JIT compilers, which are proven to be formally correct, from DSL interpreters.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="networking" data-refcnt="1">
+<div id="paper45">
+<h4>hXDP: Efficient Software Packet Processing on FPGA NICs</h4>
+<span class="venue">OSDI'20</span>&nbsp;
+<a href="https://www.usenix.org/system/files/osdi20-brunella.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+<a href="/ebpf/2020/11/04/hxdp-efficient-software-packet-processing-on-fpga-nics.html" title="My summary of the paper"><i class="fa-solid fa-comment"></i>&nbsp;Summary</a>&nbsp;
+<span class="authors">M. Spaziani Brunella, G. Belocchi, M. Bonola, S. Pontarelli, G. Siracusano, G. Bianchi, A. Cammarano, A. Palumbo, L. Petrucci, R. Bifulco</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">networking</code>&nbsp;
+<br>
+Investigates the execution of XDP programs on FPGA NICs by implementing an interpreter.<br>
+</div>
+</div>
+</div>
+
+<div class="improving">
+<div class="jit" data-refcnt="1">
+<div id="paper46">
+<h4>Specification and Verification in the Field: Applying Formal Methods to BPF Just-in-Time Compilers in the Linux Kernel</h4>
+<span class="venue">OSDI'20</span>&nbsp;
+<a href="https://unsat.cs.washington.edu/papers/nelson-jitterbug.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">L. Nelson, J. Van Geffen, E. Torlak, X. Wang</span><br>
+<code class="language-plaintext highlighter-rouge">improving</code>
+<code class="language-plaintext highlighter-rouge">jit</code>&nbsp;
+<br>
+Applies formal verification techniques to the eBPF JIT compilers and implements a new formally-verified JIT compiler for 32-bit RISC-V.<br>
+</div>
+</div>
+</div>
+
+<div class="improving">
+<div class="verifier" data-refcnt="1">
+<div id="paper47">
+<h4>Scaling Symbolic Evaluation for Automated Verification of Systems Code with Serval</h4>
+<span class="venue">SOSP'19</span>&nbsp;
+<a href="https://unsat.cs.washington.edu/papers/nelson-serval.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">L. Nelson, J. Bornholt, R. Gu, A. Baumann, E. Torlak, X. Wang</span><br>
+<code class="language-plaintext highlighter-rouge">improving</code>
+<code class="language-plaintext highlighter-rouge">verifier</code>&nbsp;
+<br>
+Proposes a framework to developing verifiers for system software, including eBPF, by lifting existing interpreters under symbolic execution.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="storage offload" data-refcnt="2">
+<div id="paper48">
+<h4>Extension Framework for File Systems in User Space</h4>
+<span class="venue">ATC'19</span>&nbsp;
+<a href="https://www.usenix.org/system/files/atc19-bijlani.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">A. Bijlani, U. Ramachandran</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">storage</code>&nbsp;<code class="language-plaintext highlighter-rouge">offload</code>&nbsp;
+<br>
+Enables eBPF support in the FUSE interface to improve the performance of user-space file systems by offloading operations to the kernel.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="networking" data-refcnt="1">
+<div id="paper49">
+<h4>Pluginizing QUIC</h4>
+<span class="venue">SIGCOMM'19</span>&nbsp;
+<a href="https://inl.info.ucl.ac.be/system/files/pquic.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">Q. De Coninck, F. Michel, M. Piraux, F. Rochet, T. Given-Wilson, A. Legay, O. Pereira, O. Bonaventure</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">networking</code>&nbsp;
+<br>
+Designs an extension mechanism for QUIC using a userspace implementation of eBPF with SFI-like runtime checks.<br>
+</div>
+</div>
+</div>
+
+<div class="improving">
+<div class="verifier" data-refcnt="1">
+<div id="paper51">
+<h4>Simple and Precise Static Analysis of Untrusted Linux Kernel Extensions</h4>
+<span class="venue">PLDI'19</span>&nbsp;
+<a href="https://seahorn.github.io/papers/ebpf-pldi19.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+<a href="/ebpf/2023/09/06/prevail-understanding-the-windows-ebpf-verifier.html" title="My summary of the paper"><i class="fa-solid fa-comment"></i>&nbsp;Summary</a>&nbsp;
+<span class="authors">E. Gershuni, N. Amit, A. Gurfinkel, N. Narodytska, J. A. Navas, N. Rinetzky, L. Ryzhyk, M. Sagiv</span><br>
+<code class="language-plaintext highlighter-rouge">improving</code>
+<code class="language-plaintext highlighter-rouge">verifier</code>&nbsp;
+<br>
+Introduces PREVAIL, an alternative to the Linux eBPF verifier based on abstract interpretation and now used in Windows.<br>
+</div>
+</div>
+</div>
+
+<div class="using">
+<div class="misc" data-refcnt="1">
+<div id="paper52">
+<h4>The Design and Implementation of Hyperupcalls</h4>
+<span class="venue">ATC'18</span>&nbsp;
+<a href="https://www.usenix.org/system/files/conference/atc18/atc18-amit.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">N. Amit, M. Wei</span><br>
+<code class="language-plaintext highlighter-rouge">using</code>
+<code class="language-plaintext highlighter-rouge">misc</code>&nbsp;
+<br>
+Leverages eBPF to bridge the semantic gap of virtualization, by letting hypervisors execute verified code from the guests.<br>
+</div>
+</div>
+</div>
+
+<div class="improving">
+<div class="jit" data-refcnt="1">
+<div id="paper55">
+<h4>Jitk: A Trustworthy In-Kernel Interpreter Infrastructure</h4>
+<span class="venue">OSDI'14</span>&nbsp;
+<a href="https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-wang_xi.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">X. Wang, D. Lazar, N. Zeldovich, A. Chlipala, Z. Tatlock</span><br>
+<code class="language-plaintext highlighter-rouge">improving</code>
+<code class="language-plaintext highlighter-rouge">jit</code>&nbsp;
+<br>
+Proposes a formally-verified infrastructure to compile high-level rules into cBPF bytecode and machine code.<br>
+</div>
+</div>
+</div>
+
+<div class="improving">
+<div class="verifier" data-refcnt="1">
+<div id="paper57">
+<h4>Safe Kernel Extensions Without Run-Time Checking</h4>
+<span class="venue">OSDI'96</span>&nbsp;
+<a href="http://www.cs.cmu.edu/~15712/papers//necula96.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">G. C. Necula, P. Lee</span><br>
+<code class="language-plaintext highlighter-rouge">improving</code>
+<code class="language-plaintext highlighter-rouge">verifier</code>&nbsp;
+<br>
+Proposes kernel extensions in the form of <i>proof-carrying code</i> and compares it to cBPF.<br>
+</div>
+</div>
+</div>
+
+<div class="foundation">
+<div class="networking" data-refcnt="1">
+<div id="paper58">
+<h4>The BSD Packet Filter: A New Architecture for User-level Packet Capture</h4>
+<span class="venue">USENIX Winter'93</span>&nbsp;
+<a href="https://www.tcpdump.org/papers/bpf-usenix93.pdf" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+
+<span class="authors">S. McCanne, V. Jacobson</span><br>
+<code class="language-plaintext highlighter-rouge">foundation</code>
+<code class="language-plaintext highlighter-rouge">networking</code>&nbsp;
+<br>
+The original cBPF paper, describing a register-based packet filter for BSD.<br>
+</div>
+</div>
+</div>
+
+</div>
