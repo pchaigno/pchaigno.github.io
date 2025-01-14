@@ -2,7 +2,7 @@
 layout: post
 title: "Complexity of the BPF Verifier"
 date: 2019-07-02 08:22:10 +0200
-last_modified_at: 2023-05-01 12:31:00 +0200
+last_modified_at: 2025-01-14 12:31:00 +0200
 categories: ebpf
 description: This post discusses the increasing complexity of the Linux eBPF verifier by measuring various metrics from the number of lines of code to the cyclomatic complexity of individual functions. Plots are annotated with the main eBPF changes explaining each increase.
 image: /assets/illustration-complexity-post.png
@@ -115,18 +115,18 @@ This small functions are numerous in the BTF code in particular, as can be seen 
 The verifier grew from 32 to 414 functions, most of which are very simple.
 
 The 10 most complex functions, on the other hand, are getting more complex.
-In the v6.3 release, these functions are:
+In the v6.12 release, these functions are:
 ```
-103  do_misc_fixups
-95   do_check
-87   check_mem_access
-86   check_map_func_compatibility
-78   check_helper_call
-77   check_kfunc_args
+167  do_misc_fixups
+112  check_kfunc_call
+110  check_kfunc_args
+103  do_check
+93   check_helper_call
+93   check_mem_access
+88   check_map_func_compatibility
+82   check_alu_op
+72   bpf_check_attach_target
 69   check_cond_jmp_op
-66   check_kfunc_call
-60   bpf_check_attach_target
-55   print_verifier_state
 ```
 
 <br>

@@ -176,6 +176,14 @@
   description: Fuzzes Solana smart contracts, including those compiled to eBPF bytecode,
     by extending Solana's userspace eBPF VM with six bug oracles and coverage feedback.
   url: https://arxiv.org/pdf/2309.03006
+- title: 'xBGP: Faster Innovation in Routing Protocols'
+  authors: T. Wirtgen, T. Rousseaux, Q. De Coninck, N. Rybowski, R. Bush, L. Vanbever, A. Legay, O. Bonaventure
+  conference: NSDI'23
+  type: using
+  areas: networking
+  description: Designs an extension mechanism for BGP using a userspace implementation of
+    eBPF and several C verification tools to replace and extend the Linux verifier.
+  url: https://www.usenix.org/system/files/nsdi23-wirtgen.pdf
 - title: 'Taking 5G RAN Analytics and Control to a New Level'
   authors: X. Foukas, B. Radunovic, M. Balkwill, Z. Lai
   conference: MobiCom'23
