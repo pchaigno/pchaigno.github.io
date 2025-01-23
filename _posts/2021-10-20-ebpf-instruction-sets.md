@@ -2,7 +2,7 @@
 layout: post
 title: "eBPF Instruction Set Extensions"
 date: 2021-10-20 18:00:10 +0200
-last_modified_at: 2023-10-30 19:31:00 +0200
+last_modified_at: 2025-01-23 16:31:00 +0200
 categories: bpf
 description: This post details the different versions of the eBPF instruction set. Their impact on program size and eBPF complexity is then evaluated.
 image: /assets/illustration-ebpf-instruction-sets.png
@@ -179,21 +179,21 @@ Why does all this matter?
 Is it so bad to use the default v1 instruction set?
 Can we just set `mcpu=probe`?
 
-I didn't include ``mcpu=v4`` in these evaluations yet because Cilium doesn't support LLVM 18.
-As soon as it does, I'll update here.
-
 Let's first have a look at the impact on the program sizes.
 To that end, we can use [Cilium's BPF programs](https://github.com/cilium/cilium/tree/master/bpf).
 They are open source, of heterogeneous sizes, and used in production systems.
-The `check-complexity.sh` script from the Cilium repository loads the programs in the kernel and retrieves various statistics.
-In the following, I'm using LLVM 10.0.0.
+In the latest stable Cilium version, v1.16.5, the largest BPF programs are in `bpf_host.c`.
+Cilium's `TestVerifier` go test loads the programs in the kernel and retrieves various statistics.
+In the following, I'm using it with LLVM 18.1.8.
 
 {% highlight shell %}
-$ git checkout v1.10.0-rc0
-$ for v in v1 v2 v3 "v1 -mattr=+alu32" "v2 -mattr=+alu32"; do \
-        sed -i "s/mcpu=v[1-3].*/mcpu=$v/" bpf/Makefile.bpf && \
-        make -C bpf KERNEL=netnext &&                         \
-        sudo ./test/bpf/check-complexity.sh > ${v/ /-}.txt;   \
+$ git checkout v1.16.5
+$ for v in v1 v2 v3 v4; do       \
+    sed -i "s/mcpu=v[1-4].*/mcpu=$v/" bpf/Makefile.bpf &&               \
+    make -C bpf KERNEL=netnext &&                                       \
+    f=${v/ /-}-bpf_host.txt;                                            \
+    go test -exec sudo -v -run TestVerifier/bpf_host/1 ./test/verifier/ \
+      -cilium-base-path $(pwd) -ci-kernel-version netnext > $f;         \
 done
 {% endhighlight %}
 
@@ -201,11 +201,7 @@ done
 
 As expected, each newer instruction set version generates smaller BPF programs.
 Since the new instructions have a one-to-one mapping to x86 instructions, we can expect a similar impact on the size of the JIT-compiled programs. 
-You can therefore expect a small performance benefit in most cases when using newer instruction sets. 
-
-The impact of `mattr=+alu32` is more nuanced---click on the legend to show it. It sometimes increases program size, especially when combined with `mcpu=v1`, instead of decreasing it.
-Unless you are using `mcpu=v3`, many parts of the programs still require 64-bit instructions and operations.
-So maybe the more nuanced impact is due to the extra instructions required to convert between 32 and 64-bits values.
+You can therefore expect a small performance benefit in most cases when using newer instruction sets.
 
 For larger programs and kernels before v5.2[^4k-limit], the v2 and v3 instruction sets may also allow you to reduce your program size below the 4096 instruction limit imposed by the verifier. 
 It is however not the only limit imposed by the verifier.
@@ -216,21 +212,20 @@ We'll refer to the number of instructions analyzed by the verifier as the *compl
 In the worst case, the complexity grows exponentially with the number of conditions in the program[^state-pruning].
 [][bpf-complexity]
 
-`check-complexity.sh` also reports the complexity of each loaded BPF program.
-I executed it on a Linux 5.10 and report the results in the following plot.
+`TestVerifier` also reports the complexity of each loaded BPF program.
+I executed it on a Linux 6.8 and report the results in the following plot.
 
 {% include plot-isa-versions-complexity.html %}
 
-By clicking on the legend to hide v3, we can notice that v1 and v2 are fairly close.
-There are however stricking differences between the first two versions and the last one.
+By clicking on the legend to hide v3 and v4, we can notice that v1 and v2 are fairly close.
+There are however stricking differences between the first two versions and the third one.
 The v3 instruction set sometimes reduces complexity and other times exacerbates it.
-Adding `mattr=+alu32` has a similar impact.
+The v4 instruction set has a similar impact to v3, though not to the same extent.
 
 It's unclear why the newer instruction sets sometimes increase complexity when they reduce the number of instructions.
 Given that they don't significantly modify the control flow, it could be that they reduce the efficiency of [the verifier's state pruning][bpf-complexity].
 
 To sum up, if you are having complexity issues (i.e., hitting the verifier's threshold), you need to carefully test the impact of each instruction set before making the switch.
-The only case that seems clear is switching from v2 + alu32 to v3, with v3 almost always holding lower complexities.
 
 <br>
 
