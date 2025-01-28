@@ -2,7 +2,7 @@
 layout: post
 title: "Linux XFRM Reference Guide for IPsec"
 date: 2024-10-30 10:26:10 +0200
-last_modified_at: 2024-11-10 12:31:00 +0200
+last_modified_at: 2025-02-13 12:31:00 +0200
 categories: xfrm
 description: This post aims to be a relatively complete reference guide for the XFRM subsystem in the Linux kernel, when used for IPsec. It covers the basic configuration, the packet flows, the meaning of all state and policy fields, the impact of all XFRM errors, and some performance considerations.
 image: /assets/netfilter-with-xfrm.png
@@ -37,6 +37,14 @@ If you find mistakes, you can report them by email or via the other contact meth
 </ul>
 </li>
 <li class="toc-entry toc-h3"><a href="#output-description-of-ip-xfrm">Output Description of `ip xfrm`</a></li>
+<li class="toc-entry toc-h3"><a href="#updating-xfrm-states-and-policies">Updating XFRM States and Policies</a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#identifying-fields-of-xfrm-states">Identifying Fields of XFRM States</a></li>
+<li class="toc-entry toc-h4"><a href="#identifying-fields-of-xfrm-policies">Identifying Fields of XFRM Policies</a></li>
+<li class="toc-entry toc-h4"><a href="#seamless-updates-of-xfrm-policies">Seamless Updates of XFRM Policies</a></li>
+<li class="toc-entry toc-h4"><a href="#seamless-updates-of-xfrm-states">Seamless Updates of XFRM States</a></li>
+</ul>
+</li>
 <li class="toc-entry toc-h3"><a href="#xfrm-errors">XFRM Errors</a></li>
 <li class="toc-entry toc-h3"><a href="#performance-considerations">Performance Considerations</a>
 <ul>
@@ -213,6 +221,105 @@ $ ip -s xfrm policy<br>
 &emsp;&emsp;&emsp;&emsp;<span class="field">replay-window 0<span class="field-desc">Incremented whenever a packet is received with a sequence number outside the window.</span></span> <span class="field">replay 0<span class="field-desc">Incremented whenever a packet is received with a sequence number in the replay window that was already observed.</span></span> <span class="field">failed 0<span class="field-desc">Incremented when the checksums for authentication or encryption headers are incorrect (full name `integrity_failed` on kernel's side). `XfrmInStateProtoError` is always incremented when this counter is incremented.</span></span>
 </div></div>
 <!-- {% endraw %} -->
+
+
+### Updating XFRM States and Policies
+
+In Cilium, on several occasions, we had to make substantial changes to our XFRM states and policies.
+In the process, we faced several conflicts: you try to add a new XFRM state and the kernel complains that it conflicts with an existing state.
+These conflicts can be particularly non-obvious as they can depend on the order of additions for XFRM states.
+With proper documentation that would be easy to resolve, but in its absence, you need to dig into the kernel sources to understand which fields matter to identify a state or a policy.
+
+This section aims to document those aspects: which fields constitute the "key" of XFRM states and policies, how to avoid conflicts, and how to perform updates without dropping traffic.
+
+#### Identifying Fields of XFRM States
+
+<!-- {% raw %} -->
+<div class="highlighter-rouge"><div class="highlight fake-pre">
+$ ip xfrm state<br>
+src 10.36.98.139 dst <span style="color: #D17638; font-weight: bold;">10.36.1.178</span><br>
+&emsp;&emsp;proto <span style="color: #D17638; font-weight: bold;">esp</span> spi <span style="color: #D17638; font-weight: bold;">0x00000003</span> reqid 1 mode tunnel<br>
+&emsp;&emsp;replay-window 0<br>
+&emsp;&emsp;mark <span style="color: #D17638; font-weight: bold;">0xc90a</span>0000/0xffff0000 output-mark 0xd00/0xffffff00<br>
+&emsp;&emsp;aead rfc4106(gcm(aes)) 0xf83bd6832d552fa23e9ab5fdb742e1241b054f6c 128<br>
+&emsp;&emsp;anti-replay context: seq 0x0, oseq 0x0, bitmap 0x00000000<br>
+&emsp;&emsp;sel src 0.0.0.0/0 dst 0.0.0.0/0<br>
+</div></div>
+<!-- {% endraw %} -->
+
+XFRM states are identified by their destination IP address, the masked value of the mark, the SPI, and the protocol, as shown above, in bold orange.
+The source IP address and the unmasked part of the mark are not considered when identifying XFRM states.
+Thus, the "key" for XFRM states could be written as:
+```
+key = (dst_ip, proto, spi, (mark_value & mark_mask))
+```
+
+For the mark, it checks if the sanitized value (i.e., with the mask applied) from the new mark is matched by any of the existing marks:
+```
+(new_mark_value & new_mark_mask) & existing_mark_mask != existing_mark_value
+```
+For example, if the new mark is `0x12345600/0xffffff00` and mark `0x12340000/0xffff0000` already exists, the new mark will be rejected.
+If however `0x12345600/0xffffff00` was added first and `0x12340000/0xffff0000` is the new mark, it will be accepted.
+Hence, the order of addition of XFRM states can matter.
+
+<div class="note">
+Note that if you use unsanitized mark values, you may run into unexpected behavior at runtime.
+An unsanitized value is one with bits set that are not part of the mask, ex. 0xabcd0001/0xffff0000.
+If using such mark values, the kernel will apply the mask to the packet's mark and then compare it to the unsanitized value.
+Therefore, it won't match any packets at runtime.
+This bug concerns the marks of both policies and states, for ingress and egress.
+</div>
+
+For XFRM state deletions, note that it will complain if you pass any argument not part of the key... except for the source IP address.
+But even if you give it a source IP address, it will not consider it when matching for the deletion.
+
+#### Identifying Fields of XFRM Policies
+
+<!-- {% raw %} -->
+<div class="highlighter-rouge"><div class="highlight fake-pre">
+$ ip xfrm policy<br>
+src <span style="color: #D17638; font-weight: bold;">10.0.0.0/8</span> dst <span style="color: #D17638; font-weight: bold;">10.36.1.0/24</span><br>
+&emsp;&emsp;dir <span style="color: #D17638; font-weight: bold;">in</span> priority 0<br>
+&emsp;&emsp;mark <span style="color: #D17638; font-weight: bold;">0x58d73e00/0xffffff00</span><br>
+&emsp;&emsp;tmpl src 10.36.1.179 dst 10.36.2.60<br>
+&emsp;&emsp;&emsp;&emsp;proto esp reqid 0 mode transport<br>
+</div></div>
+<!-- {% endraw %} -->
+
+XFRM policies are identified by their direction, source IP address & mask, destination IP address & mask, and their mark & mask, as shown above in bold orange.
+However, contrary to XFRM states, the masks (ex., CIDR or mark masks) are not applied before using the related values (resp., CIDR IP addresses or mark values).
+Thus, the "key" for XFRM policies could be written as:
+```
+key = (dir, src_cidr_ip, src_cidr_mask, dst_cidr_ip, dst_cidr_mask,
+       mark_value, mark_mask)
+```
+So XFRM policies with `dst 10.0.0.0/8` and `dst 10.1.1.1/8` will be considered two different policies!
+For updates and deletions, the exact values must be used: a more generic policy won't be considered a match.
+
+#### Seamless Updates of XFRM Policies
+
+Updating XFRM policies without disrupting ongoing traffic is relatively easy.
+If you only need to update non-identifying fields such as the priority or the template, you can simply run `ip xfrm policy update`.
+
+If you however need to identify fields (ex., change the mask for marks), then you can first de-prioritize existing policies, before adding the new policies with a higher priority.
+By default, policies are created with the highest priority, 0.
+Thus, de-prioritizing a policy is a simple matter of running `ip xfrm policy update` to increase the priority value.
+This guarantees that the old policies stay in place and traffic is still processed during the update.
+Then, new policies can be added as usual, with a higher priority, for example 0.
+Once all new policies are in place, old policies shouldn't be used anymore and can be removed.
+
+#### Seamless Updates of XFRM States
+
+Similarly to policies, updating non-identifying fields of existing states is a simple matter of running `ip xfrm state update`.
+If you need to update identifying fields however, there is no priority mechanism to keep both sets of states, old and new, in place during the update.
+
+Instead, the best approach I'm aware of to avoid disrupting operations during the update is to rely on SPIs.
+You can distinguish the sets of old and new states by their SPIs, for example by reserving bits in the SPI for a version number.
+As an example, if your existing states have SPIs `0x0000xxxx`, you could assign SPIs `0x0001xxxx` for the new states.
+This approach obviously requires some planning beforehand, when assigning the SPIs.
+
+Then, you need some synchronization mechanism to only start encrypting traffic with the new SPIs once the receiver has installed XFRM states with the new SPIs as well.
+Presumably, you already have such a synchronization mechanism to handle key rotations.
 
 
 ### XFRM Errors
