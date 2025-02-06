@@ -6,6 +6,7 @@
   description: Combines the verifier's static analysis with SFI-like runtime checks
     and memory copies to mitigate transient execution attacks.
   url: https://cs.brown.edu/~vpk/papers/beebox.sec24.pdf
+  talk: https://www.youtube.com/watch?v=rZ47dOX2snI
 - title: 'Toss a Fault to BpfChecker: Revealing Implementation Flaws for eBPF runtimes with Differential Fuzzing'
   authors: C. Peng, M. Jiang, L. Wu, Y. Zhou
   conference: CCS'24
@@ -24,6 +25,7 @@
   description: Describes an orchestration system for eBPF programs designed to tune the
     network stack of Meta's services.
   url: https://cs.stanford.edu/~keithw/sigcomm2024/sigcomm24-final159-acmpaginated.pdf
+  talk: https://www.youtube.com/watch?v=y-SFpf8hnYU
 - title: 'Merlin: Multi-tier Optimization of eBPF Code for Performance and Compactness'
   authors: J. Mao, H. Ding, J. Zhai, S. Ma
   conference: ASPLOS'24
@@ -31,6 +33,7 @@
   areas: misc
   description: Proposes new compiler optimization tailored to the eBPF bytecode.
   url: https://dl.acm.org/doi/pdf/10.1145/3620666.3651387
+  talk: https://youtu.be/YHvfHZaHkwY?t=1903
 - title: 'DINT: Fast In-Kernel Distributed Transactions with eBPF'
   authors: Y. Zhou, X. Xiang, M. Kiley, S. Dharanipragada, M. Yu
   conference: NSDI'24
@@ -39,6 +42,7 @@
   description: Designs a new distributed transaction system that offloads common operations
     to tc and XDP.
   url: https://www.usenix.org/system/files/nsdi24-zhou-yang.pdf
+  talk: https://www.youtube.com/watch?v=EgdXrjwBdBA
 - title: 'BlueSWAT: A Lightweight State-Aware Security Framework for Bluetooth Low Energy'
   authors: X. Che, Y. He, X. Feng, K. Sun, K. Xu, Q. Li
   conference: CCS'24
@@ -56,6 +60,7 @@
   description: Builds a secure allocator for the kernel, to separate security-sensitive
     objects, using new BPF helpers.
   url: https://www.usenix.org/system/files/sec24fall-prepub-1504-wang-zicheng.pdf
+  talk: https://www.youtube.com/watch?v=8P1IbL8L4oY
 - title: Finding Correctness Bugs in eBPF Verifier with Structured and Sanitized Program
   authors: H. Sun, Y. Xu, J. Liu, Y. Shen, N. Guan, Y. Jiang
   conference: EuroSys'24
@@ -79,6 +84,7 @@
   description: Relies on eBPF to identify traffic sources and enforce traffic engineering
     via segment routing across the WAN.
   url: https://cs.stanford.edu/~keithw/sigcomm2024/sigcomm24-final406-acmpaginated.pdf
+  talk: https://www.youtube.com/watch?v=rVhATFzqJ4Q
 - title: 'FetchBPF: Customizable Prefetching Policies in Linux with eBPF'
   authors: X. Cao, S. Patel, S. Y. Lim, X. Han, T. Pasquier
   conference: ATC'24
@@ -87,12 +93,14 @@
   description: Extends the kernel with new BPF hooks and helpers to be able to customize
     memory prefetching policies.
   url: https://www.usenix.org/system/files/atc24-cao.pdf
+  talk: https://www.youtube.com/watch?v=0lo-7dDVFB0
 - title: Validating the eBPF Verifier via State Embedding
   authors: H. Sun, Z. Su
   conference: OSDI'24
   type: improving
   areas: verifier
   url: https://www.usenix.org/system/files/osdi24-sun-hao.pdf
+  talk: https://www.youtube.com/watch?v=sASFr_9uZ7Y
   description: Devises a test oracle to fuzz the eBPF verifier.
 - title: 'Hive: A Hardware-assisted Isolated Execution Environment for eBPF on AArch64'
   authors: P. Zhang, C. Wu, X. Meng, Y. Zhang, M. Peng, S. Zhang, B. Hu, M. Xie, Y.
@@ -103,6 +111,7 @@
   description: Proposes to replace the static analysis of the verifier with a hardware-based
     runtime isolation for ARM64.
   url: https://www.usenix.org/system/files/usenixsecurity24-zhang-peihua.pdf
+  talk: https://www.youtube.com/watch?v=8jhFEv_wK0A
 - title: End-to-End Mechanized Proof of a JIT-Accelerated eBPF Virtual Machine for
     IoT
   authors: S. Yuan, F. Besson, and J.-P. Talpin
@@ -136,6 +145,7 @@
   description: Hardens eBPF in Linux by leveraging Intel MPK and adding runtime checks
     for helpers.
   url: https://www.usenix.org/system/files/usenixsecurity24-lu-hongyi.pdf
+  talk: https://www.youtube.com/watch?v=__2WUqcTJjg
 - title: 'P2Cache: An Application-Directed Page Cache for Improving Performance of
     Data-Intensive Applications'
   authors: D. Lee, I. Choi, C. Lee, S. Lee, J. Kim
@@ -152,6 +162,7 @@
   url: https://www.usenix.org/system/files/usenixsecurity23-he.pdf
   description: Highlights that eBPF tracing programs can be used to escape container
     boundaries and the impact on cloud and online coding platforms.
+  talk: https://www.youtube.com/watch?v=E7E8Y20q9ZU
 - title: 'λ-IO: A Unified IO Stack for Computational Storage'
   authors: Z. Yang, Y. Lu, X. Liao, Y. Chen, J. Li, S. He, J. Shu
   conference: FAST'23
@@ -159,6 +170,7 @@
   areas: storage
   description: Modifies eBPF to implement a unified IO stack spanning the kernel and
     storage devices, in the context of in-storage computing.
+  talk: https://www.youtube.com/watch?v=xYENKqthG40
   url: https://www.usenix.org/system/files/fast23-yang-zhe.pdf
 - title: 'eHDL: Turning eBPF/XDP Programs into Hardware Designs for the NIC'
   authors: A. Rivitti, R. Bifulco, A. Tulumello, M. Bonola, S. Pontarelli
@@ -168,6 +180,7 @@
   description: Introduces a synthesis tool that generates FPGA pipelines for NICs
     from unmodified XDP programs.
   url: https://pontarelli.di.uniroma1.it/publication/asplos23/asplos23.pdf
+  talk: https://www.youtube.com/watch?v=35OAuR1NbxA
 - title: 'Fuzz on the Beach: Fuzzing Solana Smart Contracts'
   authors: S. Smolka, J.-R. Giesen, P. Winkler, O. Draissi, L. Davi, G. Karame, K. Pohl
   conference: CCS'23
@@ -184,6 +197,7 @@
   description: Designs an extension mechanism for BGP using a userspace implementation of
     eBPF and several C verification tools to replace and extend the Linux verifier.
   url: https://www.usenix.org/system/files/nsdi23-wirtgen.pdf
+  talk: https://www.youtube.com/watch?v=d9azXXp-_O4
 - title: 'Taking 5G RAN Analytics and Control to a New Level'
   authors: X. Foukas, B. Radunovic, M. Balkwill, Z. Lai
   conference: MobiCom'23
@@ -210,6 +224,7 @@
   description: Presents a distributed tracing framework for troubleshooting microservices
     that leverages eBPF for data collection.
   url: https://dl.acm.org/doi/pdf/10.1145/3603269.3604823
+  talk: https://www.youtube.com/watch?v=Bz_HTqFYUYA
 - title: Fast In-Kernel Traffic Sketching in eBPF
   authors: S. Miano, X. Chen, R. Ben Basat, G. Antichi
   conference: SIGCOMM CCR'23
@@ -234,6 +249,7 @@
   description: Offloads common Paxos networking operations to tc and XDP to improve
     performance.
   url: https://www.usenix.org/system/files/nsdi23-zhou.pdf
+  talk: https://www.youtube.com/watch?v=E6qcR2Lb1xE
 - title: 'Verifying the Verifier: eBPF Range Analysis Verification'
   authors: H. Vishwanathan, M. Shachnai, S. Narayana, S. Nagarakatte
   conference: CAV'23
@@ -250,6 +266,7 @@
   description: Presents an approach to bypass various kernel isolation techniques
     by abusing the cBPF infrastructure.
   url: https://www.usenix.org/system/files/atc23-jin.pdf
+  talk: https://www.youtube.com/watch?v=pkR5kJkFGkc
 - title: Domain Specific Run Time Optimization for Software Data Planes
   authors: S. Miano, A. Sanaee, F. Risso, G. Rétvári, G. Antichi
   conference: ASPLOS'22
@@ -258,6 +275,7 @@
   description: Optimizes datapath binaries, including eBPF bytecodes, based on traffic
     patterns.
   url: http://lendulet.tmit.bme.hu/~retvari/publications/asplos_2022.pdf
+  talk: https://www.youtube.com/watch?v=PDUVUv39CUQ
 - title: End-to-end Mechanized Proof of an eBPF Virtual Machine for Micro-controllers
   authors: S. Yuan, F. Besson, J.-P. Talpin, S. Hym, K. Zandberg, E. Baccelli
   conference: CAV'22
@@ -274,6 +292,7 @@
   description: Allows Linux users to customize kernel lock policies using eBPF and
     according to the applications' needs and hardware characteristics.
   url: https://www.usenix.org/system/files/osdi22-park.pdf
+  talk: https://www.youtube.com/watch?v=R25mDERjYWI
 - title: 'RapidPatch: Firmware Hotpatching for Real-Time Embedded Devices'
   authors: Y. He, Z. Zou, K. Sun, Z. Liu, K. Xu, Q. Wang, C. Shen, Z. Wang, Q. Li
   conference: Sec'22
@@ -282,6 +301,7 @@
   description: Implements a hotpatching mechanism for real-time OSes using eBPF, a
     modified verifier, and additional runtime checks.
   url: https://www.usenix.org/system/files/sec22-he-yi.pdf
+  talk: https://www.youtube.com/watch?v=rrGBBDGicSo
 - title: 'Verified Programs can Party: Optimizing Kernel Extensions via Post-Verification
     Merging'
   authors: H.-C. Kuo, K.-H. Chen, Y. Lu, D. Williams, S. Mohan, T. Xu
@@ -299,6 +319,7 @@
   description: Leverages various eBPF hooks to improve the performance of Knative,
     a container-based serverless platform.
   url: https://dl.acm.org/doi/pdf/10.1145/3544216.3544259
+  talk: https://www.youtube.com/watch?v=YkErXPiy9cE
 - title: Faster Software Packet Processing on FPGA NICs with eBPF Program Warping
   authors: M. Bonola, G. Belocchi, A. Tulumello, M. Spaziani Brunella, G. Siracusano,
     G. Bianchi, R. Bifulco
@@ -309,6 +330,7 @@
     via peephole optimization, thereby replacing series of instructions with optimized
     hardware implementations.
   url: https://www.usenix.org/system/files/atc22-bonola.pdf
+  talk: https://www.youtube.com/watch?v=ooWoaay4R-Q
 - title: 'XRP: In-Kernel Storage Functions with eBPF'
   authors: Y. Zhong, H. Li, Y. J. Wu, I. Zarkadas, J. Tao, E. Mesterhazy, M. Makris,
     J. Yang, A. Tai, R. Stutsman, A. Cidon
@@ -318,12 +340,14 @@
   description: Offloads processing to the NVMe drivers using BPF, to reduce kernel
     overhead in storage applications
   url: https://www.usenix.org/system/files/osdi22-zhong_1.pdf
+  talk: https://www.youtube.com/watch?v=n6_QaWATz2A
 - title: Sound, Precise, and Fast Abstract Interpretation with Tristate Numbers
   authors: H. Vishwanathan, M. Shachnai, S. Narayana, S. Nagarakatte
   conference: CGO'22
   type: improving
   areas: verifier
   url: https://people.cs.rutgers.edu/~sn349/papers/cgo-2022.pdf
+  talk: https://www.youtube.com/watch?v=RVMMtGJLOVw
   description: Formally proves and improves the Linux verifier operations on tristate
     numbers for the range analysis.
 - title: Synthesizing Safe and Efficient Kernel Extensions for Packet Processing
@@ -334,6 +358,7 @@
   url: https://conferences.sigcomm.org/sigcomm/2021/files/papers/3452296.3472929.pdf
   description: Proposes a synthesis-based compiler that optimizes eBPF programs while
     ensuring they still pass the Linux verifier.
+  talk: https://www.youtube.com/watch?v=8R7rHZw6V2o
 - title: 'BMC: Accelerating Memcached using Safe In-Kernel Caching and Pre-Stack Processing'
   authors: Y. Ghigoff, J. Sopena, K. Lazri, A. Blin, G. Muller
   conference: NSDI'21
@@ -342,6 +367,7 @@
   url: https://www.usenix.org/system/files/nsdi21-ghigoff.pdf
   post: /ebpf/2021/04/12/bmc-accelerating-memcached-using-bpf-and-xdp.html
   description: Speeds up Memcached with an XDP-based, transparent, first-level cache.
+  talk: https://www.youtube.com/watch?v=VKHIcTLoryk
 - title: An Analysis of Speculative Type Confusion Vulnerabilities in the Wild
   authors: O. Kirzner, A. Morrison
   conference: Sec'21
@@ -350,6 +376,7 @@
   description: Describes how eBPF can be leveraged to create speculative type confusion
     gadgets in the kernel.
   url: https://www.usenix.org/system/files/sec21-kirzner.pdf
+  talk: https://www.youtube.com/watch?v=Gxv6LcabKrg
 - title: 'Syrup: User-Defined Scheduling Across the Stack'
   authors: K. Kaffes, J. Humphries, D. Mazières, C. Kozyrakis
   conference: SOSP'21
@@ -358,6 +385,7 @@
   description: Proposes an eBPF-based framework to enable users to write application-specific
     scheduling policies for threads, network packets, and network connections.
   url: https://www.scs.stanford.edu/~dm/home/papers/kaffes:syrup.pdf
+  talk: https://www.youtube.com/watch?v=v21FN6_uhv0
 - title: Revisiting the Open vSwitch Dataplane Ten Years Later
   authors: W. Tu, Y.-H. Wei, G. Antichi, B. Pfaff
   conference: SIGCOMM'21
@@ -384,6 +412,7 @@
   post: /ebpf/2020/11/04/hxdp-efficient-software-packet-processing-on-fpga-nics.html
   description: Investigates the execution of XDP programs on FPGA NICs by implementing
     an interpreter.
+  talk: https://www.youtube.com/watch?v=v8tGmlB2Zks
 - title: 'Specification and Verification in the Field: Applying Formal Methods to
     BPF Just-in-Time Compilers in the Linux Kernel'
   authors: L. Nelson, J. Van Geffen, E. Torlak, X. Wang
@@ -393,6 +422,7 @@
   url: https://unsat.cs.washington.edu/papers/nelson-jitterbug.pdf
   description: Applies formal verification techniques to the eBPF JIT compilers and
     implements a new formally-verified JIT compiler for 32-bit RISC-V.
+  talk: https://www.youtube.com/watch?v=2V3ts5-W_9g
 - title: Scaling Symbolic Evaluation for Automated Verification of Systems Code with
     Serval
   authors: L. Nelson, J. Bornholt, R. Gu, A. Baumann, E. Torlak, X. Wang
@@ -410,6 +440,7 @@
   description: Enables eBPF support in the FUSE interface to improve the performance
     of user-space file systems by offloading operations to the kernel.
   url: https://www.usenix.org/system/files/atc19-bijlani.pdf
+  talk: https://www.youtube.com/watch?v=QwcF8q9LejU
 - title: Pluginizing QUIC
   authors: Q. De Coninck, F. Michel, M. Piraux, F. Rochet, T. Given-Wilson, A. Legay,
     O. Pereira, O. Bonaventure
@@ -436,6 +467,7 @@
   description: Introduces PREVAIL, an alternative to the Linux eBPF verifier based
     on abstract interpretation and now used in Windows.
   post: /ebpf/2023/09/06/prevail-understanding-the-windows-ebpf-verifier.html
+  talk: https://www.youtube.com/watch?v=MHqKJaQouu8
 - title: The Design and Implementation of Hyperupcalls
   authors: N. Amit, M. Wei
   conference: ATC'18
@@ -468,6 +500,7 @@
   url: https://www.usenix.org/system/files/conference/osdi14/osdi14-paper-wang_xi.pdf
   description: Proposes a formally-verified infrastructure to compile high-level rules
     into cBPF bytecode and machine code.
+  talk: https://www.youtube.com/watch?v=aOl-skWkzf0
 - title: 'BPF+: Exploiting Global Data-flow Optimization in a Generalized Packet Filter
     Architecture'
   authors: A. Begel, S. McCanne, S. L. Graham

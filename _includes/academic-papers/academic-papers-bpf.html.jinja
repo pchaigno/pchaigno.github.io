@@ -152,6 +152,7 @@ jqueryReady(function() {
 <h4>{{ paper.title }}</h4>
 <span class="venue">{{ paper.conference }}</span>&nbsp;
 <a href="{{ paper.url }}" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
+{% if paper.talk %}<a href="{{ paper.talk }}" title="Link to conference talk"><i class="fa-brands fa-youtube"></i>&nbsp;Talk</a>&nbsp;{% endif %}
 {% if paper.post %}<a href="{{ paper.post }}" title="My summary of the paper"><i class="fa-solid fa-comment"></i>&nbsp;Summary</a>&nbsp;{% endif %}
 <span class="authors">{{ paper.authors }}</span><br>
 <code class="language-plaintext highlighter-rouge">{{ paper.type }}</code>
