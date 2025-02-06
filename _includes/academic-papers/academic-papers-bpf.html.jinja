@@ -114,14 +114,14 @@ jqueryReady(function() {
 	<label class="slider" for="all-types-switch"></label>
 	<label for="all-types-switch" title="All types">all</label>
 </div>
-{% for type in labels %}
-{% if type.kind == 'type' %}
+{% for type in labels -%}
+{% if type.kind == 'type' -%}
 <div class="form-switch">
 	<input type="checkbox" checked id="{{ type.name }}-switch" class="filter-button type-button" data-filter="{{ type.name }}">
 	<label class="slider" for="{{ type.name }}-switch"></label>
 	<label for="{{ type.name }}-switch" title="{{ type.description }}">{{ type.name }}</label>
 </div>
-{% endif %}
+{% endif -%}
 {% endfor %}
 
 <b>Areas selector</b>
@@ -130,14 +130,14 @@ jqueryReady(function() {
 	<label class="slider" for="all-areas-switch"></label>
 	<label for="all-areas-switch" title="All areas">all</label>
 </div>
-{% for area in labels %}
-{% if area.kind == 'area' %}
+{% for area in labels -%}
+{% if area.kind == 'area' -%}
 <div class="form-switch">
 	<input type="checkbox" checked id="{{ area.name }}-switch" class="filter-button area-button" data-filter="{{ area.name }}">
 	<label class="slider" for="{{ area.name }}-switch"></label>
 	<label for="{{ area.name }}-switch" title="{{ area.description }}">{{ area.name }}</label>
 </div>
-{% endif %}
+{% endif -%}
 {% endfor %}
 <br>
 
@@ -153,7 +153,7 @@ jqueryReady(function() {
 <span class="venue">{{ paper.conference }}</span>&nbsp;
 <a href="{{ paper.url }}" title="Link to PDF"><i class="fa-solid fa-file-pdf"></i>&nbsp;Paper</a>&nbsp;
 {% if paper.talk %}<a href="{{ paper.talk }}" title="Link to conference talk"><i class="fa-brands fa-youtube"></i>&nbsp;Talk</a>&nbsp;{% endif %}
-{% if paper.post %}<a href="{{ paper.post }}" title="My summary of the paper"><i class="fa-solid fa-comment"></i>&nbsp;Summary</a>&nbsp;{% endif %}
+{% if paper.post %}<a href="{{ paper.post }}" title="My summary of the paper"><i class="fa-solid fa-comment"></i>&nbsp;Summary</a>&nbsp;{% endif -%}
 <span class="authors">{{ paper.authors }}</span><br>
 <code class="language-plaintext highlighter-rouge">{{ paper.type }}</code>
 {% for area in paper.areas %}<code class="language-plaintext highlighter-rouge">{{ area }}</code>&nbsp;{% endfor %}
