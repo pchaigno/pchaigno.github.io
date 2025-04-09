@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 RUN apt-get update
 RUN apt-get install -y curl ruby ruby-dev make gcc g++ libxml2-dev libxslt1-dev
