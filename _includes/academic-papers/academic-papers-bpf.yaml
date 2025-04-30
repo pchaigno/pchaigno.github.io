@@ -1,3 +1,27 @@
+- title: 'VEP: A Two-stage Verification Toolchain for Full eBPF Programmability'
+  authors: X. Wu, Y. Feng, T. Huang, X. Lu, S. Lin, L. Xie, S. Zhao, Q. Cao
+  conference: NSDI'25
+  type: improving
+  areas: verifier
+  description: Implements a proof-carrying code process for the verification of
+    eBPF using annotations on the C source code.
+  url: https://www.usenix.org/system/files/nsdi25-wu-xiwei.pdf
+- title: 'eTran: Extensible Kernel Transport with eBPF'
+  authors: Z. Chen, Q. Meng, C. Lao, Y. Liu, F. Ren, M. Yu, Y. Zhou
+  conference: NSDI'25
+  type: using
+  areas: networking
+  description: Designs a framework based on AF_XDP and new networking hooks to allow users
+    to implement custom transport protocols on top of Linux.
+  url: https://www.usenix.org/system/files/nsdi25-chen-zhongjie.pdf
+- title: 'State-Compute Replication: Parallelizing High-Speed Stateful Packet Processing'
+  authors: Q. Xu, S. Miano, X. Gao, T. Wang, A. Murugadass, S. Zhang, A. Sivaraman, G. Antichi, S. Narayana
+  conference: NSDI'25
+  type: using
+  areas: networking
+  description: Proposes a method to scale the processing of single-flow traffic on
+    multiple cores using XDP.
+  url: https://www.usenix.org/system/files/nsdi25-xu-qiongwen.pdf
 - title: 'BeeBox: Hardening BPF Against Transient Execution Attacks'
   authors: D. Jin, A. J. Gaidis, V. P. Kemerlis
   conference: Sec'24
