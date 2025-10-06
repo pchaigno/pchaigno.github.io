@@ -1,3 +1,49 @@
+- title: 'SoK: Challenges and Paths Toward Memory Safety for eBPF'
+  authors: K. Huang, J. Sampson, M. Payer, G. Tan, Z. Qian, T. Jaeger
+  conference: S&P'25
+  type: analysis
+  areas: security verifier
+  description: Surveys and evaluates existing work on eBPF memory safety.
+  url: https://www.nebelwelt.net/files/25Oakland.pdf
+- title: 'SwiftSweeper: Defeating Use-After-Free Bugs Using Memory Sweeper Without Stop-the-World'
+  authors: J. Ahn, K. Lee, C. Park, H. Moon, Y. Kwon
+  conference: S&P'25
+  type: using
+  areas: misc security
+  description: Designs a memory-sweeping allocator to prevent use-after-free bugs, with a BPF-based custom page fault handler to improve performance.
+  url: https://drive.junhoahn.kr/index.php/s/rSitKKfcz79PX5t
+- title: 'eBPF Misbehavior Detection: Fuzzing with a Specification-Based Oracle'
+  authors: T. Lyu, K. K. Dwivedi, T. Bourgeat, M. Payer, M. Xu, S. Kashyap
+  conference: SOSP'25
+  type: improving
+  areas: verifier
+  description: Introduces a specification-based oracle to fuzz the BPF verifier.
+  url: https://cs.uwaterloo.ca/~m285xu/assets/publication/ebpf_smt_fuzz-paper.pdf
+- title: 'FlexGuard: Fast Mutual Exclusion Independent of Subscription'
+  authors: V. Laforet, S. Kashyap, C. Iorgulescu, J. Lawall, J.-P. Lozi
+  conference: SOSP'25
+  type: using
+  areas: misc
+  description: Improves lock handover time by using eBPF to detect critical section preemptions.
+  url: https://hal.science/hal-05241781v1/document
+- title: 'cache_ext: Customizing the Page Cache with eBPF'
+  authors: T. Zussman, I. Zarkadas, J. Carin, A. Cheng, H. Franke, J. Pfefferle, A. Cidon
+  conference: SOSP'25
+  type: using
+  areas: misc
+  description: Extends the kernel with new BPF hooks, kfuncs, and per-cgroup struct_ops
+    to be able to customize the page cache policies.
+  url: https://arxiv.org/pdf/2502.02750
+- title: 'Hermes: Enhancing Layer-7 Cloud Load Balancers with Userspace-Directed I/O Event Notification'
+  authors: T. Pan, E. Song, Y. Zuo, S. Zhang, Y. Song, J. Zhao, W. Hou, J. Lu, X. Sun, S. Zhang,
+    Y. Yang, J. Zhang, T. Huang, B. Lyu, X. Li, R. Wen, Z. Zong, S. Zhu
+  conference: SIGCOMM'25
+  type: using
+  areas: networking
+  description: Improves the performance of their L7 load balancer by customizing the kernel's
+    connection dispatch using sk_reuseport BPF programs.
+  url: https://ng-95.github.io/files/Hermes_SIGCOMM25.pdf
+  talk: https://www.youtube.com/watch?v=J22-2PSf04M
 - title: 'VEP: A Two-stage Verification Toolchain for Full eBPF Programmability'
   authors: X. Wu, Y. Feng, T. Huang, X. Lu, S. Lin, L. Xie, S. Zhao, Q. Cao
   conference: NSDI'25
@@ -22,6 +68,15 @@
   description: Proposes a method to scale the processing of single-flow traffic on
     multiple cores using XDP.
   url: https://www.usenix.org/system/files/nsdi25-xu-qiongwen.pdf
+- title: 'BUDAlloc: Defeating Use-After-Free Bugs by Decoupling Virtual Address Management from Kernel'
+  authors: J. Ahn, J. Lee, K. Lee, W. Gwak, M. Hwang, Y. Kwon
+  conference: Sec'24
+  type: using
+  areas: misc security
+  description: Designs a one-time allocator to detect use-after-free bugs, with
+    a BPF-based custom page fault handler to improve performance.
+  url: https://www.usenix.org/system/files/usenixsecurity24-ahn.pdf
+  talk: https://www.youtube.com/watch?v=Y21_QmmIcI0
 - title: 'BeeBox: Hardening BPF Against Transient Execution Attacks'
   authors: D. Jin, A. J. Gaidis, V. P. Kemerlis
   conference: Sec'24
@@ -125,7 +180,8 @@
   areas: verifier
   url: https://www.usenix.org/system/files/osdi24-sun-hao.pdf
   talk: https://www.youtube.com/watch?v=sASFr_9uZ7Y
-  description: Devises a test oracle to fuzz the eBPF verifier.
+  description: Devises a test oracle to fuzz the eBPF verifier by embedding correctness checks
+    in the BPF program.
 - title: 'Hive: A Hardware-assisted Isolated Execution Environment for eBPF on AArch64'
   authors: P. Zhang, C. Wu, X. Meng, Y. Zhang, M. Peng, S. Zhang, B. Hu, M. Xie, Y.
     Lai, Y. Kang, Z. Wang
@@ -298,7 +354,7 @@
   areas: networking
   description: Optimizes datapath binaries, including eBPF bytecodes, based on traffic
     patterns.
-  url: http://lendulet.tmit.bme.hu/~retvari/publications/asplos_2022.pdf
+  url: https://qmro.qmul.ac.uk/xmlui/bitstream/handle/123456789/77279/Antichi%20Domain%20specific%20run%202022%20Accepted.pdf
   talk: https://www.youtube.com/watch?v=PDUVUv39CUQ
 - title: End-to-end Mechanized Proof of an eBPF Virtual Machine for Micro-controllers
   authors: S. Yuan, F. Besson, J.-P. Talpin, S. Hym, K. Zandberg, E. Baccelli
@@ -473,7 +529,7 @@
   areas: networking
   description: Designs an extension mechanism for QUIC using a userspace implementation of
     eBPF with SFI-like runtime checks.
-  url: https://inl.info.ucl.ac.be/system/files/pquic.pdf
+  url: https://dial.uclouvain.be/pr/boreal/object/boreal:218857/datastream/PDF_01/view
 - title: Securing Linux with a Faster and Scalable iptables
   authors: S. Miano, M. Bertrone, F. Risso, M. Vásquez Bernal, Y. Lu, J. Pi
   conference: SIGCOMM CCR'19
