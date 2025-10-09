@@ -44,6 +44,41 @@
     connection dispatch using sk_reuseport BPF programs.
   url: https://ng-95.github.io/files/Hermes_SIGCOMM25.pdf
   talk: https://www.youtube.com/watch?v=J22-2PSf04M
+- title: 'Extending Applications Safely and Efficiently'
+  authors: Y. Zheng, T. Yu, Y. Yang, Y. Hu, X. Lai, D. Williams, A. Quinn
+  conference: OSDI'25
+  type: using
+  areas: tracing misc
+  description: Proposes to implement safe userspace extension mechanisms and observability tools
+    using the bpftime userspace eBPF VM for better efficiency.
+  url: https://www.usenix.org/system/files/osdi25-zheng-yusheng.pdf
+  talk: https://www.youtube.com/watch?v=vhvFW_e_4I8
+- title: 'Rex: Closing the language-verifier gap with safe and usable kernel extensions'
+  authors: J. Jia, R. Qin, M. Craun, E. Lukiyanov, A. Bansal, M. Phan, M. V. Le, H. Franke, H. Jamjoom, T. Xu, D. Williams
+  conference: ATC'25
+  type: improving
+  areas: verifier
+  description: Reduces false positives by replacing the verifier by a language-based safety
+    approach, with the Rust compiler and runtime checks.
+  url: https://www.usenix.org/system/files/atc25-jia.pdf
+  talk: https://www.youtube.com/watch?v=phJ-fb5lEA8
+- title: 'Accelerating Nested Virtualization with HyperTurtle'
+  authors: O. B. Zur, J. Krebs, S. A. Bergman, M. Silberstein
+  conference: ATC'25
+  type: using
+  areas: misc
+  description: Improves nested virtualization performance by offloading logic from the
+    guest hypervisor to the host hypervisor using eBPF.
+  url: https://www.usenix.org/system/files/atc25-zur.pdf
+  talk: https://www.youtube.com/watch?v=78g1bG3BOFs
+- title: 'PageFlex: Flexible and Efficient User-space Delegation of Linux Paging Policies with eBPF'
+  authors: A. Yelam, K. Wu, Z. Guo, S. Yang, R. Shashidhara, W. Xu, S. Novakovic, A. C. Snoeren, K. Keeton
+  conference: ATC'25
+  type: using
+  areas: misc
+  description: Extends the kernel, including with new writable tracepoints, to allow users to customize paging policies.
+  url: https://www.usenix.org/system/files/atc25-yelam.pdf
+  talk: https://www.youtube.com/watch?v=ZyT1cB_8trw
 - title: 'VEP: A Two-stage Verification Toolchain for Full eBPF Programmability'
   authors: X. Wu, Y. Feng, T. Huang, X. Lu, S. Lin, L. Xie, S. Zhao, Q. Cao
   conference: NSDI'25
@@ -52,6 +87,7 @@
   description: Implements a proof-carrying code process for the verification of
     eBPF using annotations on the C source code.
   url: https://www.usenix.org/system/files/nsdi25-wu-xiwei.pdf
+  talk: https://www.youtube.com/watch?v=5xA6BIEWjeM
 - title: 'eTran: Extensible Kernel Transport with eBPF'
   authors: Z. Chen, Q. Meng, C. Lao, Y. Liu, F. Ren, M. Yu, Y. Zhou
   conference: NSDI'25
@@ -60,6 +96,7 @@
   description: Designs a framework based on AF_XDP and new networking hooks to allow users
     to implement custom transport protocols on top of Linux.
   url: https://www.usenix.org/system/files/nsdi25-chen-zhongjie.pdf
+  talk: https://www.youtube.com/watch?v=zb1lNTPxlrc
 - title: 'State-Compute Replication: Parallelizing High-Speed Stateful Packet Processing'
   authors: Q. Xu, S. Miano, X. Gao, T. Wang, A. Murugadass, S. Zhang, A. Sivaraman, G. Antichi, S. Narayana
   conference: NSDI'25
@@ -68,6 +105,7 @@
   description: Proposes a method to scale the processing of single-flow traffic on
     multiple cores using XDP.
   url: https://www.usenix.org/system/files/nsdi25-xu-qiongwen.pdf
+  talk: https://www.youtube.com/watch?v=FgSEmeqM0s8
 - title: 'BUDAlloc: Defeating Use-After-Free Bugs by Decoupling Virtual Address Management from Kernel'
   authors: J. Ahn, J. Lee, K. Lee, W. Gwak, M. Hwang, Y. Kwon
   conference: Sec'24
@@ -94,7 +132,7 @@
   description: Designs a fuzzer for userspace eBPF runtimes, including Windows's, using
     differential fuzzing, verifier logs, and an intermediate representation of the eBPF
     bytecode.
-  url: ''
+  url: http://malgenomeproject\.org/papers/CCS2024_BpfChecker\.pdf
 - title: 'NetEdit: An Orchestration Platform for eBPF Network Functions at Scale'
   authors: T. A. Benson, P. Kannan, P. Gupta, B. Madhavan, K. S. Arora, J. Meng, M. Lau,
     A. Dhamija, R. Krishnamurthy, S. Sundaresan, N. Spring, Y. Zhang
