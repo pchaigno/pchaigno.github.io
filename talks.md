@@ -5,11 +5,15 @@ permalink: /talks/
 description: Paul Chaignon's blog focuses essentially on the eBPF technology and its verifiers. Articles may include benchmarks of eBPF aspects, studies of the eBPF verifiers, summaries of academic papers related to eBPF, or comments on eBPF news.
 ---
 
+**🇬🇧 [Linux Plumbers 2025](https://lpc.events/event/19/sessions/235/) -- Making Sense of State Pruning**
+
+**🇬🇧 [Linux Plumbers 2025](https://lpc.events/event/19/sessions/235/) -- Fuzzing the Verifier with a Test Oracle**
+
 **🇫🇷 [Rennes DevOps 03/25](https://www.meetup.com/rennes-devops/events/306795143/) -- [Introduction à eBPF : Moderniser Linux pour le cloud](/assets/Rennes%20DevOps%20eBPF.pdf)**
 
-**🇬🇧 [Linux Plumbers 2024](https://lpc.events/event/18/page/224-lpc-2024-overview) -- [The State of eBPF Fuzzing](/assets/Linux%20Plumbers%202024%20Fuzzing%20eBPF.pdf)**
+**🇬🇧 [Linux Plumbers 2024](https://lpc.events/event/18/sessions/181/) -- [The State of eBPF Fuzzing](/assets/Linux%20Plumbers%202024%20Fuzzing%20eBPF.pdf)**
 
-**🇬🇧 [Linux Plumbers 2024](https://lpc.events/event/18/page/224-lpc-2024-overview) -- [Agni: Fast Formal Verification of the Verifier's Range Analysis](/assets/Linux%20Plumbers%202024%20Agni.pdf)**
+**🇬🇧 [Linux Plumbers 2024](https://lpc.events/event/18/sessions/181/) -- [Agni: Fast Formal Verification of the Verifier's Range Analysis](/assets/Linux%20Plumbers%202024%20Agni.pdf)**
 
 **🇬🇧 [Dagstuhl 24291](https://www.dagstuhl.de/24291) -- Networking with eBPF**
 
