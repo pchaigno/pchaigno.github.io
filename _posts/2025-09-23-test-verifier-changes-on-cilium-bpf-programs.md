@@ -194,15 +194,11 @@ First, we have to edit the `kernel:` lines in `.github/actions/e2e/configs.yaml`
 Then, apply the following diff, with whatever Docker repository you used (`docker.io/pchaigno` in my case):
 ```diff
 diff --git a/.github/actions/lvh-kind/action.yaml b/.github/actions/lvh-kind/action.yaml
-index bc2fefcb12..b34cfe88eb 100644
+index ecc8896cd4..7a7925686e 100644
 --- a/.github/actions/lvh-kind/action.yaml
 +++ b/.github/actions/lvh-kind/action.yaml
-@@ -55,9 +55,11 @@ runs:
-   using: composite
-   steps:
-     - name: Provision LVH VMs
--      uses: cilium/little-vm-helper@9c1f3a549af06e213863d034c13ba1c5d1e3c667 # v0.0.26
-+      uses: cilium/little-vm-helper@4dd358e5d05d410d6cc96a728d601f2e2c4302fa
+@@ -58,6 +58,8 @@ runs:
+       uses: cilium/little-vm-helper@01debd6cb7e5514cfdb4a33e776bdc647bc5306e # v0.0.27
        with:
          test-name: ${{ inputs.test-name }}
 +        image-repo: 'docker.io/pchaigno'
@@ -210,15 +206,6 @@ index bc2fefcb12..b34cfe88eb 100644
          image-version: ${{ inputs.kernel }}
          images-folder-parent: "/tmp"
          host-mount: ./
-@@ -78,7 +80,7 @@ runs:
-         lvh: 'true'
- 
-     - name: Create K8s cluster
--      uses: cilium/little-vm-helper@9c1f3a549af06e213863d034c13ba1c5d1e3c667 # v0.0.26
-+      uses: cilium/little-vm-helper@4dd358e5d05d410d6cc96a728d601f2e2c4302fa
-       with:
-         provision: 'false'
-         cmd: |
 ```
 
 Commit, open a draft pull request on [Cilium's repositories](https://github.com/cilium/cilium), and ping your favorite Cilium committer to trigger the end-to-end tests.
