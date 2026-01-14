@@ -45,7 +45,7 @@ function toggleDisplay(selector) {
 }
 
 function updateNbPapers() {
-	$('#nb-papers').text($('#papers h4:visible').length);
+	$('#nb-papers').text($('.papers h4:visible').length);
 }
 
 // Updates the URL based on the state of buttons.
@@ -188,7 +188,7 @@ jqueryReady(function() {
 <b>Selected <span id="nb-papers">64</span> papers.</b>
 <br><br>
 
-<div id="papers">
+<div class="papers">
 
 <div class="analysis">
 <div class="security verifier" data-refcnt="2">

@@ -265,20 +265,20 @@ div:hover > .zoomable {
 }
 
 
-#papers .authors {
+.papers .authors {
   font-style: italic;
 }
 
-#papers .venue {
+.papers .venue {
   font-weight: bold;
 }
 
-#papers h4 {
+.papers h4 {
   margin-top: 17px;
   margin-bottom: 0px;
 }
 
-#papers .paper-tag {
+.papers .paper-tag {
     padding: 2px;
     border: 1px solid;
     border-radius: 5px;

@@ -45,7 +45,7 @@ function toggleDisplay(selector) {
 }
 
 function updateNbPapers() {
-	$('#nb-papers').text($('#papers h4:visible').length);
+	$('#nb-papers').text($('.papers h4:visible').length);
 }
 
 // Updates the URL based on the state of buttons.
@@ -144,7 +144,7 @@ jqueryReady(function() {
 <b>Selected <span id="nb-papers">{{ papers | length }}</span> papers.</b>
 <br><br>
 
-<div id="papers">
+<div class="papers">
 {% for paper in papers %}
 <div class="{{ paper.type }}">
 {% if paper.areas %}<div class="{{ paper.area_labels }}" data-refcnt="{{ paper.nb_areas }}">{% endif %}
