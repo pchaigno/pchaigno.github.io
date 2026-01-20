@@ -331,3 +331,135 @@ div:hover > .zoomable {
 .form-switch label {
     margin-left: 10px;
 }
+
+
+
+
+
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background: #ccc;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -1px;
+}
+.timeline-item {
+  position: relative;
+  width: 50%;
+  box-sizing: border-box;
+}
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: #E0BA4F; /* yellow */
+  border-radius: 50%;
+  top: 20px;
+  z-index: 1;
+}
+.timeline-item:nth-child(odd) {
+  padding-right: 40px;
+  left: 0;
+}
+.timeline-item:nth-child(even) {
+  padding-left: 40px;
+  left: 50%;
+}
+.timeline-item:nth-child(even)::after {
+  left: -8px;
+  background: #D17638; /* orange */
+}
+.timeline-item:nth-child(odd)::after {
+  right: -8px;
+}
+.timeline-date {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.timeline-content {
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+@media (max-width: 768px) {
+  .timeline-item {
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 0;
+  }
+  .timeline-item:nth-child(even) {
+    padding-left: 30px;
+    left: 0%;
+  }
+  .timeline-item:nth-child(odd) {
+    padding-right: 0px;
+    padding-left: 30px;
+    left: 0%;
+  }
+  .timeline-item::after {
+    left: 0px;
+  }
+  .timeline::before {
+    left: 8px;
+  }
+  .timeline-item:nth-child(even)::after {
+    left: 0px;
+  }
+  .timeline-item:nth-child(odd)::after {
+    right: 0px;
+  }
+}
+ul.timeline-content {
+  list-style: none; /* Remove default bullets */
+  margin-left: 0px;
+}
+.timeline-content li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.3em;
+}
+.timeline-content li::before {
+  content: "↑ ";
+  width: 0.7em;
+  display: inline-block;
+  margin-right: 0.3em;
+}
+.timeline-content li.up::before {
+  content: "↑";
+}
+.timeline-content li.down::before {
+  content: "↓";
+}
+.timeline-content li.neutral::before {
+  content: "–";
+}
+.timeline-content li.unknown::before {
+  content: "?";
+}
+
+a.read-more {
+  background-color: #7E74AC;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1em;
+  margin: 5px 0px;
+  display: inline-block;
+  text-decoration: none;
+}
+a.read-more:hover {
+  background-color: #60568e;
+}
