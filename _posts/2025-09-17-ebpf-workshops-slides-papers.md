@@ -1,11 +1,13 @@
 ---
 layout: post
-title: "eBPF Workshops"
+title: "eBPF Workshops: Slides & Papers"
 date: 2025-09-17 10:26:10 +0200
-last_modified_at: 2026-01-14 12:31:00 +0200
+last_modified_at: 2026-02-28 12:31:00 +0200
 categories: ebpf
 description: This post presents the material (papers and presentation slides) from the three editions of the eBPF workshop at ACM SIGCOMM, from 2023 to 2025.
 published: true
+redirect_from:
+  - /ebpf/2025/09/17/third-ebpf-workshop.html
 ---
 
 <script>
@@ -23,6 +25,7 @@ The SIGCOMM website has [links to the papers](https://conferences.sigcomm.org/si
 
 <!-- {% raw %} -->
 <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h3"><a href="#ebpf26-fourth-edition">eBPF'26: Fourth Edition</a></li>
 <li class="toc-entry toc-h3"><a href="#ebpf25-third-edition">eBPF'25: Third Edition</a></li>
 <li class="toc-entry toc-h3"><a href="#ebpf24-second-edition">eBPF'24: Second Edition</a></li>
 <li class="toc-entry toc-h3"><a href="#ebpf23-first-edition">eBPF'23: First Edition</a></li>
@@ -30,6 +33,16 @@ The SIGCOMM website has [links to the papers](https://conferences.sigcomm.org/si
 <!-- {% endraw %}) -->
 
 <br/>
+
+
+### eBPF'26: Fourth Edition
+
+The call for papers for the fourth eBPF workshop has opened: [ebpf.github.io/2026/cfp.html](https://ebpf.github.io/2026/cfp.html).
+This year, the workshop will be hosted by [the ACM SOSP 2026 conference](https://sigops.org/s/conferences/sosp/2026/).
+The workshop will take place on the 29th of September in Prague.
+
+<br/> 
+
 
 ### eBPF'25: Third Edition
 
