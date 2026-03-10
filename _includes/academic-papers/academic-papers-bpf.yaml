@@ -1,10 +1,66 @@
+- title: 'KRAKENGUARD: Towards Fine-Grained eBPF Isolation'
+  authors: 'J. Patel, L. G. Buhl-Nielsen, A. Ghosn, M. Kogias'
+  conference: NSDI'26
+  type: improving
+  areas: verifier
+  description: 'N/A'
+  url: https://www.usenix.org/conference/nsdi26/presentation/patel
+- title: 'BPF-DB: A Kernel-Embedded Transactional Database Management System For eBPF Applications'
+  authors: 'M. Butrovich, S. Arch, W. S. Lim, W. Zhang, J. M. Patel, A. Pavlo'
+  conference: SIGMOD'25
+  type: improving
+  areas: misc storage
+  description: Introduces an in-kernel database management system (DBMS) in eBPF, with ACID properties.
+  url: https://dl.acm.org/doi/pdf/10.1145/3725272
+- title: 'Approximation Enforced Execution of Untrusted Linux Kernel Extensions'
+  authors: 'H. Sun, Z. Su'
+  conference: Sec'25
+  type: improving
+  areas: verifier
+  description: Relies on state approximations from the Linux verifier to enforce runtime checks on BPF programs.
+  url: https://www.usenix.org/system/files/usenixsecurity25-sun-hao.pdf
+- title: 'Deprivileging Low-Level GPU Drivers Efficiently with User-Space Processes and CHERI Compartments'
+  authors: 'P. Metzger, A. T. Markettos, E. T. Napierała, M. Naylor, R. N. M. Watson, T. M. Jones'
+  conference: CCS'25
+  type: using
+  areas: security misc
+  description: Implements in-kernel interrupt handlers on a uBPF VM, for userspace GPU drivers.
+  url: https://dl.acm.org/doi/pdf/10.1145/3719027.3765036
+- title: 'Rethinking Tamper-Evident Logging: A High-Performance, Co-Designed Auditing System'
+  authors: 'R. Zhao, M. Shoaib, V. T. Hoang, W. U. Hassan'
+  conference: CCS'25
+  type: using
+  areas: security
+  description: Designs a tamper-evident auditing system all in eBPF, including the authentication code computation
+  url: https://dl.acm.org/doi/pdf/10.1145/3719027.3765024
+- title: 'Intent-aware Fuzzing for Android Hardened Application'
+  authors: 'S Jeong, M. Choi, H. Cho, S. Choi, H. Kim, Y. Jeon'
+  conference: CCS'25
+  type: using
+  areas: security tracing misc
+  description: While fuzzing Android applications, relies on eBPF to trigger scheduled application behaviors and collect coverage.
+  url: https://dl.acm.org/doi/pdf/10.1145/3719027.3744858
+- title: 'Aeolia: A Fast and Secure Userspace Interrupt-Based Storage Stack'
+  authors: 'C. Li, R. Yi, Z. Zhang, J. Liu, C. Min, J. Zhang, Y. Luo, X. Wang, Z. Wang, D. Zhou'
+  conference: SOSP'25
+  type: using
+  areas: storage misc
+  description: Leverages sched_ext to bridge the scheduling semantic gap between userspace and the kernel when using user interrupts.
+  url: https://dl.acm.org/doi/pdf/10.1145/3731569.3764816
+- title: 'Prove It to the Kernel: Precise Extension Analysis via Proof-Guided Abstraction Refinement'
+  authors: 'H. Sun, Z. Su'
+  conference: SOSP'25
+  type: improving
+  areas: verifier
+  description: Improves the Linux verifier's precision by refining the abstract state in userspace when needed, and producing a formal proof for it.
+  url: https://dl.acm.org/doi/pdf/10.1145/3731569.3764796
 - title: 'SoK: Challenges and Paths Toward Memory Safety for eBPF'
   authors: K. Huang, J. Sampson, M. Payer, G. Tan, Z. Qian, T. Jaeger
   conference: S&P'25
   type: analysis
   areas: security verifier
   description: Surveys and evaluates existing work on eBPF memory safety.
-  url: https://www.nebelwelt.net/files/25Oakland.pdf
+  url: https://nebelwelt.net/files/25Oakland.pdf
 - title: 'SwiftSweeper: Defeating Use-After-Free Bugs Using Memory Sweeper Without Stop-the-World'
   authors: J. Ahn, K. Lee, C. Park, H. Moon, Y. Kwon
   conference: S&P'25
@@ -124,6 +180,14 @@
     and memory copies to mitigate transient execution attacks.
   url: https://cs.brown.edu/~vpk/papers/beebox.sec24.pdf
   talk: https://www.youtube.com/watch?v=rZ47dOX2snI
+- title: 'eAudit: A Fast, Scalable and Deployable Audit Data Collection System'
+  authors: 'R. Sekar, H. Kimm, R. Aich'
+  conference: S&P'24
+  type: using
+  areas: security
+  description: Implements a faster auditing system using eBPF at tracepoints.
+  url: https://www.seclab.cs.sunysb.edu/seclab/pubs/eaudit.pdf
+  talk: https://www.youtube.com/watch?v=nxBhIxIRI9w
 - title: 'Toss a Fault to BpfChecker: Revealing Implementation Flaws for eBPF runtimes with Differential Fuzzing'
   authors: C. Peng, M. Jiang, L. Wu, Y. Zhou
   conference: CCS'24
@@ -132,7 +196,7 @@
   description: Designs a fuzzer for userspace eBPF runtimes, including Windows's, using
     differential fuzzing, verifier logs, and an intermediate representation of the eBPF
     bytecode.
-  url: http://malgenomeproject\.org/papers/CCS2024_BpfChecker\.pdf
+  url: https://dl.acm.org/doi/pdf/10.1145/3658644.3690237
 - title: 'NetEdit: An Orchestration Platform for eBPF Network Functions at Scale'
   authors: T. A. Benson, P. Kannan, P. Gupta, B. Madhavan, K. S. Arora, J. Meng, M. Lau,
     A. Dhamija, R. Krishnamurthy, S. Sundaresan, N. Spring, Y. Zhang
@@ -170,7 +234,7 @@
   url: https://dl.acm.org/doi/pdf/10.1145/3658644.3670397
 - title: 'SeaK: Rethinking the Design of a Secure Allocator for OS Kernel'
   authors: Z. Wang, Y. Guang, Y. Chen, Z. Lin, M. Le, D. K Le, D. Williams, X. Xing,
-    Z. Gu, H. Jamjooml
+    Z. Gu, H. Jamjoom
   conference: Sec'24
   type: using
   areas: security misc
@@ -385,6 +449,13 @@
     by abusing the cBPF infrastructure.
   url: https://www.usenix.org/system/files/atc23-jin.pdf
   talk: https://www.youtube.com/watch?v=pkR5kJkFGkc
+- title: 'Tastes Great! Less Filling! High Performance and Accurate Training Data Collection for Self-Driving Database Management Systems'
+  authors: 'M. Butrovich, W. S. Lim, L. Ma, J. Rollinson, W. Zhang, Y. Xia, A. Pavlo'
+  conference: SIGMOD'22
+  type: using
+  areas: tracing misc
+  description: Implements a BPF-based data collection framework for database management systems (DBMSes).
+  url: https://dl.acm.org/doi/pdf/10.1145/3514221.3517845
 - title: Domain Specific Run Time Optimization for Software Data Planes
   authors: S. Miano, A. Sanaee, F. Risso, G. Rétvári, G. Antichi
   conference: ASPLOS'22
@@ -392,7 +463,7 @@
   areas: networking
   description: Optimizes datapath binaries, including eBPF bytecodes, based on traffic
     patterns.
-  url: https://qmro.qmul.ac.uk/xmlui/bitstream/handle/123456789/77279/Antichi%20Domain%20specific%20run%202022%20Accepted.pdf
+  url: https://sebymiano.github.io/publication/2022-morpheus/2022-morpheus_abstract.pdf
   talk: https://www.youtube.com/watch?v=PDUVUv39CUQ
 - title: End-to-end Mechanized Proof of an eBPF Virtual Machine for Micro-controllers
   authors: S. Yuan, F. Besson, J.-P. Talpin, S. Hym, K. Zandberg, E. Baccelli

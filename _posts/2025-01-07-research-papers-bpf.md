@@ -2,7 +2,7 @@
 layout: post
 title: "eBPF Research Papers"
 date: 2025-01-07 10:22:10 +0200
-last_modified_at: 2025-10-09 12:31:00 +0200
+last_modified_at: 2026-03-10 12:31:00 +0200
 categories: bpf
 description: Interactive list of eBPF research papers from top conferences according to CSRankings. The list can be filtered according to types of publications (ex., improving, using) and areas (ex., networking, verifier, offload, security).
 image: /assets/illustration-list-papers.png
@@ -16,8 +16,8 @@ They have become more frequent though, so I wanted to draw up a list with one-se
 I expect this list to only grow with time.
 If I want to keep things manageable, I need a way to select papers.
 Except I'd rather not be the one having to decide which papers are the "best papers"[^cant-escape-choice].
-So I opted to follow the selection from CSRankings: I will only list papers from [conference listed by CSRankins by default](https://csrankings.org/).
-CSRankins tends to put the bar fairly high, but I think there is at least consensus on the top conferences they selected.
+So I opted to follow the selection from CSRankings: I will only list papers from [conference listed by CSRankings by default](https://csrankings.org/).
+CSRankings tends to put the bar fairly high, but I think there is at least consensus on the top conferences they selected.
 
 I've sorted papers according to their *type* of contribution and the field or *area* they focus on.
 For example, papers improving either the JIT compilers or verifier of eBPF will have `improving`, `jit`, and `verifier`
