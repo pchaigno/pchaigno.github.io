@@ -3,7 +3,7 @@
   description: Papers on the existing, upstream design of eBPF.
 - kind: type
   name: using
-  description: Papers using eBPF as a key part of solving the research problem they focus on.
+  description: Papers using eBPF as a key part of solving the research problem they focus on. Includes cases where the performance wouldn't be viable without BPF.
 - kind: type
   name: analysis
   description: Papers analyzing eBPF.

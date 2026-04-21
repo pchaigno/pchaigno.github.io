@@ -1,10 +1,31 @@
+- title: 'Xkernel: Rethinking Performance Tunability of Operating System Kernels'
+  authors: 'Z. Chen, W. Zhang, Y. Tang, R. Shu, F. Ren, T. Xu, J. Liu'
+  conference: OSDI'26
+  type: using
+  areas: misc
+  description: Leverages eBPF kprobes to tune arbitrary performance constants in the kernel at runtime.
+  url: https://arxiv.org/pdf/2512.12530
+- title: 'Remote TCP Connection Offload and Applications'
+  authors: 'S. Li, S. W. D. Chien, T. Gao, M. Honda'
+  conference: NSDI'26
+  type: using
+  areas: networking
+  description: Relies on tc-bpf to implement flow steering while the tc-flower hardware offload is configured.
+  url: https://micchie.net/files/xo-nsdi26.pdf
 - title: 'KRAKENGUARD: Towards Fine-Grained eBPF Isolation'
   authors: 'J. Patel, L. G. Buhl-Nielsen, A. Ghosn, M. Kogias'
   conference: NSDI'26
   type: improving
-  areas: verifier
-  description: 'N/A'
+  areas: security
+  description: Implements a userspace policy enforcement engine for BPF programs that handles cross-program interactions.
   url: https://www.usenix.org/conference/nsdi26/presentation/patel
+- title: 'Tux: Efficient Drop-in Networking for Database Systems'
+  authors: 'X. Zhou, V. Leis, X. Yu, M. Stonebraker'
+  conference: VLDB'25
+  type: using
+  areas: networking misc
+  description: Leverages AF_XDP to build a high-performance networking stack for database systems.
+  url: https://www.vldb.org/pvldb/vol19/p334-zhou.pdf
 - title: 'BPF-DB: A Kernel-Embedded Transactional Database Management System For eBPF Applications'
   authors: 'M. Butrovich, S. Arch, W. S. Lim, W. Zhang, J. M. Patel, A. Pavlo'
   conference: SIGMOD'25
@@ -90,6 +111,20 @@
   description: Extends the kernel with new BPF hooks, kfuncs, and per-cgroup struct_ops
     to be able to customize the page cache policies.
   url: https://arxiv.org/pdf/2502.02750
+- title: 'Revealing the Unstable Foundations of eBPF-Based Kernel Extensions'
+  authors: 'S. Zhong, J. Liu, A. Arpaci-Dusseau, R. Arpaci-Dusseau'
+  conference: EuroSys'25
+  type: analysis
+  areas: misc
+  description: ''
+  url: https://depsurf.github.io/assets/paper.pdf
+- title: 'RAKIS: Secure Fast I/O Primitives Across Trust Boundaries on Intel SGX'
+  authors: 'M. Alharthi, F. Sang, D. Kuvaiskii, M. Vij, T. Kim'
+  conference: EuroSys'25
+  type: using
+  areas: networking misc
+  description: ''
+  url: https://taesoo.kim/pubs/2025/alharthi:rakis.pdf
 - title: 'Hermes: Enhancing Layer-7 Cloud Load Balancers with Userspace-Directed I/O Event Notification'
   authors: T. Pan, E. Song, Y. Zuo, S. Zhang, Y. Song, J. Zhao, W. Hou, J. Lu, X. Sun, S. Zhang,
     Y. Yang, J. Zhang, T. Huang, B. Lyu, X. Li, R. Wen, Z. Zong, S. Zhu
@@ -162,6 +197,14 @@
     multiple cores using XDP.
   url: https://www.usenix.org/system/files/nsdi25-xu-qiongwen.pdf
   talk: https://www.youtube.com/watch?v=FgSEmeqM0s8
+- title: 'P4Control: Line-Rate Cross-Host Attack Prevention via In-Network Information Flow Control Enabled by Programmable Switches and eBPF'
+  authors: 'O. Bajaber, B. Ji, P. Gao'
+  conference: S&P'24
+  type: using
+  areas: networking security
+  description: Designs a network defense system that tracks lateral movement across hosts and processes using P4 and eBPF hooks.
+  url: https://people.cs.vt.edu/penggao/papers/p4control-sp24.pdf
+  talk: https://www.youtube.com/watch?v=5Q4pIojkLy4
 - title: 'BUDAlloc: Defeating Use-After-Free Bugs by Decoupling Virtual Address Management from Kernel'
   authors: J. Ahn, J. Lee, K. Lee, W. Gwak, M. Hwang, Y. Kwon
   conference: Sec'24
@@ -296,7 +339,7 @@
   talk: https://www.youtube.com/watch?v=8jhFEv_wK0A
 - title: End-to-End Mechanized Proof of a JIT-Accelerated eBPF Virtual Machine for
     IoT
-  authors: S. Yuan, F. Besson, and J.-P. Talpin
+  authors: S. Yuan, F. Besson, J.-P. Talpin
   conference: CAV'24
   type: improving
   areas: jit
@@ -540,7 +583,7 @@
   description: Formally proves and improves the Linux verifier operations on tristate
     numbers for the range analysis.
 - title: Synthesizing Safe and Efficient Kernel Extensions for Packet Processing
-  authors: Qiongwen Xu, M. D. Wong, T. Wagle, S. Narayana, A. Sivaraman
+  authors: Q. Xu, M. D. Wong, T. Wagle, S. Narayana, A. Sivaraman
   conference: SIGCOMM'21
   type: using
   areas: networking
