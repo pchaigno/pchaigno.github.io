@@ -5,6 +5,8 @@ permalink: /talks/
 description: Paul Chaignon's blog focuses essentially on the eBPF technology and its verifiers. Articles may include benchmarks of eBPF aspects, studies of the eBPF verifiers, summaries of academic papers related to eBPF, or comments on eBPF news.
 ---
 
+**🇫🇷 [BreizhCamp 2026](https://breizhcamp.org/) -- Sécuriser son réseau Kubernetes avec Cilium**
+
 **🇬🇧 [Linux Plumbers 2025](https://lpc.events/event/19/sessions/235/) -- Making Sense of State Pruning**
 
 **🇬🇧 [Linux Plumbers 2025](https://lpc.events/event/19/sessions/235/) -- Fuzzing the Verifier with a Test Oracle**
@@ -17,7 +19,7 @@ description: Paul Chaignon's blog focuses essentially on the eBPF technology and
 
 **🇬🇧 [Dagstuhl 24291](https://www.dagstuhl.de/24291) -- Networking with eBPF**
 
-**🇫🇷 [BreizhCamp 2024](https://breizhcamp.org/) -- [Linguist : Détecter les langages de 400+ millions de dépôts Git](/assets/BreizhCamp%202024%20Linguist.pdf)**
+**🇫🇷 [BreizhCamp 2024](https://2024.breizhcamp.org/) -- [Linguist : Détecter les langages de 400+ millions de dépôts Git](/assets/BreizhCamp%202024%20Linguist.pdf)**
 
 **🇫🇷 [FRnOG 39.0](https://www.frnog.org/?page=meetings&lang=en) -- [Cilium : Le meilleur de Linux pour vos réseaux Kubernetes](/assets/FRnOG%2039.0%20Cilium.pdf)**
 
