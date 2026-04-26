@@ -12,6 +12,13 @@
   areas: misc
   description: Makes BPF programs schedulable and preemptable using sched_ext and cooperative preemption at helper calls.
   url: https://www.usenix.org/conference/osdi26/presentation/carin
+- title: 'BeeQoS: A Cloud-Native QoS System for Adaptive and Scalable Multi-Priority Bandwidth Guarantees'
+  authors: J. Liu, S. Wu, H. Ma, C. Li, H. Yu, D. Jia, F. Li, P. Hu
+  conference: WWW'26
+  type: using
+  areas: networking
+  description: Implements a QoS system with multi-priority bandwidth guarantees using eBPF for traffic shaping and flow sampling.
+  url: https://dl.acm.org/doi/pdf/10.1145/3774904.3792487
 - title: 'Xkernel: Rethinking Performance Tunability of Operating System Kernels'
   authors: 'Z. Chen, W. Zhang, Y. Tang, R. Shu, F. Ren, T. Xu, J. Liu'
   conference: OSDI'26
