@@ -1,3 +1,17 @@
+- title: 'Virtualizing eBPF with Late-Binding'
+  authors: 'J. Zhang, X. Song, D. Du, Y. Xia, B. Zang, H. Chen'
+  conference: OSDI'26
+  type: using
+  areas: misc
+  description: 'N/A'
+  url: https://www.usenix.org/conference/osdi26/presentation/zhang-jing
+- title: 'PeeR: First-Class Scheduling for Latency Critical eBPF Applications'
+  authors: 'J. Carin, B. Holmes, W. Wang, A. Bhardwaj, M. Ghobadi'
+  conference: OSDI'26
+  type: improving
+  areas: misc
+  description: Makes BPF programs schedulable and preemptable using sched_ext and cooperative preemption at helper calls.
+  url: https://www.usenix.org/conference/osdi26/presentation/carin
 - title: 'Xkernel: Rethinking Performance Tunability of Operating System Kernels'
   authors: 'Z. Chen, W. Zhang, Y. Tang, R. Shu, F. Ren, T. Xu, J. Liu'
   conference: OSDI'26
