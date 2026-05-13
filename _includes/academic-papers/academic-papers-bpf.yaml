@@ -26,6 +26,13 @@
   areas: misc
   description: Leverages eBPF kprobes to tune arbitrary performance constants in the kernel at runtime.
   url: https://arxiv.org/pdf/2512.12530
+- title: 'HybridMesh: A Hardware-software Hybrid Approach for Accelerating Service Mesh Ingress'
+  authors: 'M. You, J. Nam, M. Seo, T. Park, S. Shin'
+  conference: NSDI'26
+  type: using
+  areas: networking
+  description: Relies on BPF to handle in-packet metadata and to help improve performance of their service mesh, by redirecting traffic with tc-bpf and sk_msg.
+  url: https://www.usenix.org/system/files/nsdi26-you.pdf
 - title: 'Remote TCP Connection Offload and Applications'
   authors: 'S. Li, S. W. D. Chien, T. Gao, M. Honda'
   conference: NSDI'26
@@ -39,7 +46,7 @@
   type: improving
   areas: security
   description: Implements a userspace policy enforcement engine for BPF programs that handles cross-program interactions.
-  url: https://www.usenix.org/conference/nsdi26/presentation/patel
+  url: https://www.usenix.org/system/files/nsdi26-patel.pdf
 - title: 'Tux: Efficient Drop-in Networking for Database Systems'
   authors: 'X. Zhou, V. Leis, X. Yu, M. Stonebraker'
   conference: VLDB'25
