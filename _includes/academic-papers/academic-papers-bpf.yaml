@@ -3,15 +3,15 @@
   conference: OSDI'26
   type: using
   areas: misc
-  description: 'N/A'
-  url: https://www.usenix.org/conference/osdi26/presentation/zhang-jing
+  description: Allows BPF hooks to be shared by multiple tenants by adding an indirection layer and dispatching to per-tenant programs.
+  url: https://www.usenix.org/system/files/osdi26-zhang-jing.pdf
 - title: 'PeeR: First-Class Scheduling for Latency Critical eBPF Applications'
   authors: 'J. Carin, B. Holmes, W. Wang, A. Bhardwaj, M. Ghobadi'
   conference: OSDI'26
   type: improving
   areas: misc
   description: Makes BPF programs schedulable and preemptable using sched_ext and cooperative preemption at helper calls.
-  url: https://www.usenix.org/conference/osdi26/presentation/carin
+  url: https://www.usenix.org/system/files/osdi26-carin.pdf
 - title: 'BeeQoS: A Cloud-Native QoS System for Adaptive and Scalable Multi-Priority Bandwidth Guarantees'
   authors: J. Liu, S. Wu, H. Ma, C. Li, H. Yu, D. Jia, F. Li, P. Hu
   conference: WWW'26
@@ -25,7 +25,7 @@
   type: using
   areas: misc
   description: Leverages eBPF kprobes to tune arbitrary performance constants in the kernel at runtime.
-  url: https://arxiv.org/pdf/2512.12530
+  url: https://www.usenix.org/system/files/osdi26-chen-zhongjie.pdf
 - title: 'HybridMesh: A Hardware-software Hybrid Approach for Accelerating Service Mesh Ingress'
   authors: 'M. You, J. Nam, M. Seo, T. Park, S. Shin'
   conference: NSDI'26

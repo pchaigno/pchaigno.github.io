@@ -2,7 +2,7 @@
 layout: post
 title: "eBPF Research Papers"
 date: 2025-01-07 10:22:10 +0200
-last_modified_at: 2026-05-13 12:31:00 +0200
+last_modified_at: 2026-07-17 12:31:00 +0200
 categories: bpf
 description: Interactive list of eBPF research papers from top conferences according to CSRankings. The list can be filtered according to types of publications (ex., improving, using) and areas (ex., networking, verifier, offload, security).
 image: /assets/illustration-list-papers.png
