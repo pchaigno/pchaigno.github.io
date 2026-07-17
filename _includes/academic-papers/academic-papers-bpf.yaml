@@ -1,3 +1,17 @@
+- title: 'Concurrency Fuzzing of the Linux Kernel with eBPF'
+  authors: J. Xu, D. Wolff, X. Yi Han, J. Li, A. Roychoudhury
+  conference: Sec'26
+  type: using
+  areas: misc
+  description: Designs a fuzzer to find concurrency bugs in Linux using sched_ext to serialize the execution of kernel threads.
+  url: https://arxiv.org/pdf/2504.21394
+- title: "Don't Stall Me Now: Hiding Memory Latency in eBPF"
+  authors: F. Shahinfar, M. Molè, A. Panda, G. Antichi
+  conference: SIGCOMM'26
+  type: improving
+  areas: networking
+  description: 'N/A'
+  url: https://conferences.sigcomm.org/sigcomm/2026/accepted/
 - title: 'Virtualizing eBPF with Late-Binding'
   authors: 'J. Zhang, X. Song, D. Du, Y. Xia, B. Zang, H. Chen'
   conference: OSDI'26
