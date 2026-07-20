@@ -10,8 +10,8 @@
   conference: SIGCOMM'26
   type: improving
   areas: networking
-  description: 'N/A'
-  url: https://conferences.sigcomm.org/sigcomm/2026/accepted/
+  description: Extends the eBPF runtime and APIs to allow for prefetching and batching in networking BPF programs.
+  url: https://fshahinfar1.github.io/papers/dont_stall_me_now_hiding_memory_latency_in_ebpf.pdf
 - title: 'Virtualizing eBPF with Late-Binding'
   authors: 'J. Zhang, X. Song, D. Du, Y. Xia, B. Zang, H. Chen'
   conference: OSDI'26
