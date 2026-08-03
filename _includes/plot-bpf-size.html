@@ -35,7 +35,9 @@ var percentVerifierLoC = {
 plotlyReady(function() {
     var data = [verifierLoC, bpfLoC, percentVerifierLoC];
     var layout = {
-        title: '<b>BPF Subsystem Size in Lines of Code</b><br><i>Including comments</i>',
+        title: {
+            text: '<b>BPF Subsystem Size in Lines of Code</b><br><i>Including comments</i>',
+        },
         legend: {x: 0, y: 1.1},
         margin: {t: 80, l: 50, r: 50, b: 40},
         xaxis: {
@@ -43,12 +45,16 @@ plotlyReady(function() {
             tickangle: -45,
         },
         yaxis: {
-            title: 'Lines of code',
+            title: {
+                text: 'Lines of code',
+            },
             tickformat: 's',
             range: [0, 80000]
         },
         yaxis2: {
-            title: '% of verifier in BPF subsystem',
+            title: {
+                text: '% of verifier in BPF subsystem',
+            },
             overlaying: 'y',
             side: 'right',
             tickformat: '%',

@@ -25,7 +25,9 @@ var verifierLoCWithoutComments = {
 plotlyReady(function() {
     var data = [verifierLoCWithComments, verifierLoCWithoutComments];
     var layout = {
-        title: '<b>BPF Verifier Size in Lines of Code</b>',
+        title: {
+            text: '<b>BPF Verifier Size in Lines of Code</b>',
+        },
         legend: {x: 0, y: 1.1},
         margin: {t: 80, l: 30, r: 0, b: 40},
         xaxis: {

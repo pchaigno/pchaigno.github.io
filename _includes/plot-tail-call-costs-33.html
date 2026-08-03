@@ -73,9 +73,8 @@ var tailCallCostRetpolinePerLength = [
 var tailCallCostRetpoline = {
   x: releases,
   y: tailCallCostRetpolinePerLength[33],
-  text: Array(34).fill('retpoline'),
   name: 'CONFIG_RETPOLINE=y',
-  hovertemplate: '%{y}<extra>%{text}</extra>',
+  hovertemplate: '%{y}<extra>retpoline</extra>',
   type: 'bar',
   marker: {
       color: 'rgb(248, 197, 23)',
@@ -121,9 +120,8 @@ var tailCallCostNoRetpolinePerLength = [
 var tailCallCostNoRetpoline = {
   x: releases,
   y: tailCallCostNoRetpolinePerLength[33],
-  text: Array(34).fill('no retpoline'),
   name: 'CONFIG_RETPOLINE=n',
-  hovertemplate: '%{y}<extra>%{text}</extra>',
+  hovertemplate: '%{y}<extra>no retpoline</extra>',
   type: 'bar',
   marker: {
       color: 'rgb(241, 115, 35)',
@@ -133,7 +131,9 @@ var tailCallCostNoRetpoline = {
 plotlyReady(function() {
  var data = [tailCallCostRetpoline, tailCallCostNoRetpoline];
   var layout = {
-    title: '<b>Cost (ns) of 33 Direct Tail Calls</b><br><i>Lower is faster</i>',
+    title: {
+      text: '<b>Cost (ns) of 33 Direct Tail Calls</b><br><i>Lower is faster</i>',
+    },
     legend: {x: 0.7, y: 0.95},
     margin: {t: 80, l: 30, r: 0, b: 40},
     barmode: 'group',
@@ -144,7 +144,9 @@ plotlyReady(function() {
   Plotly.newPlot('plot-tail-call-costs-33', data, layout);
   $('#tail-call-length').on('input', function() {
     var i = $(this).val();
-    layout.title = '<b>Cost (ns) of ' + i + ' Direct Tail Calls</b><br><i>Lower is faster</i>';
+    layout.title = {
+      text: '<b>Cost (ns) of ' + i + ' Direct Tail Calls</b><br><i>Lower is faster</i>',
+    };
     data[0].y = tailCallCostRetpolinePerLength[i];
     data[1].y = tailCallCostNoRetpolinePerLength[i];
     Plotly.newPlot('plot-tail-call-costs-33', data, layout);

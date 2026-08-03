@@ -101,18 +101,20 @@ for (var i = 0; i < cycloComplexs.length; i++) {
 }
 
 plotlyReady(function() {
-     var data = [averageCycloComplex, topCycloComplex];
-     var layout = {
-         title: '<b>Average Cyclomatic Complexity of the BPF Verifier</b>',
-         legend: {x: 0, y: 1.1},
-         margin: {t: 80, l: 50, r: 0, b: 40},
-         xaxis: {
-             nticks: 15,
-             tickangle: -45
-         },
-         yaxis: {range: [0, 100]},
-         height: 450,
-     };
+    var data = [averageCycloComplex, topCycloComplex];
+    var layout = {
+        title: {
+            text: '<b>Average Cyclomatic Complexity of the BPF Verifier</b>',
+        },
+        legend: {x: 0, y: 1.1},
+        margin: {t: 80, l: 50, r: 0, b: 40},
+        xaxis: {
+            nticks: 15,
+            tickangle: -45
+        },
+        yaxis: {range: [0, 100]},
+        height: 450,
+    };
     if (jQuery.browser && jQuery.browser.mobile) {
         layout.dragmode = false;
     }

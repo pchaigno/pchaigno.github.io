@@ -49,11 +49,15 @@ var tailCallCost510 = {
 plotlyReady(function() {
     var data = [tailCallCost419, tailCallCost54, tailCallCost55, tailCallCost510];
     var layout = {
-        title: '<b>Cost (ns) of Tail Call Chains of Varying Lengths</b><br><i>Lower is faster</i>',
+        title: {
+            text: '<b>Cost (ns) of Tail Call Chains of Varying Lengths</b><br><i>Lower is faster</i>',
+        },
         legend: {x: 0.1, y: 0.95},
         margin: {t: 80, l: 30, r: 0, b: 80},
         xaxis: {
-            title: 'Number of tail calls',
+            title: {
+                text: 'Number of tail calls',
+            },
             nticks: 15,
         },
         yaxis: {tickformat: 's'},

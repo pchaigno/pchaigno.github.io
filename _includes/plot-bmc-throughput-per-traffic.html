@@ -38,16 +38,22 @@ var memcachedSRPerTraffic = {
 plotlyReady(function() {
   var data = [memcachedSRAlonePerTraffic, BMCMemcachedSRPerTraffic];
   var layout = {
-    title: "<b>Throughput for Varying Request Size Distribution</b>",
+    title: {
+      text: "<b>Throughput for Varying Request Size Distribution</b>",
+    },
     legend: {x: 0.05, y: 1.05},
     margin: {t: 80, l: 50, r: 50, b: 80},
     barmode: 'group',
     yaxis: {
-      title: 'Throughput (Mreq/s)',
+      title: {
+        text: 'Throughput (Mreq/s)',
+      },
       tickformat: 's',
     },
     xaxis: {
-      title: 'Percentage of supported requests (value length < 1KB)',
+      title: {
+        text: 'Percentage of supported requests (value length < 1KB)',
+      },
     },
   };
   if (jQuery.browser && jQuery.browser.mobile) {

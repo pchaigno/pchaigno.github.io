@@ -48,12 +48,16 @@ var v4Complexity = {
 plotlyReady(function() {
     var data = [v1Complexity, v2Complexity, v3Complexity, v4Complexity];
     var layout = {
-        title: '<b>Complexity for Each Instruction Set Version</b>',
+        title: {
+            text: '<b>Complexity for Each Instruction Set Version</b>',
+        },
         barmode: 'group',
         legend: {x: 0.02, y: 0.95},
         margin: {t: 80, l: 50, r: 0, b: 80},
         xaxis: {
-            title: "Cilium's BPF programs",
+            title: {
+                text: "Cilium's BPF programs",
+            },
             showticklabels: false
         },
         yaxis: {

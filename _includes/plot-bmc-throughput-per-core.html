@@ -52,16 +52,22 @@ var memcachedSRPerCore = {
 plotlyReady(function() {
   var data = [vanillaMemcachedPerCore, memcachedSRAlonePerCore, BMCMemcachedSRPerCore, memcachedSRPerCore];
   var layout = {
-    title: "<b>Throughput Comparison Between BMC, Memcached, and MemcachedSR</b>",
+    title: {
+      text: "<b>Throughput Comparison Between BMC, Memcached, and MemcachedSR</b>",
+    },
     legend: {x: 0.05, y: 1.05},
     margin: {t: 80, l: 50, r: 50, b: 80},
     barmode: 'group',
     yaxis: {
-      title: 'Throughput (Mreq/s)',
+      title: {
+        text: 'Throughput (Mreq/s)',
+      },
       tickformat: 's',
     },
     xaxis: {
-      title: 'Number of cores',
+      title: {
+        text: 'Number of cores',
+      }
     },
   };
   if (jQuery.browser && jQuery.browser.mobile) {

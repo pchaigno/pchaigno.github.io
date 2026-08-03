@@ -46,7 +46,9 @@ var asmInstructions = {
 plotlyReady(function() {
   var data = [bytecodeInstructions, asmInstructions, complexity];
   var layout = {
-    title: "<b>Size and Complexity of BMC's eBPF Programs</b>",
+    title: {
+      text: "<b>Size and Complexity of BMC's eBPF Programs</b>",
+    }
     legend: {x: 0.02, y: 1.05},
     margin: {t: 80, l: 50, r: 50, b: 60},
     barmode: 'group',
@@ -54,12 +56,16 @@ plotlyReady(function() {
       tickangle: -25,
     },
     yaxis: {
-      title: 'Instructions',
+      title: {
+        text: 'Instructions',
+      }
       tickformat: 's',
       range: [0, 400]
     },
     yaxis2: {
-      title: 'Complexity (analyzed instructions)',
+      title: {
+        text: 'Complexity (analyzed instructions)',
+      }
       // type: 'log',
       overlaying: 'y',
       side: 'right',

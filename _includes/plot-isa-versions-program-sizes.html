@@ -46,12 +46,16 @@ var v4ProgramSizes = {
 plotlyReady(function() {
     var data = [v1ProgramSizes, v2ProgramSizes, v3ProgramSizes, v4ProgramSizes];
     var layout = {
-        title: '<b>Program Sizes for Each Instruction Set Version</b>',
+        title: {
+            text: '<b>Program Sizes for Each Instruction Set Version</b>',
+        },
         barmode: 'group',
         legend: {x: 0.02, y: 0.95},
         margin: {t: 80, l: 30, r: 0, b: 80},
         xaxis: {
-            title: "Cilium's BPF programs",
+            title: {
+                text: "Cilium's BPF programs",
+            },
             showticklabels: false
         },
         yaxis: {tickformat: 's'},
