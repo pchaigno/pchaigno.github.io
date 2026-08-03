@@ -1,0 +1,44 @@
+<div id="plot-isa-versions-program-sizes"></div>
+<script>
+var areas = ['LLM Inference', 'Storage & Databases', 'Decoupled memory & CXL', 'Verification', 'Testing & Debugging', 'Managing GPUs', 'Reliability & Performance', 'Cloud & Virtualization', 'Security & Privacy', 'Operating Systems', 'Hardware', 'LLM Training'];
+var v1ProgramSizes = {
+    x: areas,
+    y: [9, 9, 6, 6, 6, 5, 5, 4, 4, 3, 3, 2],
+    type: 'bar',
+    mode: 'markers',
+    marker: {
+        color: 'rgb(248, 197, 23)',
+        width: 5,
+        line: {
+            color: 'black',
+            width: 1
+        }
+    }
+};
+
+plotlyReady(function() {
+    var data = [v1ProgramSizes];
+    var layout = {
+        title: {
+            text: '<b>SOSP\'26 Papers by Research Areas</b>',
+            y: 0.93,
+        },
+        margin: {t: 25, l: 40, r: 40, b: 90},
+        xaxis: {
+            showticklabels: true
+        },
+        yaxis: {
+            title: {
+                text: 'Number of papers',
+            },
+        },
+        height: 450,
+        bargap: 0.3,
+        barcornerradius: 5,
+    };
+    if (jQuery.browser && jQuery.browser.mobile) {
+        layout.dragmode = false;
+    }
+    Plotly.newPlot('plot-isa-versions-program-sizes', data, layout);
+});
+</script>
