@@ -332,6 +332,11 @@ div:hover > .zoomable {
     margin-left: 10px;
 }
 
+.form-switch-title {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
 
 
 

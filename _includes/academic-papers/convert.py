@@ -2,6 +2,12 @@
 import yaml
 from jinja2 import Environment, FileSystemLoader
 
+def non_default_conference(conf):
+	for c in ["ATC'", "EuroSys'", "OOPSLA'", "ASE'", "ISSTA'", "ICDE'"]:
+		if c in conf:
+			return True
+	return False
+
 with open('academic-papers-bpf.yaml', 'r') as yaml_file:
 	data = yaml.safe_load(yaml_file)
 env = Environment(loader = FileSystemLoader('.'))
@@ -15,6 +21,7 @@ for index, entry in enumerate(data):
 	entry['area_labels'] = entry['areas']
 	entry['areas'] = entry['areas'].split(' ')
 	entry['nb_areas'] = len(entry['areas'])
+	entry['non_default'] = "non-default" if non_default_conference(entry['conference']) else ""
 	papers.append(entry)
 
 with open('paper-labels.yaml', 'r') as yaml_file:

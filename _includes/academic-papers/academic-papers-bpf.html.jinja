@@ -26,8 +26,11 @@ function toggleDisplay(selector) {
 	var filterClass = $(selector).data('filter');
 	var checked = $(selector).prop('checked');
 	$('.' + filterClass).each(function() {
-		if (typeof $(this).data('refcnt') === 'undefined') {
-			// Type selector
+		if (filterClass == "non-default") {
+			// Selector for non-default conferences
+			$(this).toggle(!checked);
+		} else if (typeof $(this).data('refcnt') === 'undefined') {
+			// Type selectors
 			$(this).toggle(checked);
 		} else {
 			// Areas selector
@@ -108,7 +111,7 @@ jqueryReady(function() {
 })
 </script>
 
-<b>Type selector</b>
+<p class="form-switch-title">Type selector</p>
 <div class="form-switch">
 	<input type="checkbox" checked id="all-types-switch" class="filter-button">
 	<label class="slider" for="all-types-switch"></label>
@@ -124,7 +127,7 @@ jqueryReady(function() {
 {% endif -%}
 {% endfor %}
 
-<b>Areas selector</b>
+<p class="form-switch-title">Areas selector</p>
 <div class="form-switch">
 	<input type="checkbox" checked id="all-areas-switch" class="filter-button">
 	<label class="slider" for="all-areas-switch"></label>
@@ -139,13 +142,21 @@ jqueryReady(function() {
 </div>
 {% endif -%}
 {% endfor %}
+
+<p class="form-switch-title">Hide non-default conferences from CSRankings</p>
+<div class="form-switch">
+	<input type="checkbox" checked id="conferences-switch" class="filter-button" data-filter="non-default">
+	<label class="slider" for="conferences-switch"></label>
+	<label for="conferences-switch" title="Hide non-default conferences">EuroSys, ATC, OOPSLA, ASE, ISSTA, ICDE</label>
+</div>
 <br>
 
-<b>Selected <span id="nb-papers">{{ papers | length }}</span> papers.</b>
+<b>Selected <span id="nb-papers">{{ papers | rejectattr("non_default") | list | length }}</span> papers.</b>
 <br><br>
 
 <div class="papers">
 {% for paper in papers %}
+{% if paper.non_default %}<div class="non-default" style="display:none;">{% endif %}
 <div class="{{ paper.type }}">
 {% if paper.areas %}<div class="{{ paper.area_labels }}" data-refcnt="{{ paper.nb_areas }}">{% endif %}
 <div id="{{ paper.id }}">
@@ -162,5 +173,6 @@ jqueryReady(function() {
 </div>
 {% if paper.areas %}</div>{% endif %}
 </div>
+{% if paper.non_default %}</div>{% endif %}
 {% endfor %}
 </div>
