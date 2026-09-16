@@ -48,7 +48,7 @@ plotlyReady(function() {
   var layout = {
     title: {
       text: "<b>Size and Complexity of BMC's eBPF Programs</b>",
-    }
+    },
     legend: {x: 0.02, y: 1.05},
     margin: {t: 80, l: 50, r: 50, b: 60},
     barmode: 'group',
@@ -58,14 +58,14 @@ plotlyReady(function() {
     yaxis: {
       title: {
         text: 'Instructions',
-      }
+      },
       tickformat: 's',
       range: [0, 400]
     },
     yaxis2: {
       title: {
         text: 'Complexity (analyzed instructions)',
-      }
+      },
       // type: 'log',
       overlaying: 'y',
       side: 'right',
