@@ -63,7 +63,7 @@ We first explain how we skip the backlog queue on path (1), from the physical de
 The logic that is executed for the upper networking stack when ingressing into the physical device or into the container's veth device is the same.
 In the former case, it runs in the host network namespace; in the latter case, in the container's network namespace.
 We can therefore skip the backlog queue on path (1) by switching the packet's current network namespace to that of the container and recirculating the packet through the upper stack logic.
-We implement this redirect through the namespace boundary with a new BPF helper, ``bpf_redirect_peer``, [upstreamed in Linux v5.10](https://git.kernel.org/pub/scm/linux/kernel/git/bpf/bpf-next.git/commit/?id=9aa1206e8f48).
+We implement this redirect through the namespace boundary with a new BPF helper, ``bpf_redirect_peer``, [contributed to Linux v5.10 by Daniel](https://git.kernel.org/pub/scm/linux/kernel/git/bpf/bpf-next.git/commit/?id=9aa1206e8f48).
 
 Bypassing the backlog queues when leaving the containers, as shown on paths (2) and (3), is a little trickier.
 The backlog queue traversal happens very early on the host-side of the veth pair.
@@ -75,7 +75,7 @@ That however has several downsides:
 
 These challenges motivated the creation of a new type of Linux device pair, netkit devices, to replace the usual veth devices.
 netkit devices can have multiple BPF programs attached without needing to setup tc qdics and filters.
-This new device type has been [upstreamed in Linux v6.7](https://git.kernel.org/pub/scm/linux/kernel/git/bpf/bpf-next.git/commit/?id=35dfaad7188c).
+Daniel upstreamed this new device type [in Linux v6.7](https://git.kernel.org/pub/scm/linux/kernel/git/bpf/bpf-next.git/commit/?id=35dfaad7188c).
 
 Unlike veth devices, the two devices in a netkit pair are not interchangeable: one is the peer device, the other the primary device.
 The peer device is meant for the container's network namespace and its BPF program can only be managed through the primary device.
