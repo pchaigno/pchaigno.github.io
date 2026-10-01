@@ -7,7 +7,7 @@ description: THis page lists talks given by Paul Chaignon since 2019 at FOSDEM, 
 
 **🇬🇧 [Linux Plumbers 2026](https://lpc.events/event/20/contributions/2427/) -- eBPF Research: What's Going On In Academia?**
 
-**🇬🇧 [eBPF'26](https://ebpf.github.io/2026/papers.html) -- Netkit: Specializing Linux Packet Delivery for Container Networks**
+**🇬🇧 [eBPF'26](https://ebpf.github.io/2026/papers.html) -- [netkit: Specializing Linux Packet Delivery for Container Networks](/assets/eBPF%202026%20netkit.pdf)**
 
 **🇫🇷 [BreizhCamp 2026](https://breizhcamp.org/) -- Sécuriser son réseau Kubernetes avec Cilium**
 
