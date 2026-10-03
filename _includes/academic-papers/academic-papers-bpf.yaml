@@ -1,3 +1,31 @@
+- title: "It's the Kernel's Fault! Custom Page Fault Handling With bpf_fault"
+  authors: T. Zussman, R. Dey, H. Zengin, Y. Fang, D. Hildenbrand, A. Cidon
+  conference: SOSP'26
+  type: using
+  areas: misc
+  description: Extends the Linux kernel to allow users to run custom eBPF-based page fault handlers. 
+  url: https://dl.acm.org/doi/pdf/10.1145/3830418.3843896
+- title: 'Tamias: Feedback-Guided Systematic Concurrency Exploration for Transparent Distributed System Fuzzing'
+  authors: C. Liu, Y. Song, P. Fonseca, Y. Zhang
+  conference: SOSP'26
+  type: using
+  areas: misc security
+  description: Systematically explores the concurrency space during fuzzing using sched_ext to control the order of execution of threads.
+  url: https://dl.acm.org/doi/pdf/10.1145/3830418.3843891
+- title: 'Waiting at the front door: Continuous monitoring of latency in the host network stack'
+  authors: S. Sundberg, A. Brunstrom, S. Ferlin-Reiter, J. Dangaard Brouer, T. Høiland-Jørgensen
+  conference: IMC'26
+  type: using
+  areas: networking
+  description: Implements a tool to measure the host latency of every packet on the system with very low overhead using the fentry and fexit BPF attach points.
+  url: https://dl.acm.org/doi/pdf/10.1145/3777912.3809152
+- title: 'Efficient Build Dependency Verification Using eBPF and Incremental Analysis'
+  authors: Y. Saito, K. Sakamoto, H. Washizaki
+  conference: ICSE'26
+  type: using
+  areas: security
+  description: Uses BPF-based system call tracing to identify dependencies in build systems.
+  url: https://dl.acm.org/doi/pdf/10.1145/3744916.3773204
 - title: 'eMicro: Real-Time Multi-Hop Access Control for Microservices with eBPF'
   authors: R. R. Putra, O. Bajaber, S. A. Tsegai, T. Taylor, F. Araujo, Y. Ji, P. Gao
   conference: CCS'26
