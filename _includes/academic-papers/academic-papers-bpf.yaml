@@ -1,68 +1,68 @@
 - title: "It's the Kernel's Fault! Custom Page Fault Handling With bpf_fault"
-  authors: T. Zussman, R. Dey, H. Zengin, Y. Fang, D. Hildenbrand, A. Cidon
+  authors: Tal Zussman, Riju Dey, Hasan Zengin, Yiming Fang, David Hildenbrand, Asaf Cidon
   conference: SOSP'26
   type: using
   areas: misc
-  description: Extends the Linux kernel to allow users to run custom eBPF-based page fault handlers. 
+  description: Extends the Linux kernel to allow users to run custom eBPF-based page fault handlers.
   url: https://dl.acm.org/doi/pdf/10.1145/3830418.3843896
 - title: 'Tamias: Feedback-Guided Systematic Concurrency Exploration for Transparent Distributed System Fuzzing'
-  authors: C. Liu, Y. Song, P. Fonseca, Y. Zhang
+  authors: Congyu Liu, Yaoxu Song, Pedro Fonseca, Yongle Zhang
   conference: SOSP'26
   type: using
   areas: misc security
   description: Systematically explores the concurrency space during fuzzing using sched_ext to control the order of execution of threads.
   url: https://dl.acm.org/doi/pdf/10.1145/3830418.3843891
 - title: 'Waiting at the front door: Continuous monitoring of latency in the host network stack'
-  authors: S. Sundberg, A. Brunstrom, S. Ferlin-Reiter, J. Dangaard Brouer, T. Høiland-Jørgensen
+  authors: Simon Sundberg, Anna Brunstrom, Simone Ferlin-Reiter, Jesper Dangaard Brouer, Toke Høiland-Jørgensen
   conference: IMC'26
   type: using
   areas: networking
   description: Implements a tool to measure the host latency of every packet on the system with very low overhead using the fentry and fexit BPF attach points.
   url: https://dl.acm.org/doi/pdf/10.1145/3777912.3809152
 - title: 'Efficient Build Dependency Verification Using eBPF and Incremental Analysis'
-  authors: Y. Saito, K. Sakamoto, H. Washizaki
+  authors: Yuta Saito, Kazunori Sakamoto, Hironori Washizaki
   conference: ICSE'26
   type: using
   areas: security
   description: Uses BPF-based system call tracing to identify dependencies in build systems.
   url: https://dl.acm.org/doi/pdf/10.1145/3744916.3773204
 - title: 'eMicro: Real-Time Multi-Hop Access Control for Microservices with eBPF'
-  authors: R. R. Putra, O. Bajaber, S. A. Tsegai, T. Taylor, F. Araujo, Y. Ji, P. Gao
+  authors: Rizky Ramadhana, Osama Bajaber, Saimon Amanuel Tsegai, Teryl Taylor, Frederico Araujo, Yuede Ji, Peng Gao
   conference: CCS'26
   type: using
   areas: networking security
   description: Designs a system to enforce multi-hop network policies encoded as DFAs, with tc and socket BPF programs to propagate DFA states and enforce policies.
   url: https://arxiv.org/pdf/2608.05300
 - title: 'Agile QoS-aware Dynamic Power Management with eBPF Governors'
-  authors: M. Rezvani, D. Wong
+  authors: Mohammadreza Rezvani, Daniel Wong
   conference: ICS'26
   type: using
   areas: misc
-  description: Introduces Harware Managed P-States (HWP) policies as eBPF programs, to set the performance preference hints that control the CPU frequency. 
+  description: Introduces Harware Managed P-States (HWP) policies as eBPF programs, to set the performance preference hints that control the CPU frequency.
   url: https://danielwong.org/files/eBPF-Governor-ICS26.pdf
 - title: 'Sealing the Window: Efficient Tamper Protection for Provenance Logs'
-  authors: S. Mishra, R. Sekar
+  authors: Sagar Mishra, R. Sekar
   conference: S&P'26
   type: using
   areas: security
   description: Improves upon eAudit with a message authentication code (MAC) attached to the audit entry and computed using eBPF.
   url: https://www.seclab.cs.sunysb.edu/seclab/pubs/winseal.pdf
 - title: 'OS-Sanitizer: System-wide Latent Defect Inference in Linux Applications'
-  authors: A. Crump, S. Sihag, F. Bauckholt, K. Hassler, T. Holz
+  authors: Addison Crump, Sahil Sihag, Florian Bauckholt, Keno Hassler, Thorsten Holz
   conference: Sec'26
   type: using
   areas: security misc
   description: Identifies potential defects in Linux applications via dynamic testing using fprobes, uprobes, and LSM BPF programs.
   url: https://www.usenix.org/system/files/usenixsecurity26-crump.pdf
 - title: 'Concurrency Fuzzing of the Linux Kernel with eBPF'
-  authors: J. Xu, D. Wolff, X. Yi Han, J. Li, A. Roychoudhury
+  authors: Jiacheng Xu, Dylan Wolff, Xing Yi Han, Jialin Li, Abhik Roychoudhury
   conference: Sec'26
   type: using
   areas: misc
   description: Designs a fuzzer to find concurrency bugs in Linux using sched_ext to serialize the execution of kernel threads.
   url: https://www.usenix.org/system/files/usenixsecurity26-xu-jiacheng.pdf
 - title: "Don't Stall Me Now: Hiding Memory Latency in eBPF"
-  authors: F. Shahinfar, M. Molè, A. Panda, G. Antichi
+  authors: Farbod Shahinfar, Marco Molè, Aurojit Panda, Gianni Antichi
   conference: SIGCOMM'26
   type: improving
   areas: networking
@@ -70,14 +70,14 @@
   url: https://fshahinfar1.github.io/papers/dont_stall_me_now_hiding_memory_latency_in_ebpf.pdf
   talk: https://www.youtube.com/watch?v=7E7xA2gXxK8
 - title: 'Virtualizing eBPF with Late-Binding'
-  authors: 'J. Zhang, X. Song, D. Du, Y. Xia, B. Zang, H. Chen'
+  authors: Jing Zhang, Xiaguannan Song, Dong Du, Yubin Xia, Binyu Zang, Haibo Chen
   conference: OSDI'26
   type: using
   areas: misc
   description: Allows BPF hooks to be shared by multiple tenants by adding an indirection layer and dispatching to per-tenant programs.
   url: https://www.usenix.org/system/files/osdi26-zhang-jing.pdf
 - title: 'PeeR: First-Class Scheduling for Latency Critical eBPF Applications'
-  authors: 'J. Carin, B. Holmes, W. Wang, A. Bhardwaj, M. Ghobadi'
+  authors: Jing Zhang, Xiaguannan Song, Dong Du, Yubin Xia, Binyu Zang, Haibo Chen
   conference: OSDI'26
   type: improving
   areas: misc
@@ -85,14 +85,14 @@
   url: https://www.usenix.org/system/files/osdi26-carin.pdf
   talk: https://www.youtube.com/watch?v=Hr-XkgwJrJk
 - title: 'BeeQoS: A Cloud-Native QoS System for Adaptive and Scalable Multi-Priority Bandwidth Guarantees'
-  authors: J. Liu, S. Wu, H. Ma, C. Li, H. Yu, D. Jia, F. Li, P. Hu
+  authors: Jinyao Liu, Si Wu, Haoyuan Ma, Chaoqun Li, Hongjing Yu, Dingyi Jia, Feng Li, Pengfei Hu
   conference: WWW'26
   type: using
   areas: networking
   description: Implements a QoS system with multi-priority bandwidth guarantees using eBPF for traffic shaping and flow sampling.
   url: https://dl.acm.org/doi/pdf/10.1145/3774904.3792487
 - title: 'Xkernel: Rethinking Performance Tunability of Operating System Kernels'
-  authors: 'Z. Chen, W. Zhang, Y. Tang, R. Shu, F. Ren, T. Xu, J. Liu'
+  authors: Zhongjie Chen, Wentao Zhang, Yulong Tang, Ran Shu, Fengyuan Renn, Tianyin Xu, Jing Liu
   conference: OSDI'26
   type: using
   areas: misc
@@ -100,7 +100,7 @@
   url: https://www.usenix.org/system/files/osdi26-chen-zhongjie.pdf
   talk: https://www.youtube.com/watch?v=79P4FauqUj0
 - title: 'HybridMesh: A Hardware-software Hybrid Approach for Accelerating Service Mesh Ingress'
-  authors: 'M. You, J. Nam, M. Seo, T. Park, S. Shin'
+  authors: Myoungsung You, Jaehyun Nam, Minjae Seo, Taejune Park, Seungwon Shin
   conference: NSDI'26
   type: using
   areas: networking
@@ -108,7 +108,7 @@
   url: https://www.usenix.org/system/files/nsdi26-you.pdf
   talk: https://www.youtube.com/watch?v=yri05pdgdMw
 - title: 'Remote TCP Connection Offload and Applications'
-  authors: 'S. Li, S. W. D. Chien, T. Gao, M. Honda'
+  authors: Shuo Li, Steven W. D. Chien, Tianyi Gao, Michio Honda
   conference: NSDI'26
   type: using
   areas: networking
@@ -116,7 +116,7 @@
   url: https://micchie.net/files/xo-nsdi26.pdf
   talk: https://www.youtube.com/watch?v=l2qb_kEUkM4
 - title: 'KRAKENGUARD: Towards Fine-Grained eBPF Isolation'
-  authors: 'J. Patel, L. G. Buhl-Nielsen, A. Ghosn, M. Kogias'
+  authors: Jainil Patel, Lucas Graeff Buhl-Nielsen, Adrien Ghosn, Marios Kogias
   conference: NSDI'26
   type: improving
   areas: security
@@ -124,21 +124,21 @@
   url: https://www.usenix.org/system/files/nsdi26-patel.pdf
   talk: https://www.youtube.com/watch?v=dMDetmCEmJc
 - title: 'Tux: Efficient Drop-in Networking for Database Systems'
-  authors: 'X. Zhou, V. Leis, X. Yu, M. Stonebraker'
+  authors: Xinjing Zhou, Viktor Leis, Xiangyao Yu, Michael Stonebraker
   conference: VLDB'26
   type: using
   areas: networking misc
   description: Leverages AF_XDP to build a high-performance networking stack for database systems.
   url: https://www.vldb.org/pvldb/vol19/p334-zhou.pdf
 - title: 'RESYSTANCE: Unleashing Hidden Performance of Compaction in LSM-trees via eBPF'
-  authors: H. Byun, S. Lee, H. Yoo, M. Kim, S. Park
+  authors: Hongsu Byun, Seungjae Lee, Honghyeon Yoo, Myoungjoon Kim, Sungyong Park
   conference: ICDE'26
   type: using
   areas: storage offload
   description: Offloads the merge-sort phase of Log-Structured Merge-tree in the kernel using a new BPF hook on io_uring and verifier modifications.
   url: https://arxiv.org/pdf/2603.05162
 - title: 'DBdoctor: A Fine-grained and Non-intrusive Performance Diagnosis Platform for Databases'
-  authors: X. Shi, Q. Xin, Z. Wang, X. Zhang, H. Bian, W. Lu, Q. Zhuang, S. Liu, J. Zhang, X. Zheng, Y. Chai, X. Du
+  authors: Xinyue Shi, Quanqi Xin, Zhengjin Wang, Xinyi Zhang, Haoqiong Bian, Wei Lu, Qiyu Zhuang, Shuang Liu, Jikuan Zhang, Xiang Zheng, Yunpeng Chai, Xiaoyong Du
   conference: ICDE'26
   type: using
   areas: tracing storage
@@ -152,7 +152,7 @@
   description: Formalizes all non-atomic instructions from the eBPF ISA in Rocq, identifying several bugs in the process.
   url: https://people.rennes.inria.fr/Jean-Pierre.Talpin/papers/oopsla26.pdf
 - title: 'ONCache: A Cache-Based Low-Overhead Container Overlay Network'
-  authors: S. Lin, S. Zhao, P. Cao, X. Han, Q. Tian, W. Liu, Q. Wu, D. Han, X. Wang
+  authors: Shengkai Lin, Shizhen Zhao, Peirui Cao, Xinchi Han, Quan Tian, Wenfeng Liu, Qi Wu, Donghai Han, Xinbing Wang
   conference: NSDI'25
   type: using
   areas: networking
@@ -160,14 +160,14 @@
   url: https://www.usenix.org/system/files/nsdi25-lin-shengkai.pdf
   talk: https://www.youtube.com/watch?v=E4mltBgMPjI
 - title: 'EDDE: Container Deployment Framework Beyond the Cloud'
-  authors: Hao Fan, Zhuo Huang, S. Ibrahim, L. Gu, S. Wu
+  authors: Hao Fan, Zhuo Huang, Shadi Ibrahim, Lin Gu, Song Wu
   conference: SC'25
   type: improving
   areas: misc
   description: Optimizes FUSE in the context of container images using preloaded eBPF maps to cache the pull indexes and image data.
   url: https://dl.acm.org/doi/pdf/10.1145/3712285.3759854
 - title: 'Copper and Wire: Bridging Expressiveness and Performance for Service Mesh Policies'
-  authors: D. Saxena, W. Zhang, S. Pailoor, I. Dillig, A. Akella
+  authors: Divyanshu Saxena, William Zhang, Shankara Pailoor, Isil Dillig, Aditya Akella
   conference: ASPLOS'25
   type: using
   areas: networking
@@ -175,70 +175,70 @@
   url: https://dl.acm.org/doi/pdf/10.1145/3669940.3707257
   talk: https://www.youtube.com/watch?v=y8p9Z3zO_wU
 - title: 'BPF-DB: A Kernel-Embedded Transactional Database Management System For eBPF Applications'
-  authors: 'M. Butrovich, S. Arch, W. S. Lim, W. Zhang, J. M. Patel, A. Pavlo'
+  authors: Matthew Butrovich, Samuel Arch, Wan Shen Lim, William Zhang, Jignesh M. Patel, Andrew Pavlo
   conference: SIGMOD'25
   type: improving
   areas: misc storage
   description: Introduces an in-kernel database management system (DBMS) in eBPF, with ACID properties.
   url: https://dl.acm.org/doi/pdf/10.1145/3725272
 - title: 'Approximation Enforced Execution of Untrusted Linux Kernel Extensions'
-  authors: 'H. Sun, Z. Su'
+  authors: Hao Sun, Zhendong Su
   conference: Sec'25
   type: improving
   areas: verifier
   description: Relies on state approximations from the Linux verifier to enforce runtime checks on BPF programs.
   url: https://www.usenix.org/system/files/usenixsecurity25-sun-hao.pdf
 - title: 'Deprivileging Low-Level GPU Drivers Efficiently with User-Space Processes and CHERI Compartments'
-  authors: 'P. Metzger, A. T. Markettos, E. T. Napierała, M. Naylor, R. N. M. Watson, T. M. Jones'
+  authors: Paul Metzger, A. Theodore Markettos, Edward Tomasz Napierała, Matthew Naylor, Robert N. M. Watson, Timothy M. Jones
   conference: CCS'25
   type: using
   areas: security misc
   description: Implements in-kernel interrupt handlers on a uBPF VM, for userspace GPU drivers.
   url: https://dl.acm.org/doi/pdf/10.1145/3719027.3765036
 - title: 'Rethinking Tamper-Evident Logging: A High-Performance, Co-Designed Auditing System'
-  authors: 'R. Zhao, M. Shoaib, V. T. Hoang, W. U. Hassan'
+  authors: Rui Zhao, Muhammad Shoaib, Viet Tung Hoang, Wajih Ul Hassan
   conference: CCS'25
   type: using
   areas: security
   description: Designs a tamper-evident auditing system all in eBPF, including the authentication code computation
   url: https://dl.acm.org/doi/pdf/10.1145/3719027.3765024
 - title: 'Intent-aware Fuzzing for Android Hardened Application'
-  authors: 'S Jeong, M. Choi, H. Cho, S. Choi, H. Kim, Y. Jeon'
+  authors: Seongyun Jeong, Minseong Choi, Haehyun Cho, Seokwoo Choi, Hyungsub Kim, Yuseok Jeon
   conference: CCS'25
   type: using
   areas: security tracing misc
   description: While fuzzing Android applications, relies on eBPF to trigger scheduled application behaviors and collect coverage.
   url: https://dl.acm.org/doi/pdf/10.1145/3719027.3744858
 - title: 'Aeolia: A Fast and Secure Userspace Interrupt-Based Storage Stack'
-  authors: 'C. Li, R. Yi, Z. Zhang, J. Liu, C. Min, J. Zhang, Y. Luo, X. Wang, Z. Wang, D. Zhou'
+  authors: Chuandong Li, Ran Yi, Zonghao Zhang, Jing Liu, Changwoo Min, Jie Zhang, Yingwei Luo, Xiaolin Wang, Zhenlin Wang, Diyu Zhou
   conference: SOSP'25
   type: using
   areas: storage misc
   description: Leverages sched_ext to bridge the scheduling semantic gap between userspace and the kernel when using user interrupts.
   url: https://dl.acm.org/doi/pdf/10.1145/3731569.3764816
 - title: 'Prove It to the Kernel: Precise Extension Analysis via Proof-Guided Abstraction Refinement'
-  authors: 'H. Sun, Z. Su'
+  authors: Hao Sun, Zhendong Su
   conference: SOSP'25
   type: improving
   areas: verifier
   description: Improves the Linux verifier's precision by refining the abstract state in userspace when needed, and producing a formal proof for it.
   url: https://dl.acm.org/doi/pdf/10.1145/3731569.3764796
 - title: 'Training Solo: On the Limitations of Domain Isolation Against Spectre-v2 Attacks'
-  authors: S. Wiebing, C. Giuffrida
+  authors: Sander Wiebing, Cristiano Giuffrida
   conference: S&P'25
   type: analysis
   areas: security
-  description: Leverages cBPF to implement a cross-domain Spectre-v2 transient execution attack. 
+  description: Leverages cBPF to implement a cross-domain Spectre-v2 transient execution attack.
   url: https://download.vusec.net/papers/trainingsolo_sp25.pdf
 - title: 'SoK: Challenges and Paths Toward Memory Safety for eBPF'
-  authors: K. Huang, J. Sampson, M. Payer, G. Tan, Z. Qian, T. Jaeger
+  authors: Kaiming Huang, Jack Sampson, Mathias Payer, Gang Tan, Zhiyun Qian, Trent Jaeger
   conference: S&P'25
   type: analysis
   areas: security verifier
   description: Surveys and evaluates existing work on eBPF memory safety.
   url: https://nebelwelt.net/files/25Oakland.pdf
 - title: 'SwiftSweeper: Defeating Use-After-Free Bugs Using Memory Sweeper Without Stop-the-World'
-  authors: J. Ahn, K. Lee, C. Park, H. Moon, Y. Kwon
+  authors: Junho Ahn, Kanghyuk Lee, Chanyoung Park, Hyungon Moon, Youngjin Kwon
   conference: S&P'25
   type: using
   areas: misc security
@@ -246,44 +246,43 @@
   url: https://drive.junhoahn.kr/index.php/s/rSitKKfcz79PX5t
   talk: https://www.youtube.com/watch?v=C-dYjb69xd0
 - title: 'eBPF Misbehavior Detection: Fuzzing with a Specification-Based Oracle'
-  authors: T. Lyu, K. K. Dwivedi, T. Bourgeat, M. Payer, M. Xu, S. Kashyap
+  authors: Tao Lyu, Kumar Kartikeya Dwivedi, Thomas Bourgeat, Mathias Payer, Meng Xu, Sanidhya Kashyap
   conference: SOSP'25
   type: improving
   areas: verifier
   description: Introduces a specification-based oracle to fuzz the BPF verifier.
   url: https://cs.uwaterloo.ca/~m285xu/assets/publication/ebpf_smt_fuzz-paper.pdf
 - title: 'FlexGuard: Fast Mutual Exclusion Independent of Subscription'
-  authors: V. Laforet, S. Kashyap, C. Iorgulescu, J. Lawall, J.-P. Lozi
+  authors: Victor Laforet, Sanidhya Kashyap, Călin Iorgulescu, Julia Lawall, Jean-Pierre Lozi
   conference: SOSP'25
   type: using
   areas: misc
   description: Improves lock handover time by using eBPF to detect critical section preemptions.
   url: https://hal.science/hal-05241781v1/document
 - title: 'cache_ext: Customizing the Page Cache with eBPF'
-  authors: T. Zussman, I. Zarkadas, J. Carin, A. Cheng, H. Franke, J. Pfefferle, A. Cidon
+  authors: Tal Zussman, Ioannis Zarkadas, Jeremy Carin, Andrew Cheng, Hubertus Franke, Asaf Cidon
   conference: SOSP'25
   type: using
   areas: misc
   description: Extends the kernel with new BPF hooks, kfuncs, and per-cgroup struct_ops
     to be able to customize the page cache policies.
-  url: https://arxiv.org/pdf/2502.02750
+  url: https://dlnext.acm.org/doi/pdf/10.1145/3731569.3764820
 - title: 'Revealing the Unstable Foundations of eBPF-Based Kernel Extensions'
-  authors: 'S. Zhong, J. Liu, A. Arpaci-Dusseau, R. Arpaci-Dusseau'
+  authors: Shawn Zhong, Jing Liu, Andrea Arpaci-Dusseau, Remzi Arpaci-Dusseau
   conference: EuroSys'25
   type: analysis
   areas: misc
   description: Implements a tool to detect mismatches in kernel APIs for tracing BPF programs.
   url: https://depsurf.github.io/assets/paper.pdf
 - title: 'RAKIS: Secure Fast I/O Primitives Across Trust Boundaries on Intel SGX'
-  authors: 'M. Alharthi, F. Sang, D. Kuvaiskii, M. Vij, T. Kim'
+  authors: Mansour Alharthi, Fan Sang, Dmitrii Kuvaiskii, Mona Vij, Taesoo Kim
   conference: EuroSys'25
   type: using
   areas: networking misc
   description: Securely enables XDP for UDP applications in SGX enclaves.
   url: https://taesoo.kim/pubs/2025/alharthi:rakis.pdf
 - title: 'Hermes: Enhancing Layer-7 Cloud Load Balancers with Userspace-Directed I/O Event Notification'
-  authors: T. Pan, E. Song, Y. Zuo, S. Zhang, Y. Song, J. Zhao, W. Hou, J. Lu, X. Sun, S. Zhang,
-    Y. Yang, J. Zhang, T. Huang, B. Lyu, X. Li, R. Wen, Z. Zong, S. Zhu
+  authors: Tian Pan, Enge Song, Yueshang Zuo, Shaokai Zhang, Yang Song, Jiangu Zhao, Wengang Hou, Jianyuan Lu, Xiaoqing Sun, Shize Zhang, Ye Yang, Jiao Zhang, Tao Huang, Biao Lyu, Xing Li, Rong Wen, Zhigang Zong, Shunmin Zhu
   conference: SIGCOMM'25
   type: using
   areas: networking
@@ -292,7 +291,7 @@
   url: https://ng-95.github.io/files/Hermes_SIGCOMM25.pdf
   talk: https://www.youtube.com/watch?v=J22-2PSf04M
 - title: 'Extending Applications Safely and Efficiently'
-  authors: Y. Zheng, T. Yu, Y. Yang, Y. Hu, X. Lai, D. Williams, A. Quinn
+  authors: Yusheng Zheng, Tong Yu, Yiwei Yang, Yanpeng Hu, Xiaozheng Lai, Dan Williams, Andi Quinn
   conference: OSDI'25
   type: using
   areas: tracing misc
@@ -301,7 +300,7 @@
   url: https://www.usenix.org/system/files/osdi25-zheng-yusheng.pdf
   talk: https://www.youtube.com/watch?v=vhvFW_e_4I8
 - title: 'Rex: Closing the language-verifier gap with safe and usable kernel extensions'
-  authors: J. Jia, R. Qin, M. Craun, E. Lukiyanov, A. Bansal, M. Phan, M. V. Le, H. Franke, H. Jamjoom, T. Xu, D. Williams
+  authors: Jinghao Jia, Ruowen Qin, Milo Craun, Egor Lukiyanov, Ayush Bansal, Minh Phan, Michael V. Le, Hubertus Franke, Hani Jamjoom, Tianyin Xu, Dan Williams
   conference: ATC'25
   type: improving
   areas: verifier
@@ -310,7 +309,7 @@
   url: https://www.usenix.org/system/files/atc25-jia.pdf
   talk: https://www.youtube.com/watch?v=phJ-fb5lEA8
 - title: 'Accelerating Nested Virtualization with HyperTurtle'
-  authors: O. B. Zur, J. Krebs, S. A. Bergman, M. Silberstein
+  authors: Ori Ben Zur, Jakob Krebs, Shai Aviram Bergman, Mark Silberstein
   conference: ATC'25
   type: using
   areas: misc
@@ -319,7 +318,7 @@
   url: https://www.usenix.org/system/files/atc25-zur.pdf
   talk: https://www.youtube.com/watch?v=78g1bG3BOFs
 - title: 'PageFlex: Flexible and Efficient User-space Delegation of Linux Paging Policies with eBPF'
-  authors: A. Yelam, K. Wu, Z. Guo, S. Yang, R. Shashidhara, W. Xu, S. Novakovic, A. C. Snoeren, K. Keeton
+  authors: Anil Yelam, Kan Wu, Zhiyuan Guo, Suli Yang, Rajath Shashidhara, Wei Xu, Stanko Novaković, Alex C. Snoeren, Kimberly Keeton
   conference: ATC'25
   type: using
   areas: misc
@@ -327,7 +326,7 @@
   url: https://www.usenix.org/system/files/atc25-yelam.pdf
   talk: https://www.youtube.com/watch?v=ZyT1cB_8trw
 - title: 'VEP: A Two-stage Verification Toolchain for Full eBPF Programmability'
-  authors: X. Wu, Y. Feng, T. Huang, X. Lu, S. Lin, L. Xie, S. Zhao, Q. Cao
+  authors: Xiwei Wu, Yueyang Feng, Tianyi Huang, Xiaoyang Lu, Shengkai Lin, Lihan Xie, Shizhen Zhao, Qinxiang Cao
   conference: NSDI'25
   type: improving
   areas: verifier
@@ -336,7 +335,7 @@
   url: https://www.usenix.org/system/files/nsdi25-wu-xiwei.pdf
   talk: https://www.youtube.com/watch?v=5xA6BIEWjeM
 - title: 'eTran: Extensible Kernel Transport with eBPF'
-  authors: Z. Chen, Q. Meng, C. Lao, Y. Liu, F. Ren, M. Yu, Y. Zhou
+  authors: Zhongjie Chen, Qingkai Meng, ChonLam Lao, Yifan Liu, Fengyuan Ren, Minlan Yu, Yang Zhou
   conference: NSDI'25
   type: using
   areas: networking
@@ -345,7 +344,7 @@
   url: https://www.usenix.org/system/files/nsdi25-chen-zhongjie.pdf
   talk: https://www.youtube.com/watch?v=zb1lNTPxlrc
 - title: 'State-Compute Replication: Parallelizing High-Speed Stateful Packet Processing'
-  authors: Q. Xu, S. Miano, X. Gao, T. Wang, A. Murugadass, S. Zhang, A. Sivaraman, G. Antichi, S. Narayana
+  authors: Qiongwen Xu, Sebastiano Miano, Xiangyu Gao, Tao Wang, Adithya Murugadass, Songyuan Zhang, Anirudh Sivaraman, Gianni Antichi, Srinivas Narayana
   conference: NSDI'25
   type: using
   areas: networking
@@ -354,49 +353,49 @@
   url: https://www.usenix.org/system/files/nsdi25-xu-qiongwen.pdf
   talk: https://www.youtube.com/watch?v=FgSEmeqM0s8
 - title: 'A Flow-Sensitive Refinement Type System for Verifying eBPF Programs'
-  authors: A. Hamza, L. Zavalia, A. Gurfinkel, J. A. Navas, G. Fedyukovich
+  authors: Ameer Hamza, Lucas Zavalia, Arie Gurfinkel, Jorge A. Navas, Grigory Fedyukovich
   conference: OOPSLA'25
   type: improving
   areas: verifier
   url: https://dl.acm.org/doi/pdf/10.1145/3763799
   description: Improves upon PREVAIL with faster, more specialized abstract domains for the packet pointers, other pointers, and numeric values.
 - title: 'A Complete Formal Semantics of eBPF Instruction Set Architecture for Solana'
-  authors: S. Yuan, Z. Zhang, J. Lu, D. Sanan, R. Chang, Y. Zhao 
+  authors: Shenghao Yuan, Zhuoruo Zhang, Jiayi Lu, David Sanan, Rui Chang, Yongwang Zhao
   conference: OOPSLA'25
   type: improving
   areas: misc
   url: https://dl.acm.org/doi/pdf/10.1145/3720414
   description: Formalizes the eBPF bytecode used in Solana smart contracts.
 - title: 'Soleker: Uncovering Vulnerabilities in Solana Smart Contracts'
-  authors: K. Zhao, Y. Tian, Z. Ma, X. Luo
+  authors: Kunsong Zhao, Yunpeng Tian, Zuchao Ma, Xiapu Luo
   conference: ASE'25
   type: improving
   areas: security misc
   description: Designs a method to detect vulnerabilities in the eBPF bytecode of Solana smart contracts.
   url: https://www4.comp.polyu.edu.hk/~csxluo/Soleker.pdf
 - title: 'Spinner: Detecting Locking Violations in the eBPF Runtime'
-  authors: P. Govindasamy, J. Bursey, H.-W. Hung, A. A. Sani
+  authors: Priya Govindasamy, Joseph Bursey, Hsin-Wei Hung, Ardalan Amiri Sani
   conference: ASE'25
   type: improving
   areas: verifier security misc
   description: Proposes a tool to help detect deadlocks caused by eBPF helpers using static analysis.
   url: https://ics.uci.edu/~ardalan/papers/Govindasamy_ASE25.pdf
 - title: 'Program Analysis Combining Generalized Bit-Level and Word-Level Abstractions'
-  authors: G. Fan, L. Chen, B. Yin, W. Zhang, P. Yao, J. Wang
+  authors: Guangsheng Fan, Liqian Chen, Banghu Yin, Wenyu Zhang, Peisen Yao, Ji Wang
   conference: ISSTA'25
   type: improving
   areas: verifier
   description: Designs an abstract domain that combines all abstract domains of the current Linux eBPF verifier (tnums, u64 ranges, etc.), via a reduced product operation.
   url: https://dl.acm.org/doi/pdf/10.1145/3728905
 - title: 'Measuring Network Latency from a Wireless ISP: Variations Within and Across Subnets'
-  authors: S. Sundberg, A. Brunstrom, S. Ferlin-Reiter, T. Høiland-Jørgensen, R. Chacón
+  authors: Simon Sundberg, Anna Brunstrom, Simone Ferlin-Reiter, Toke Høiland-Jørgensen, Robert Chacón
   conference: IMC'24
   type: using
   areas: networking
   description: Implements a latency measurement system for TCP in ISP networks, using tcp-ebpf to compute and aggregate measurements in the kernel.
   url: https://dl.acm.org/doi/pdf/10.1145/3646547.3688438
 - title: 'P4Control: Line-Rate Cross-Host Attack Prevention via In-Network Information Flow Control Enabled by Programmable Switches and eBPF'
-  authors: 'O. Bajaber, B. Ji, P. Gao'
+  authors: Osama Bajaber, Bo Ji, Peng Gao
   conference: S&P'24
   type: using
   areas: networking security
@@ -404,7 +403,7 @@
   url: https://people.cs.vt.edu/penggao/papers/p4control-sp24.pdf
   talk: https://www.youtube.com/watch?v=5Q4pIojkLy4
 - title: 'BUDAlloc: Defeating Use-After-Free Bugs by Decoupling Virtual Address Management from Kernel'
-  authors: J. Ahn, J. Lee, K. Lee, W. Gwak, M. Hwang, Y. Kwon
+  authors: Junho Ahn, Jaehyeon Lee, Kanghyuk Lee, Wooseok Gwak, Minseong Hwang, Youngjin Kwon
   conference: Sec'24
   type: using
   areas: misc security
@@ -413,7 +412,7 @@
   url: https://www.usenix.org/system/files/usenixsecurity24-ahn.pdf
   talk: https://www.youtube.com/watch?v=Y21_QmmIcI0
 - title: 'BeeBox: Hardening BPF Against Transient Execution Attacks'
-  authors: D. Jin, A. J. Gaidis, V. P. Kemerlis
+  authors: Di Jin, Alexander J. Gaidis, Vasileios P. Kemerlis
   conference: Sec'24
   type: improving
   areas: verifier security
@@ -422,7 +421,7 @@
   url: https://cs.brown.edu/~vpk/papers/beebox.sec24.pdf
   talk: https://www.youtube.com/watch?v=rZ47dOX2snI
 - title: 'eAudit: A Fast, Scalable and Deployable Audit Data Collection System'
-  authors: 'R. Sekar, H. Kimm, R. Aich'
+  authors: R. Sekar, Hanke Kimm, Rohit Aich
   conference: S&P'24
   type: using
   areas: security
@@ -430,7 +429,7 @@
   url: https://www.seclab.cs.sunysb.edu/seclab/pubs/eaudit.pdf
   talk: https://www.youtube.com/watch?v=nxBhIxIRI9w
 - title: 'Toss a Fault to BpfChecker: Revealing Implementation Flaws for eBPF runtimes with Differential Fuzzing'
-  authors: C. Peng, M. Jiang, L. Wu, Y. Zhou
+  authors: Chaoyuan Peng, Muhui Jiang, Lei Wu, Yajin Zhou
   conference: CCS'24
   type: improving
   areas: verifier jit
@@ -439,8 +438,7 @@
     bytecode.
   url: https://dl.acm.org/doi/pdf/10.1145/3658644.3690237
 - title: 'NetEdit: An Orchestration Platform for eBPF Network Functions at Scale'
-  authors: T. A. Benson, P. Kannan, P. Gupta, B. Madhavan, K. S. Arora, J. Meng, M. Lau,
-    A. Dhamija, R. Krishnamurthy, S. Sundaresan, N. Spring, Y. Zhang
+  authors: Theophilus A. Benson, Prashanth Kannan, Prankur Gupta, Balasubramanian Madhavan, Kumar Saurabh Arora, Jie Meng, Martin Lau, Abhishek Dhamija, Rajiv Krishnamurthy, Srikanth Sundaresan, Neil Spring, Ying Zhang
   conference: SIGCOMM'24
   type: using
   areas: networking
@@ -449,7 +447,7 @@
   url: https://cs.stanford.edu/~keithw/sigcomm2024/sigcomm24-final159-acmpaginated.pdf
   talk: https://www.youtube.com/watch?v=y-SFpf8hnYU
 - title: 'Merlin: Multi-tier Optimization of eBPF Code for Performance and Compactness'
-  authors: J. Mao, H. Ding, J. Zhai, S. Ma
+  authors: Jinsong Mao, Hailun Ding, Juan Zhai, Shiqing Ma
   conference: ASPLOS'24
   type: improving
   areas: misc
@@ -457,7 +455,7 @@
   url: https://dl.acm.org/doi/pdf/10.1145/3620666.3651387
   talk: https://youtu.be/YHvfHZaHkwY?t=1903
 - title: 'DINT: Fast In-Kernel Distributed Transactions with eBPF'
-  authors: Y. Zhou, X. Xiang, M. Kiley, S. Dharanipragada, M. Yu
+  authors: Yang Zhou, Xingyu Xiang, Matthew Kiley, Sowmya Dharanipragada, Minlan Yu
   conference: NSDI'24
   type: using
   areas: networking offload
@@ -466,7 +464,7 @@
   url: https://www.usenix.org/system/files/nsdi24-zhou-yang.pdf
   talk: https://www.youtube.com/watch?v=EgdXrjwBdBA
 - title: 'BlueSWAT: A Lightweight State-Aware Security Framework for Bluetooth Low Energy'
-  authors: X. Che, Y. He, X. Feng, K. Sun, K. Xu, Q. Li
+  authors: Xijia Che, Yi He, Xuewei Feng, Kun Sun, Ke Xu, Qi Li
   conference: CCS'24
   type: using
   areas: security misc
@@ -474,8 +472,7 @@
     patches to Bluetooth Low Energy (BLE) devices, to mitigate session-based attacks.
   url: https://dl.acm.org/doi/pdf/10.1145/3658644.3670397
 - title: 'SeaK: Rethinking the Design of a Secure Allocator for OS Kernel'
-  authors: Z. Wang, Y. Guang, Y. Chen, Z. Lin, M. Le, D. K Le, D. Williams, X. Xing,
-    Z. Gu, H. Jamjoom
+  authors: Zicheng Wang, Yicheng Guang, Yueqi Chen, Zhenpeng Lin, Michael Le, Dang K Le, Dan Williams, Xinyu Xing, Zhongshu Gu, Hani Jamjoom
   conference: Sec'24
   type: using
   areas: security misc
@@ -484,7 +481,7 @@
   url: https://www.usenix.org/system/files/sec24fall-prepub-1504-wang-zicheng.pdf
   talk: https://www.youtube.com/watch?v=8P1IbL8L4oY
 - title: 'Rethinking Process Management for Interactive Mobile Systems'
-  authors: J. Zheng, Z. Li, F. Qian, W. Liu, H. Lin, Y. Liu, T. Xu, N. Zhang, J. Wang, C. Zhang
+  authors: Jianwei Zheng, Zhenhua Li, Feng Qian, Wei Liu, Hao Lin, Yunhao Liu, Tianyin Xu, Nan Zhang, Ju Wang, Cang Zhang
   conference: MobiCom'24
   type: using
   areas: misc
@@ -492,7 +489,7 @@
     applications and investigate slow UI responsiveness problems.
   url: https://dl.acm.org/doi/pdf/10.1145/3636534.3649357
 - title: 'MegaTE: Extending WAN Traffic Engineering to Millions of Endpoints in Virtualized Cloud'
-  authors: C. Miao, Z. Zhong, Y. Xiao, F. Yang, S. Zhang, Y. Jiang, Z. Bai, C. Lu, J. Geng, Z. He, Y. Wang, X. Zou, C. Yang
+  authors: Congcong Miao, Zhizhen Zhong, Yunming Xiao, Feng Yang, Senkuo Zhang, Yinan Jiang, Zizhuo Bai, Chaodong Lu, Jingyi Geng, Zekun He, Yachen Wang, Xianneng Zou, Chuanchuan Yang
   conference: SIGCOMM'24
   type: using
   areas: networking
@@ -501,7 +498,7 @@
   url: https://cs.stanford.edu/~keithw/sigcomm2024/sigcomm24-final406-acmpaginated.pdf
   talk: https://www.youtube.com/watch?v=rVhATFzqJ4Q
 - title: 'FetchBPF: Customizable Prefetching Policies in Linux with eBPF'
-  authors: X. Cao, S. Patel, S. Y. Lim, X. Han, T. Pasquier
+  authors: Xuechun Cao, Shaurya Patel, Soo Yee Lim, Xueyuan Han, Thomas Pasquier
   conference: ATC'24
   type: using
   areas: misc
@@ -510,7 +507,7 @@
   url: https://www.usenix.org/system/files/atc24-cao.pdf
   talk: https://www.youtube.com/watch?v=0lo-7dDVFB0
 - title: Validating the eBPF Verifier via State Embedding
-  authors: H. Sun, Z. Su
+  authors: Hao Sun, Zhendong Su
   conference: OSDI'24
   type: improving
   areas: verifier
@@ -519,8 +516,7 @@
   description: Devises a sanitizer-free test oracle to fuzz the eBPF verifier by embedding correctness checks
     in the BPF program.
 - title: 'Hive: A Hardware-assisted Isolated Execution Environment for eBPF on AArch64'
-  authors: P. Zhang, C. Wu, X. Meng, Y. Zhang, M. Peng, S. Zhang, B. Hu, M. Xie, Y.
-    Lai, Y. Kang, Z. Wang
+  authors: Peihua Zhang, Chenggang Wu, Xiangyu Meng, Yinqian Zhang, Mingfan Peng, Shiyang Zhang, Bing Hu, Mengyao Xie, Yuanming Lai, Yan Kang, Zhe Wang
   conference: Sec'24
   type: improving
   areas: verifier security
@@ -529,7 +525,7 @@
   url: https://www.usenix.org/system/files/usenixsecurity24-zhang-peihua.pdf
   talk: https://www.youtube.com/watch?v=8jhFEv_wK0A
 - title: 'End-to-End Mechanized Proof of a JIT-Accelerated eBPF Virtual Machine for IoT'
-  authors: S. Yuan, F. Besson, J.-P. Talpin
+  authors: Shenghao Yuan, Frédéric Besson, Jean-Pierre Talpin
   conference: CAV'24
   type: improving
   areas: jit
@@ -537,7 +533,7 @@
     RIOT kernel.
   url: https://inria.hal.science/hal-04762503v1/document
 - title: Fast, Flexible, and Practical Kernel Extensions
-  authors: K. K. Dwivedi, R. Iyer, S. Kashyap
+  authors: Kumar Kartikeya Dwivedi, Rishabh Iyer, Sanidhya Kashyap
   conference: SOSP'24
   type: improving
   areas: verifier
@@ -545,7 +541,7 @@
     compatible way, significantly improving eBPF's expressibility.
   url: https://rs3lab.github.io/assets/papers/2024/dwivedi:kflex.pdf
 - title: Finding Correctness Bugs in eBPF Verifier with Structured and Sanitized Program
-  authors: H. Sun, Y. Xu, J. Liu, Y. Shen, N. Guan, Y. Jiang
+  authors: Hao Sun, Yiru Xu, Jianzhong Liu, Yuheng Shen, Nan Guan, Yu Jiang
   conference: EuroSys'24
   type: improving
   areas: verifier
@@ -553,14 +549,14 @@
   url: https://dl.acm.org/doi/pdf/10.1145/3627703.3629562
 - title: 'eNetSTL: Towards an In-kernel Library for High-Performance eBPF-based Network
     Functions'
-  authors: B. Yang, D. Shen, J. Zhang, H. Yang, L. Zhao, B. Wang, G. Liu, K. Chen
+  authors: Bin Yang, Dian Shen, Junxue Zhang, Hanlin Yang, Lunqi Zhao, Beilun Wang, Guyue Liu, Kai Chen
   conference: EuroSys'24
   type: using
   areas: networking
   description: Improves the performance of eBPF for networking applications with Rust-based extensions to its kfuncs, maps, and APIs.
   url: https://snowzjx.me/assets/enetstl-eurosys25.pdf
 - title: 'MOAT: Towards Safe BPF Kernel Extension'
-  authors: H. Lu, S. Wang, Y. Wu, W. He, F. Zhang
+  authors: Hongyi Lu, Shuai Wang, Yechang Wu, Wanning He, Fengwei Zhang
   conference: Sec'24
   type: improving
   areas: verifier security
@@ -570,14 +566,14 @@
   talk: https://www.youtube.com/watch?v=__2WUqcTJjg
 - title: 'P2Cache: An Application-Directed Page Cache for Improving Performance of
     Data-Intensive Applications'
-  authors: D. Lee, I. Choi, C. Lee, S. Lee, J. Kim
-  conference: HotStorage'
+  authors: Dusol Lee, Inhyuk Choi, Chanyoung Lee, Sungjin Lee, Jihong Kim
+  conference: HotStorage'23
   type: using
   areas: storage
   description: ''
   url: https://www.hotstorage.org/2023/papers/hotstorage23-final51.pdf
 - title: 'Cross Container Attacks: The Bewildered eBPF on Clouds'
-  authors: Y. He, R. Guo, Y. Xing, X. Che, K. Sun, Z. Liu, K. Xu, Q. Li
+  authors: Yi He, Roland Guo, Yunlong Xing, Xijia Che, Kun Sun, Zhuotao Liu, Ke Xu, Qi Li
   conference: Sec'23
   type: analysis
   areas: security
@@ -586,7 +582,7 @@
     boundaries and the impact on cloud and online coding platforms.
   talk: https://www.youtube.com/watch?v=E7E8Y20q9ZU
 - title: 'λ-IO: A Unified IO Stack for Computational Storage'
-  authors: Z. Yang, Y. Lu, X. Liao, Y. Chen, J. Li, S. He, J. Shu
+  authors: Zhe Yang, Youyou Lu, Xiaojian Liao, Youmin Chen, Junru Li, Siyu He, Jiwu Shu
   conference: FAST'23
   type: using
   areas: storage
@@ -595,7 +591,7 @@
   talk: https://www.youtube.com/watch?v=xYENKqthG40
   url: https://www.usenix.org/system/files/fast23-yang-zhe.pdf
 - title: 'eHDL: Turning eBPF/XDP Programs into Hardware Designs for the NIC'
-  authors: A. Rivitti, R. Bifulco, A. Tulumello, M. Bonola, S. Pontarelli
+  authors: Alessandro Rivitti, Roberto Bifulco, Angelo Tulumello, Marco Bonola, Salvatore Pontarelli
   conference: ASPLOS'23
   type: using
   areas: networking
@@ -604,7 +600,7 @@
   url: https://pontarelli.di.uniroma1.it/publication/asplos23/asplos23.pdf
   talk: https://www.youtube.com/watch?v=35OAuR1NbxA
 - title: 'Fuzz on the Beach: Fuzzing Solana Smart Contracts'
-  authors: S. Smolka, J.-R. Giesen, P. Winkler, O. Draissi, L. Davi, G. Karame, K. Pohl
+  authors: Sven Smolka, Jens-Rene Giesen, Pascal Winkler, Oussama Draissi, Lucas Davi, Ghassan Karame, Klaus Pohl
   conference: CCS'23
   type: improving
   areas: security misc
@@ -612,7 +608,7 @@
     by extending Solana's userspace eBPF VM with six bug oracles and coverage feedback.
   url: https://arxiv.org/pdf/2309.03006
 - title: 'xBGP: Faster Innovation in Routing Protocols'
-  authors: T. Wirtgen, T. Rousseaux, Q. De Coninck, N. Rybowski, R. Bush, L. Vanbever, A. Legay, O. Bonaventure
+  authors: Thomas Wirtgen, Tom Rousseaux, Quentin De Coninck, Nicolas Rybowski, Randy Bush, Laurent Vanbever, Axel Legay, Olivier Bonaventure
   conference: NSDI'23
   type: using
   areas: networking
@@ -621,7 +617,7 @@
   url: https://www.usenix.org/system/files/nsdi23-wirtgen.pdf
   talk: https://www.youtube.com/watch?v=d9azXXp-_O4
 - title: 'Taking 5G RAN Analytics and Control to a New Level'
-  authors: X. Foukas, B. Radunovic, M. Balkwill, Z. Lai
+  authors: Xenofon Foukas, Bozidar Radunovic, Matthew Balkwill, Zhihua Lai
   conference: MobiCom'23
   type: using
   areas: networking
@@ -630,16 +626,15 @@
     the execution time.
   url: https://www.microsoft.com/en-us/research/uploads/prod/2022/12/JanusTechnicalReport.pdf
 - title: Comparing User Space and In-Kernel Packet Processing for Edge Data Centers
-  authors: F. Parola, R. Procopio, R. Querio, F. Risso
-  conference: SIGCOMM CCR'
+  authors: Federico Parola, Roberto Procopio, Roberto Querio, Fulvio Risso
+  conference: SIGCOMM CCR'23
   type: analysis
   areas: networking
   description: ''
-  url: https://fedeparola.github.io/publication/xdp-af_xdp-cmp/Comparing_User_Space_and_In_Kernel_Packet_Processing_for_Edge_Data_Centers.pdf
+  url: https://dl.acm.org/doi/pdf/10.1145/3594255.3594257
 - title: 'Network-Centric Distributed Tracing with DeepFlow: Troubleshooting Your
     Microservices in Zero Code'
-  authors: J. Shen H. Zhang, Y. Xiang, X. Shi, X. Li, Y. Shen, Z. Zhang, Y. Wu, X.
-    Yin, J. Wang, M. Xu, Y. Li, J. Yin, J. Song, Z. Li, R. Nie
+  authors: Junxian Shen, Han Zhang, Yang Xiang, Xingang Shi, Xinrui Li, Yunxi Shen, Zijian Zhang, Yongxiang Wu, Xia Yin, Jilong Wang, Mingwei Xu, Yahui Li, Jiping Yin, Jianchang Song, Zhuofeng Li, Runjie Nie
   conference: SIGCOMM'23
   type: using
   areas: tracing
@@ -648,15 +643,14 @@
   url: https://dl.acm.org/doi/pdf/10.1145/3603269.3604823
   talk: https://www.youtube.com/watch?v=Bz_HTqFYUYA
 - title: Fast In-Kernel Traffic Sketching in eBPF
-  authors: S. Miano, X. Chen, R. Ben Basat, G. Antichi
+  authors: Sebastiano Miano, Xiaoqi Chen, Ran Ben Basat, Gianni Antichi
   conference: SIGCOMM CCR'
   type: using
   areas: networking
   description: ''
   url: https://engineering.purdue.edu/~xiaoqic/documents/draft-eBPF.pdf
 - title: 'Tigger: A Database Proxy That Bounces with User-Bypass'
-  authors: M. Butrovich, K. Ramanathan, J. Rollinson, W. S. Lim, W. Zhang, J. Sherry,
-    A. Pavlo
+  authors: Matthew Butrovich, Karthik Ramanathan, John Rollinson, Wan Shen Lim, William Zhang, Justine Sherry, Andrew Pavlo
   conference: VLDB'23
   type: using
   areas: networking offload
@@ -664,7 +658,7 @@
     using sockmap BPF programs.
   url: https://www.vldb.org/pvldb/vol16/p3335-butrovich.pdf
 - title: 'Electrode: Accelerating Distributed Protocols with eBPF'
-  authors: Y. Zhou, Z. Wang, S. Dharanipragada, M. Yu
+  authors: Yang Zhou, Zezhou Wang, Sowmya Dharanipragada, Minlan Yu
   conference: NSDI'23
   type: using
   areas: networking offload
@@ -673,7 +667,7 @@
   url: https://www.usenix.org/system/files/nsdi23-zhou.pdf
   talk: https://www.youtube.com/watch?v=E6qcR2Lb1xE
 - title: 'Verifying the Verifier: eBPF Range Analysis Verification'
-  authors: H. Vishwanathan, M. Shachnai, S. Narayana, S. Nagarakatte
+  authors: Harishankar Vishwanathan, Matan Shachnai, Srinivas Narayana, Santosh Nagarakatte
   conference: CAV'23
   type: improving
   areas: verifier
@@ -681,7 +675,7 @@
   description: Automatically and formally proves the ranges analysis of the Linux
     verifier.
 - title: 'EPF: Evil Packet Filter'
-  authors: D. Jin, V. Atlidakis, V. P. Kemerlis
+  authors: Di Jin, Vaggelis Atlidakis, Vasileios P. Kemerlis
   conference: ATC'23
   type: analysis
   areas: security
@@ -690,21 +684,21 @@
   url: https://www.usenix.org/system/files/atc23-jin.pdf
   talk: https://www.youtube.com/watch?v=pkR5kJkFGkc
 - title: 'Sifter: Protecting Security-Critical Kernel Modules in Android through Attack Surface Reduction'
-  authors: H.-W. Hung, Y. Liu, A. A. Sani
+  authors: Hsin-Wei Hung, Yingtong Liu, Ardalan Amiri Sani
   conference: MobiCom'22
   type: using
   areas: security
   description: Hardens security-critical kernel modules on Android by filtering syscall patterns using eBPF tracepoints and seccomp-ebpf, an extension of seccomp.
   url: https://dl.acm.org/doi/pdf/10.1145/3495243.3560548
 - title: 'Tastes Great! Less Filling! High Performance and Accurate Training Data Collection for Self-Driving Database Management Systems'
-  authors: 'M. Butrovich, W. S. Lim, L. Ma, J. Rollinson, W. Zhang, Y. Xia, A. Pavlo'
+  authors: Matthew Butrovich, Wan Shen Lim, Lin Ma, John Rollinson, William Zhang, Yu Xia, Andrew Pavlo
   conference: SIGMOD'22
   type: using
   areas: tracing misc
   description: Implements a BPF-based data collection framework for database management systems (DBMSes).
   url: https://dl.acm.org/doi/pdf/10.1145/3514221.3517845
 - title: Domain Specific Run Time Optimization for Software Data Planes
-  authors: S. Miano, A. Sanaee, F. Risso, G. Rétvári, G. Antichi
+  authors: Sebastiano Miano, Alireza Sanaee, Fulvio Risso, Gábor Rétvári, Gianni Antichi
   conference: ASPLOS'22
   type: using
   areas: networking
@@ -713,7 +707,7 @@
   url: https://sebymiano.github.io/publication/2022-morpheus/2022-morpheus_abstract.pdf
   talk: https://www.youtube.com/watch?v=PDUVUv39CUQ
 - title: End-to-end Mechanized Proof of an eBPF Virtual Machine for Micro-controllers
-  authors: S. Yuan, F. Besson, J.-P. Talpin, S. Hym, K. Zandberg, E. Baccelli
+  authors: Shenghao Yuan, Frédéric Besson, Jean-Pierre Talpin, Samuel Hym, Koen Zandberg, Emmanuel Baccelli
   conference: CAV'22
   type: improving
   areas: verifier
@@ -721,7 +715,7 @@
     micro-controller RIOT kernel.
   url: https://www.irisa.fr/prive/talpin/papers/cav22.pdf
 - title: Application-Informed Kernel Synchronization Primitives
-  authors: S. Park, D. Zhou, Y. Qian, I. Calciu, T. Kim, S. Kashyap
+  authors: Sujin Park, Diyu Zhou, Yuchen Qian, Irina Calciu, Taesoo Kim, Sanidhya Kashyap
   conference: OSDI'22
   type: using
   areas: misc
@@ -730,7 +724,7 @@
   url: https://www.usenix.org/system/files/osdi22-park.pdf
   talk: https://www.youtube.com/watch?v=R25mDERjYWI
 - title: 'RapidPatch: Firmware Hotpatching for Real-Time Embedded Devices'
-  authors: Y. He, Z. Zou, K. Sun, Z. Liu, K. Xu, Q. Wang, C. Shen, Z. Wang, Q. Li
+  authors: Yi He, Zhenhua Zou, Kun Sun, Zhuotao Liu, Ke Xu, Qian Wang, Chao Shen, Zhi Wang, Qi Li
   conference: Sec'22
   type: using
   areas: misc
@@ -740,7 +734,7 @@
   talk: https://www.youtube.com/watch?v=rrGBBDGicSo
 - title: 'Verified Programs can Party: Optimizing Kernel Extensions via Post-Verification
     Merging'
-  authors: H.-C. Kuo, K.-H. Chen, Y. Lu, D. Williams, S. Mohan, T. Xu
+  authors: Hsuan-Chi Kuo, Kai-Hsun Chen, Yicheng Lu, Dan Williams, Sibin Mohan, Tianyin Xu
   conference: EuroSys'22
   type: using
   areas: misc
@@ -748,7 +742,7 @@
   url: https://people.cs.vt.edu/djwillia/papers/eurosys22-kfuse.pdf
 - title: 'SPRIGHT: Extracting the Server from Serverless Computing! High-Performance
     eBPF-Based Event-Driven, Shared-Memory Processing'
-  authors: S. Qi, L. Monis, Z. Zeng, I.-C. Wang, K. K. Ramakrishnan
+  authors: Shixiong Qi, Leslie Monis, Ziteng Zeng, Ian-chin Wang, K. K. Ramakrishnan
   conference: SIGCOMM'22
   type: using
   areas: networking
@@ -757,8 +751,7 @@
   url: https://dl.acm.org/doi/pdf/10.1145/3544216.3544259
   talk: https://www.youtube.com/watch?v=YkErXPiy9cE
 - title: Faster Software Packet Processing on FPGA NICs with eBPF Program Warping
-  authors: M. Bonola, G. Belocchi, A. Tulumello, M. Spaziani Brunella, G. Siracusano,
-    G. Bianchi, R. Bifulco
+  authors: Marco Bonola, Giacomo Belocchi, Angelo Tulumello, Marco Spaziani Brunella, Giuseppe Siracusano, Giuseppe Bianchi, Roberto Bifulco
   conference: ATC'22
   type: using
   areas: networking
@@ -768,8 +761,7 @@
   url: https://www.usenix.org/system/files/atc22-bonola.pdf
   talk: https://www.youtube.com/watch?v=ooWoaay4R-Q
 - title: 'XRP: In-Kernel Storage Functions with eBPF'
-  authors: Y. Zhong, H. Li, Y. J. Wu, I. Zarkadas, J. Tao, E. Mesterhazy, M. Makris,
-    J. Yang, A. Tai, R. Stutsman, A. Cidon
+  authors: Yuhong Zhong, Haoyu Li, Yu Jian Wu, Ioannis Zarkadas, Jeffrey Tao, Evan Mesterhazy, Michael Makris, Junfeng Yang, Amy Tai, Ryan Stutsman, Asaf Cidon
   conference: OSDI'22
   type: using
   areas: storage offload
@@ -787,7 +779,7 @@
 #   description: Formally proves and improves the Linux verifier operations on tristate
 #     numbers for the range analysis.
 - title: Synthesizing Safe and Efficient Kernel Extensions for Packet Processing
-  authors: Q. Xu, M. D. Wong, T. Wagle, S. Narayana, A. Sivaraman
+  authors: Qiongwen Xu, Michael D. Wong, Tanvi Wagle, Srinivas Narayana, Anirudh Sivaraman
   conference: SIGCOMM'21
   type: improving
   areas: networking misc
@@ -796,7 +788,7 @@
     ensuring they still pass the Linux verifier.
   talk: https://www.youtube.com/watch?v=8R7rHZw6V2o
 - title: 'The Ties that un-Bind: Decoupling IP from web services and sockets for robust addressing agility at CDN-scale'
-  authors: M. Fayed†, L. Bauer, V. Giotsas, S. Kerola, M. Majkowski, P. Odinstov, J. Sitnicki, T. Chung, D. Levin, A. Mislove, C. A. Wood, N. Sullivan
+  authors: Marwan Fayed, Lorenz Bauer, Vasileios Giotsas, Sami Kerola, Marek Majkowski, Pavel Odinstov, Jakub Sitnicki, Taejoong Chung, Dave Levin, Alan Mislove, Christopher A. Wood, Nick Sullivan
   conference: SIGCOMM'21
   type: using
   areas: networking
@@ -804,7 +796,7 @@
   url: https://dl.acm.org/doi/pdf/10.1145/3452296.3472922
   talk: https://www.youtube.com/watch?v=zg6944L-B3M&t=2140s
 - title: 'BMC: Accelerating Memcached using Safe In-Kernel Caching and Pre-Stack Processing'
-  authors: Y. Ghigoff, J. Sopena, K. Lazri, A. Blin, G. Muller
+  authors: Yohann Ghigoff, Julien Sopena, Kahina Lazri, Antoine Blin, Gilles Muller
   conference: NSDI'21
   type: using
   areas: networking offload
@@ -813,7 +805,7 @@
   description: Speeds up Memcached with an XDP-based, transparent, first-level cache.
   talk: https://www.youtube.com/watch?v=VKHIcTLoryk
 - title: An Analysis of Speculative Type Confusion Vulnerabilities in the Wild
-  authors: O. Kirzner, A. Morrison
+  authors: Ofek Kirzner, Adam Morrison
   conference: Sec'21
   type: analysis
   areas: security
@@ -822,7 +814,7 @@
   url: https://www.usenix.org/system/files/sec21-kirzner.pdf
   talk: https://www.youtube.com/watch?v=Gxv6LcabKrg
 - title: 'Syrup: User-Defined Scheduling Across the Stack'
-  authors: K. Kaffes, J. Humphries, D. Mazières, C. Kozyrakis
+  authors: Kostis Kaffes, Jack Tigar Humphries, David Mazières, Christos Kozyrakis
   conference: SOSP'21
   type: using
   areas: networking
@@ -831,7 +823,7 @@
   url: https://www.scs.stanford.edu/~dm/home/papers/kaffes:syrup.pdf
   talk: https://www.youtube.com/watch?v=v21FN6_uhv0
 - title: Revisiting the Open vSwitch Dataplane Ten Years Later
-  authors: W. Tu, Y.-H. Wei, G. Antichi, B. Pfaff
+  authors: William Tu, Yi-Hung Wei, Gianni Antichi, Ben Pfaff
   conference: SIGCOMM'21
   type: using
   areas: networking
@@ -840,7 +832,7 @@
   url: https://conferences.sigcomm.org/sigcomm/2021/files/papers/3452296.3472914.pdf
   talk: https://www.youtube.com/watch?v=GA7XAHBEKwo&t=4127s
 - title: Synthesizing JIT Compilers for In-Kernel DSLs
-  authors: J. Van Geffen, L. Nelson, I. Dillig, X. Wang, E. Torlak
+  authors: Jacob Van Geffen, Luke Nelson, Isil Dillig, Xi Wang, Emina Torlak
   conference: CAV'20
   type: improving
   areas: jit
@@ -848,8 +840,7 @@
     correct, from DSL interpreters.
   url: https://unsat.cs.washington.edu/papers/geffen-jitsynth.pdf
 - title: 'hXDP: Efficient Software Packet Processing on FPGA NICs'
-  authors: M. Spaziani Brunella, G. Belocchi, M. Bonola, S. Pontarelli, G. Siracusano,
-    G. Bianchi, A. Cammarano, A. Palumbo, L. Petrucci, R. Bifulco
+  authors: Marco Spaziani Brunella, Giacomo Belocchi, Marco Bonola, Salvatore Pontarelli, Giuseppe Siracusano, Giuseppe Bianchi, Aniello Cammarano, Alessandro Palumbo, Luca Petrucci, Roberto Bifulco
   conference: OSDI'20
   type: using
   areas: networking
@@ -860,7 +851,7 @@
   talk: https://www.youtube.com/watch?v=v8tGmlB2Zks
 - title: 'Specification and Verification in the Field: Applying Formal Methods to
     BPF Just-in-Time Compilers in the Linux Kernel'
-  authors: L. Nelson, J. Van Geffen, E. Torlak, X. Wang
+  authors: Luke Nelson, Jacob Van Geffen, Emina Torlak, Xi Wang
   conference: OSDI'20
   type: improving
   areas: jit
@@ -869,7 +860,7 @@
     implements a new formally-verified JIT compiler for 32-bit RISC-V.
   talk: https://www.youtube.com/watch?v=2V3ts5-W_9g
 - title: 'LBM: A Security Framework for Peripherals within the Linux Kernel'
-  authors: D. Tian, G. Hernandez, J. I. Choi, V. Frost, P. C. Johnson†, K. R. B. Butler
+  authors: Dave Tian, Grant Hernandez, Joseph I. Choi, Vanessa Frost, Peter C. Johnson, Kevin R. B. Butler
   conference: S&P'19
   type: using
   areas: security misc
@@ -878,7 +869,7 @@
   talk: https://www.youtube.com/watch?v=CX2t2w1ZTjQ
 - title: Scaling Symbolic Evaluation for Automated Verification of Systems Code with
     Serval
-  authors: L. Nelson, J. Bornholt, R. Gu, A. Baumann, E. Torlak, X. Wang
+  authors: Luke Nelson, James Bornholt, Ronghui Gu, Andrew Baumann, Emina Torlak, Xi Wang
   conference: SOSP'19
   type: improving
   areas: verifier
@@ -887,7 +878,7 @@
     eBPF, by lifting existing interpreters under symbolic execution.
   talk: https://www.youtube.com/watch?v=TTVZi1neE20
 - title: Extension Framework for File Systems in User Space
-  authors: A. Bijlani, U. Ramachandran
+  authors: Ashish Bijlani, Umakishore Ramachandran
   conference: ATC'19
   type: using
   areas: storage offload
@@ -896,8 +887,7 @@
   url: https://www.usenix.org/system/files/atc19-bijlani.pdf
   talk: https://www.youtube.com/watch?v=QwcF8q9LejU
 - title: Pluginizing QUIC
-  authors: Q. De Coninck, F. Michel, M. Piraux, F. Rochet, T. Given-Wilson, A. Legay,
-    O. Pereira, O. Bonaventure
+  authors: Quentin De Coninck, François Michel, Maxime Piraux, Florentin Rochet, Thomas Given-Wilson, Axel Legay, Olivier Pereira, Olivier Bonaventure
   conference: SIGCOMM'19
   type: using
   areas: networking
@@ -906,15 +896,14 @@
   url: https://dial.uclouvain.be/pr/boreal/object/boreal:218857/datastream/PDF_01/view
   talk: https://dlnext.acm.org/action/downloadSupplement?doi=10.1145%2F3341302.3342078&file=p59-de_coninck.mp4
 - title: Securing Linux with a Faster and Scalable iptables
-  authors: S. Miano, M. Bertrone, F. Risso, M. Vásquez Bernal, Y. Lu, J. Pi
-  conference: SIGCOMM CCR'
+  authors: Sebastiano Miano, Matteo Bertrone, Fulvio Risso, Mauricio Vásquez Bernal, Yunsong Lu, Jianwen Pi
+  conference: SIGCOMM CCR'19
   type: using
   areas: networking
   description: ''
   url: https://ccronline.sigcomm.org/wp-content/uploads/2019/07/acmdl19-304.pdf
 - title: Simple and Precise Static Analysis of Untrusted Linux Kernel Extensions
-  authors: E. Gershuni, N. Amit, A. Gurfinkel, N. Narodytska, J. A. Navas, N. Rinetzky,
-    L. Ryzhyk, M. Sagiv
+  authors: Elazar Gershuni, Nadav Amit, Arie Gurfinkel, Nina Narodytska, Jorge A. Navas, Noam Rinetzky, Leonid Ryzhyk, Mooly Sagiv
   conference: PLDI'19
   type: improving
   areas: verifier
@@ -924,7 +913,7 @@
   post: /ebpf/2023/09/06/prevail-understanding-the-windows-ebpf-verifier.html
   talk: https://www.youtube.com/watch?v=MHqKJaQouu8
 - title: The Design and Implementation of Hyperupcalls
-  authors: N. Amit, M. Wei
+  authors: Nadav Amit, Michael Wei
   conference: ATC'18
   type: using
   areas: misc
@@ -932,7 +921,7 @@
   description: Leverages eBPF to bridge the semantic gap of virtualization, by letting
     hypervisors execute verified code from the guests.
 - title: 'InKeV: in-kernel distributed network virtualization for DCN'
-  authors: Z. Ahmed, M. H. Alizai, A. A. Syed
+  authors: Zaafar Ahmed, Muhammad Hamad Alizai, Affan A. Syed
   conference: SIGCOMM CCR'
   type: using
   areas: networking
@@ -940,15 +929,14 @@
   url: https://web.lums.edu.pk/~alizai/pubs/2016-zaafar-ccr.pdf
 - title: 'The eXpress Data Path: Fast Programmable Packet Processing in the Operating
     System Kernel'
-  authors: T. Høiland-Jørgensen, J. Dangaard Brouer, D. Borkmann, J. Fastabend, T.
-    Herbert, D. Ahern, D. Miller
-  conference: CoNEXT'
+  authors: Toke Høiland-Jørgensen, Jesper Dangaard Brouer, Daniel Borkmann, John Fastabend, Tom Herbert, David Ahern, David Miller
+  conference: CoNEXT'18
   type: foundation
   areas: networking
-  url: https://github.com/tohojo/xdp-paper/blob/master/xdp-the-express-data-path.pdf
+  url: https://dl.acm.org/doi/pdf/10.1145/3281411.3281443
   description: ''
 - title: 'Jitk: A Trustworthy In-Kernel Interpreter Infrastructure'
-  authors: X. Wang, D. Lazar, N. Zeldovich, A. Chlipala, Z. Tatlock
+  authors: Xi Wang, David Lazar, Nickolai Zeldovich, Adam Chlipala, Zachary Tatlock
   conference: OSDI'14
   type: improving
   areas: jit
@@ -957,7 +945,7 @@
     into cBPF bytecode and machine code.
   talk: https://www.youtube.com/watch?v=aOl-skWkzf0
 - title: 'Swift: A Fast Dynamic Packet Filter'
-  authors: Z. Wu, M. Xie, H. Wang
+  authors: Zhenyu Wu, Mengjun Xie, Haining Wang
   conference: NSDI'08
   type: improving
   areas: networking
@@ -965,14 +953,14 @@
   description: Proposes an alternative to cBPF for packet filtering, with a CISC ISA and support for SIMD.
 - title: 'BPF+: Exploiting Global Data-flow Optimization in a Generalized Packet Filter
     Architecture'
-  authors: A. Begel, S. McCanne, S. L. Graham
+  authors: Andrew Begel, Steven McCanne, Susan L. Graham
   conference: SIGCOMM CCR'
   type: foundation
   areas: networking
   url: https://www.tcpdump.org/papers/sigcomm99bpf+.pdf
   description: ''
 - title: Safe Kernel Extensions Without Run-Time Checking
-  authors: G. C. Necula, P. Lee
+  authors: George C. Necula, Peter Lee
   conference: OSDI'96
   type: improving
   areas: verifier
@@ -980,7 +968,7 @@
   description: Proposes kernel extensions in the form of <i>proof-carrying code</i>
     and compares it to cBPF.
 - title: 'The BSD Packet Filter: A New Architecture for User-level Packet Capture'
-  authors: S. McCanne, V. Jacobson
+  authors: Steven McCanne, Van Jacobson
   conference: USENIX Winter'93
   type: foundation
   areas: networking

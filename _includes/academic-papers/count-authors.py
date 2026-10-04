@@ -9,6 +9,8 @@ def count_authors(yaml_file):
 
     author_counts = defaultdict(int)
     for paper in papers:
+        if paper['description'] == '':
+            continue
         authors_str = paper['authors']
         authors = [a.strip() for a in authors_str.split(',')]
         for author in authors:
