@@ -72,7 +72,7 @@
 - title: 'Virtualizing eBPF with Late-Binding'
   authors: Jing Zhang, Xiaguannan Song, Dong Du, Yubin Xia, Binyu Zang, Haibo Chen
   conference: OSDI'26
-  type: using
+  type: improving
   areas: misc
   description: Allows BPF hooks to be shared by multiple tenants by adding an indirection layer and dispatching to per-tenant programs.
   url: https://www.usenix.org/system/files/osdi26-zhang-jing.pdf
@@ -162,7 +162,7 @@
 - title: 'EDDE: Container Deployment Framework Beyond the Cloud'
   authors: Hao Fan, Zhuo Huang, Shadi Ibrahim, Lin Gu, Song Wu
   conference: SC'25
-  type: improving
+  type: using
   areas: misc
   description: Optimizes FUSE in the context of container images using preloaded eBPF maps to cache the pull indexes and image data.
   url: https://dl.acm.org/doi/pdf/10.1145/3712285.3759854
@@ -177,7 +177,7 @@
 - title: 'BPF-DB: A Kernel-Embedded Transactional Database Management System For eBPF Applications'
   authors: Matthew Butrovich, Samuel Arch, Wan Shen Lim, William Zhang, Jignesh M. Patel, Andrew Pavlo
   conference: SIGMOD'25
-  type: improving
+  type: using
   areas: misc storage
   description: Introduces an in-kernel database management system (DBMS) in eBPF, with ACID properties.
   url: https://dl.acm.org/doi/pdf/10.1145/3725272
@@ -551,7 +551,7 @@
     Functions'
   authors: Bin Yang, Dian Shen, Junxue Zhang, Hanlin Yang, Lunqi Zhao, Beilun Wang, Guyue Liu, Kai Chen
   conference: EuroSys'24
-  type: using
+  type: improving
   areas: networking
   description: Improves the performance of eBPF for networking applications with Rust-based extensions to its kfuncs, maps, and APIs.
   url: https://snowzjx.me/assets/enetstl-eurosys25.pdf
@@ -700,7 +700,7 @@
 - title: Domain Specific Run Time Optimization for Software Data Planes
   authors: Sebastiano Miano, Alireza Sanaee, Fulvio Risso, Gábor Rétvári, Gianni Antichi
   conference: ASPLOS'22
-  type: using
+  type: improving
   areas: networking
   description: Optimizes datapath binaries, including eBPF bytecodes, based on traffic
     patterns.
@@ -736,7 +736,7 @@
     Merging'
   authors: Hsuan-Chi Kuo, Kai-Hsun Chen, Yicheng Lu, Dan Williams, Sibin Mohan, Tianyin Xu
   conference: EuroSys'22
-  type: using
+  type: improving
   areas: misc
   description: Merges chains of BPF programs (from tail calls or multi-prog hooks) after verification to improve performance.
   url: https://people.cs.vt.edu/djwillia/papers/eurosys22-kfuse.pdf
