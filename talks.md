@@ -5,7 +5,7 @@ permalink: /talks/
 description: THis page lists talks given by Paul Chaignon since 2019 at FOSDEM, BreizhCamp, Linux Plumbers, FRnOG, Dagstuhl, the eBPF Workshop, etc., in French and in English. Most of the talks focus on the eBPF technology and its verifiers.
 ---
 
-**🇬🇧 [Linux Plumbers 2026](https://lpc.events/event/20/contributions/2427/) -- eBPF Research: What's Going On In Academia?**
+**🇬🇧 [Linux Plumbers 2026](https://lpc.events/event/20/contributions/2427/) -- [eBPF Research: What's Going On In Academia?](/assets/Linux%20Plumbers%202026%20eBPF%20Research.pdf)**
 
 **🇬🇧 [eBPF'26](https://ebpf.github.io/2026/papers.html) -- [netkit: Specializing Linux Packet Delivery for Container Networks](/assets/eBPF%202026%20netkit.pdf)**
 
