@@ -10,7 +10,7 @@ published: true
 
 Next week at [the fourth eBPF workshop](https://ebpf.github.io/2026/), I will present our paper on *netkit* we wrote with [Daniel](http://www.borkmann.ch/).
 In this paper, we show how the netkit devices and the ``bpf_redirect_peer`` helper can help tailor the Linux datapath for containers.
-This blog post is a summary of [the paper](https://arxiv.org/pdf/2609.18633).
+This blog post is a summary of [the paper](https://dl.acm.org/doi/pdf/10.1145/3837779.3838164).
 
 ### Motivation
 
@@ -95,7 +95,7 @@ As noted in the paper:
 
 > We don't need [to use ``bpf_redirect_peer``] here because netkit devices already execute their BPF programs after the namespace switch.
 
-[The paper](https://arxiv.org/pdf/2609.18633) discusses other subtleties of the design that I won't detail here, such as why we don't rely on XDP, how this affects scheduler accounting, or why we need to keep the last backlog traversal.
+[The paper](https://dl.acm.org/doi/pdf/10.1145/3837779.3838164) discusses other subtleties of the design that I won't detail here, such as why we don't rely on XDP, how this affects scheduler accounting, or why we need to keep the last backlog traversal.
 
 <br/>
 
@@ -107,7 +107,7 @@ The former is an indirect measure of latency as it tries to perform as many requ
 The latter is similar but adds more stress on the networking stack (especially connection tracking) as it creates new TCP connections for each request-response.
 
 In the evaluations, we compared pods running on Cilium v1.19.5 with and without netkit and ``bpf_redirect_peer`` enabled to a baseline setup where two processes communicate over the loopback device and over the wire.
-[The paper](https://arxiv.org/pdf/2609.18633) has more details on Cilium's configuration, the hardware specs, and other relevant aspects of the setup.
+[The paper](https://dl.acm.org/doi/pdf/10.1145/3837779.3838164) has more details on Cilium's configuration, the hardware specs, and other relevant aspects of the setup.
 
 {:refdef: style="text-align: center;"}
 <img src="/assets/netkit/tcp_rr.png" alt="Transactions per second (TCP_RR benchmark) between hosts, between containers connected with veth, and between containers connected with netkit, on the same host and across the wire. When using containers, they are connected with Cilium." title="Transactions per second (TCP_RR benchmark) between hosts, between containers connected with veth, and between containers connected with netkit, on the same host and across the wire. When using containers, they are connected with Cilium." style="width: 49%;"/>
@@ -140,7 +140,7 @@ In addition, several large companies[^netkit-users] have started using netkit de
 We hope this paper will raise awareness of netkit within the research community and encourage new research in this area.
 The netkit devices are already being used in new contexts to accelerate [software RDMA](https://netdevconf.info/0x1A/sessions/talk/accelerating-software-rdma-rxe-with-netkit-and-devmem.html) and [KubeVirt (via AF_XDP)](https://lpc.events/event/19/contributions/2275/).
 
-[Our paper is available on arXiv](https://arxiv.org/pdf/2609.18633) and you can cite it with:
+[Our paper is available on ACM DL](https://dl.acm.org/doi/pdf/10.1145/3837779.3838164) and you can cite it with:
 ```bib
 @inproceedings{netkit,
   author = {Borkmann, Daniel and Chaignon, Paul},
