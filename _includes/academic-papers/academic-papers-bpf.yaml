@@ -77,7 +77,7 @@
   description: Allows BPF hooks to be shared by multiple tenants by adding an indirection layer and dispatching to per-tenant programs.
   url: https://www.usenix.org/system/files/osdi26-zhang-jing.pdf
 - title: 'PeeR: First-Class Scheduling for Latency Critical eBPF Applications'
-  authors: Jing Zhang, Xiaguannan Song, Dong Du, Yubin Xia, Binyu Zang, Haibo Chen
+  authors: Jeremy Carin, Ben Holmes, Weiyang Wang, Ankit Bhardwaj, Manya Ghobadi
   conference: OSDI'26
   type: improving
   areas: misc
